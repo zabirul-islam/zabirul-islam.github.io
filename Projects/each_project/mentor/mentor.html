@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="MENTOR: Multimodal Engine for Neural Teaching and Observational Reasoning">
+
+<title>Mentor | Md Zabirul Islam</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.project-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.authors {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.affiliations {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  background: transparent;
+  color: #495057;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-link:hover {
+  border-color: #750505;
+  color: #750505;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.journal-badge {
+  background: #8b0808;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 0.5rem;
+  cursor: default;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #011627;
+  border-bottom: 3px solid #011627;
+  padding-bottom: 0.5rem;
+}
+
+.abstract-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  border-left: 5px solid #750505;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  text-align: center;
+  background: #f8f9fa;
+  color: #666;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .project-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .authors {
+    font-size: 1rem;
+  }
+  
+  .affiliations {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .abstract-section {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-section {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+  
+  main {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  main {
+    padding: 0 0.75rem !important;
+  }
+  
+  .abstract-section {
+    padding: 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+</style>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3THLGK2G1N"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
+</script>
+</head>
+
+<body>
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">ALIVE: An Avatar-Lecture Interactive Video Engine with Content-Aware Retrieval for Real-Time Interaction</h1>
+    
+    <div class="authors">
+      <strong>Md Zabirul Islam</strong>,  Md Motaleb Hossen Manik, Ge Wang
+    </div>
+    
+    <div class="affiliations">
+Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">arXiv Preprint</span>
+    <a href="https://arxiv.org/abs/2512.20858" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="#" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+
+
+<!-- ----------- Body-------------------
+ -->
+<!-- ===================================================== -->
+<!-- ALIVE Project Page (from paper arXiv:2512.20858v1)     -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+  <p>
+    Traditional recorded lectures are fundamentally passive: when students encounter confusion, they must leave the video to search for clarification. 
+    We introduce <strong>ALIVE</strong> (Avatar-Lecture Interactive Video Engine), a fully local, privacy-preserving system that transforms 
+    lecture videos into real-time, content-aware interactive learning environments. ALIVE tightly integrates timestamp-aligned retrieval, 
+    locally hosted large language models, and neural talking-head avatar synthesis to enable grounded explanations exactly at the moment of confusion.
+  </p>
+  <p><strong>Key Achievements:</strong></p>
+  <ul>
+    <li><strong>🎯 Content-Aware Retrieval:</strong> Combines semantic similarity with timestamp alignment to retrieve lecture segments near the paused moment</li>
+    <li><strong>🔒 Fully Local Pipeline:</strong> ASR, retrieval, LLM inference, TTS, and avatar synthesis run entirely on local hardware</li>
+    <li><strong>⚡ Low Retrieval Latency:</strong> Embedding + FAISS search completes in &lt;100 ms</li>
+    <li><strong>🧠 Grounded LLM Responses:</strong> Llama-based model generates lecture-aligned answers in ~1–2 seconds</li>
+    <li><strong>🎭 Avatar-Delivered Explanations:</strong> SadTalker-based neural talking-head synthesis with segmented rendering</li>
+    <li><strong>📊 System-Level Evaluation:</strong> Functional grounding validation, latency profiling, and ablation analysis</li>
+  </ul>
+</div>
+
+
+<h2 class="section-title">🏗️ System Architecture Overview</h2>
+
+<div style="text-align: center; margin: 3rem 0;">
+  <img src="./projectpage/alive_system_overview.png" 
+       alt="ALIVE System Overview" 
+       style="max-width: 600px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+
+  <p style="margin-top: 1.5rem; font-size: 1.1rem; color: #495057; max-width: 1000px; margin-left: auto; margin-right: auto; text-align: left;">
+    <strong>Figure: ALIVE System Overview (adapted from Fig. 1 in the paper).</strong> 
+    ALIVE consists of three tightly integrated stages: 
+    (1) Offline lecture preparation (ASR → transcript refinement → segmentation → embedding index), 
+    (2) Pause-triggered content-aware retrieval and LLM reasoning, and 
+    (3) Segmented avatar-delivered response generation using offline TTS and SadTalker. 
+    All modules operate locally, forming a privacy-preserving multimodal pipeline.
+  </p>
+</div>
+
+
+
+
+<h2 class="section-title">🎯 Motivation & Educational Impact</h2>
+
+<p>
+  Recorded lectures provide flexibility but lack real-time clarification. When confusion arises, students must 
+  interrupt learning continuity and search externally. This problem is particularly severe in technical domains 
+  such as medical imaging, where reasoning depends on physics, reconstruction algorithms, and mathematical modeling.
+</p>
+
+<h4 style="color: #3252b3; margin-top: 1.5rem;">🔍 Core Challenges Addressed:</h4>
+<ul>
+  <li><strong>⏸️ Passive Learning:</strong> No built-in clarification mechanism during playback</li>
+  <li><strong>❌ Context Loss:</strong> Generic chatbots are unaware of lecture timeline</li>
+  <li><strong>🔐 Privacy Constraints:</strong> Many AI systems rely on cloud APIs</li>
+  <li><strong>🎭 Disconnected Presentation:</strong> Chat responses break instructor continuity</li>
+  <li><strong>⚡ Latency Issues:</strong> Avatar synthesis can introduce startup delay</li>
+</ul>
+
+<p>
+  <strong>Innovation:</strong> ALIVE anchors all interaction around the lecture timeline using timestamp-sensitive retrieval 
+  and provides explanations either as grounded text or instructor-style avatar responses — without leaving the video context.
+</p>
+
+
+<h2 class="section-title">📊 Offline Lecture Preparation Pipeline</h2>
+
+<div style="text-align: center; margin: 3rem 0;">
+  <img src="./projectpage/alive_offline_pipeline.png" 
+       alt="Offline Lecture Preparation" 
+       style="max-width: 650px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+  
+  <p style="margin-top: 1rem; font-size: 1.1rem; color: #495057; max-width: 1000px; margin-left: auto; margin-right: auto;">
+    <strong>Figure: Offline Lecture Preparation (Fig. 2).</strong> 
+    Lecture audio is transcribed using Whisper, refined via LLM, segmented (~20s units), embedded using SentenceTransformers, 
+    and indexed with FAISS. The result is a timestamp-aligned retrieval store enabling semantic + temporal search.
+  </p>
+</div>
+
+<h4>🔧 Key Components:</h4>
+<ul>
+  <li>Local Whisper ASR with fine-grained timestamps</li>
+  <li>Transcript refinement for grammatical coherence</li>
+  <li>Segment merging (~20s) for semantic consistency</li>
+  <li>Sentence-level embeddings</li>
+  <li>FAISS inner-product index</li>
+</ul>
+
+
+<h2 class="section-title">⏸️ Pause-Triggered Content-Aware Retrieval</h2>
+
+<div style="text-align: center; margin: 3rem 0;">
+  <img src="./projectpage/alive_qa_workflow.png" 
+       alt="Pause Triggered QA" 
+       style="max-width: 550px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+
+  <p style="margin-top: 1rem; font-size: 1.1rem; color: #495057; max-width: 1000px; margin-left: auto; margin-right: auto;">
+    <strong>Figure: Content-Aware QA Workflow (Fig. 3).</strong> 
+    When a student pauses the lecture, ALIVE retrieves segments using a temporally adjusted similarity score:
+  </p>
+
+  <p style="font-family: monospace; font-size: 1rem;">
+    d̃ᵢ = dᵢ − λ | (sᵢ + eᵢ)/2 − t | / 60
+  </p>
+
+  <p style="text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+    where semantic similarity is penalized by temporal distance from the paused timestamp.
+  </p>
+</div>
+
+
+<h2 class="section-title">🎭 Segmented Avatar Response Generation</h2>
+
+<div style="text-align: center; margin: 3rem 0;">
+  <img src="./projectpage/alive_avatar_pipeline.png" 
+       alt="Avatar Response Pipeline" 
+       style="max-width: 650px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+
+  <p style="margin-top: 1rem; font-size: 1.1rem; color: #495057; max-width: 1000px; margin-left: auto; margin-right: auto;">
+    <strong>Figure: Segmented Avatar Synthesis (Fig. 4).</strong> 
+    LLM-generated explanations are converted to speech via offline TTS, then rendered as talking-head videos using SadTalker. 
+    Long responses are split into sentence-level segments with progressive preloading.
+  </p>
+</div>
+
+<h4>⚡ Latency Mitigation Strategy:</h4>
+<ul>
+  <li>First segment rendered quickly</li>
+  <li>Remaining segments generated asynchronously</li>
+  <li>Segment i plays while segment i+2 renders</li>
+  <li>Automatic cleanup of temporary files</li>
+</ul>
+
+
+<h2 class="section-title">📈 Performance Evaluation</h2>
+
+<div style="text-align: center; margin: 3rem 0;">
+  <img src="./projectpage/alive_latency_breakdown.png" 
+       alt="Latency Breakdown" 
+       style="max-width: 500px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+</div>
+
+<table style="width:100%; border-collapse: collapse; font-size: 1rem;">
+  <tr style="background-color:#f1f3f5;">
+    <th style="padding: 10px; border: 1px solid #dee2e6;">Component</th>
+    <th style="padding: 10px; border: 1px solid #dee2e6;">Observed Latency</th>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">Whisper ASR (5–10s query)</td>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">~2–4 seconds</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">Embedding + FAISS Retrieval</td>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">&lt;100 ms</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">LLM Inference</td>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">~1–2 seconds</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">TTS</td>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">&lt;0.2 seconds</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">Avatar Synthesis (per segment)</td>
+    <td style="padding: 10px; border: 1px solid #dee2e6;">~3–6 seconds</td>
+  </tr>
+</table>
+
+
+<h2 class="section-title">🧪 Ablation Analysis</h2>
+
+<ul>
+  <li><strong>Without Timestamp Alignment:</strong> Reduced contextual consistency for ambiguous queries</li>
+  <li><strong>Without Segmented Synthesis:</strong> Increased startup delay and worse perceived responsiveness</li>
+</ul>
+
+
+<h2 class="section-title">🚀 Key Contributions</h2>
+
+<ul>
+  <li>First fully local, timestamp-aware interactive lecture engine</li>
+  <li>Semantic + temporal retrieval for lecture-grounded QA</li>
+  <li>Segmented avatar synthesis with progressive preloading</li>
+  <li>End-to-end privacy-preserving multimodal pipeline</li>
+  <li>System-level evaluation including latency profiling and grounding validation</li>
+</ul>
+
+
+<div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0; border-left: 5px solid #2E8B57;">
+  <h4 style="color: #011627; margin-bottom: 1rem;">🎯 Research Significance</h4>
+  <p style="font-size: 1.05rem; line-height: 1.7;">
+    ALIVE demonstrates that modern multimodal AI components — retrieval-augmented LLMs, speech recognition, 
+    and neural avatar synthesis — can be composed into a unified, fully local educational system that enhances 
+    recorded lectures without compromising privacy. By anchoring interaction to the lecture timeline, ALIVE 
+    transforms passive video viewing into responsive, context-aware learning.
+  </p>
+</div>
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>ALIVE</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{zabirul2025alive,
+  title={ALIVE: An Avatar-Lecture Interactive Video Engine with Content-Aware Retrieval for Real-Time Interaction},
+  author={Zabirul Islam, Md and Motaleb Hossen Manik, Md and Wang, Ge},
+  journal={arXiv e-prints},
+  pages={arXiv--2512},
+  year={2025}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://arxiv.org/abs/2506.05360" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        arXiv:2506.05360 (2025)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- ----------- 2nd Paper--------------------->
+
+
+
+
+
+
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">SlideChain: Semantic Provenance for Lecture Understanding via Blockchain Registration
+</h1>
+    
+    <div class="authors">
+        Md Motaleb Hossen Manik, <strong>Md Zabirul Islam</strong>, Ge Wang
+    </div>
+    
+    <div class="affiliations">
+      Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">arXiv Preprint</span>
+    <a href="https://arxiv.org/abs/2512.21684" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="#" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+
+
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- SlideChain Project Page (from arXiv:2512.21684v2)      -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+  <p>
+    Modern vision–language models (VLMs) are increasingly used to interpret educational slides, but their extracted semantics
+    (concepts and relational triples) can be inconsistent across models and hard to audit over time. We introduce
+    <strong>SlideChain</strong>, a blockchain-backed provenance framework that anchors cryptographic commitments (Keccak-256 hashes)
+    of per-slide semantic provenance records on an EVM-compatible blockchain, enabling tamper-evident verification,
+    deterministic reproducibility checks, and long-term auditability for multimodal educational pipelines.
+  </p>
+
+  <p><strong>Key Achievements:</strong></p>
+  <ul>
+    <li><strong>🧾 Slide-level Semantic Provenance:</strong> Unified per-slide JSON schema storing <strong>concepts</strong>, <strong>triples</strong>, evidence, and metadata across models</li>
+    <li><strong>🔗 Blockchain-backed Integrity:</strong> Stores only <strong>Keccak-256</strong> commitments on-chain (semantics off-chain) for scalable verification</li>
+    <li><strong>📚 Real Educational Dataset:</strong> <strong>1,117</strong> medical imaging lecture slides from <strong>23</strong> university lectures (SlideChain Slides Dataset)</li>
+    <li><strong>🤖 Multi-model Extraction:</strong> Analysis over four VLMs: <strong>InternVL3–14B</strong>, <strong>Qwen2–VL–7B</strong>, <strong>Qwen3–VL–4B</strong>, <strong>LLaVA-OneVision</strong></li>
+    <li><strong>📉 Reveals Semantic Disagreement:</strong> Modest concept overlap and often near-zero triple overlap across model pairs (Jaccard analysis)</li>
+    <li><strong>⛽ Predictable On-chain Cost:</strong> Registration gas per slide clusters tightly around <strong>≈231,430</strong> gas (near-constant per registration)</li>
+    <li><strong>⚡ Stable Throughput:</strong> Batch registration throughput ≈ <strong>1.0009 slides/sec</strong> (1117 slides over 1116 seconds)</li>
+    <li><strong>🛡️ Tamper Detection:</strong> <strong>100%</strong> detection of synthetic corruption on a tested subset of <strong>20</strong> provenance files</li>
+    <li><strong>✅ Deterministic Reproducibility:</strong> Two independent full pipeline runs produced <strong>Jaccard = 1.0</strong> for concepts and triples for every model–slide pair</li>
+  </ul>
+</div>
+
+
+<h2 class="section-title">🏗️ System Architecture Overview</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig1_system_overview.png"
+       alt="SlideChain System Overview (Fig. 1)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1.25rem; font-size:1rem; color:#495057; max-width:750px; margin-left:auto; margin-right:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 1: Three-layer SlideChain workflow.</strong>
+    Layer 1 (off-chain): slides + transcript snippets are processed by multiple VLMs to extract <em>concepts</em> and <em>relational triples</em>,
+    producing a canonical provenance JSON per slide. Layer 2 (on-chain): a lightweight EVM smart contract stores only the
+    <strong>Keccak-256 hash</strong> of that JSON (plus optional URI and timestamp). Layer 3: verification tools recompute hashes to detect
+    tampering and support long-term auditing and semantic drift analysis.
+  </p>
+</div>
+
+
+<h2 class="section-title">🎯 Motivation & Trust Problem</h2>
+
+<p>
+  VLM outputs on scientific slides can vary across model families, inference settings, and environments. In STEM education,
+  that instability is risky: missing or spurious concepts, and especially unreliable relational triples, can distort meaning.
+  SlideChain does not try to “fix” the semantics. Instead, it makes semantic outputs <strong>verifiable, comparable, and auditable</strong>
+  across time and across models by anchoring slide-level semantic records to a tamper-evident ledger.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">🔍 Core Challenges Addressed:</h4>
+<ul>
+  <li><strong>🧠 Semantic Instability:</strong> different models extract different concept sets from the same slide</li>
+  <li><strong>🔗 Fragile Relational Grounding:</strong> triple extraction is sparse and often disagrees across models</li>
+  <li><strong>🧾 No Semantic Audit Trail:</strong> without commitments, semantic records can be silently overwritten</li>
+  <li><strong>⏳ Long-term Drift:</strong> as models/prompts/pipelines evolve, prior semantics become hard to reproduce and verify</li>
+  <li><strong>✅ Need for Independent Verification:</strong> provenance should not require trusting a single repository owner or logging service</li>
+</ul>
+
+<p>
+  <strong>Innovation:</strong> SlideChain anchors the <em>semantic outputs themselves</em> (concepts + triples + evidence/metadata) via on-chain commitments,
+  enabling third-party verification, immutable timestamps, and guaranteed detection of post hoc changes.
+</p>
+
+
+<h2 class="section-title">📊 Dataset & Models</h2>
+
+<p>
+  SlideChain evaluates semantic extraction on real instructional material: the <strong>SlideChain Slides Dataset</strong>, a curated set of
+  <strong>1,117 high-resolution slides</strong> spanning <strong>23 university lectures</strong> in medical imaging. Slides include equations, diagrams,
+  imaging geometries, workflows, and dense technical layouts, making them a challenging testbed for VLM slide understanding.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">🤖 Vision–Language Models Used:</h4>
+<ul>
+  <li><strong>InternVL3–14B:</strong> dense concept extraction; richest semantic footprint</li>
+  <li><strong>Qwen2–VL–7B:</strong> strong general multimodal reasoning; diverse concepts</li>
+  <li><strong>Qwen3–VL–4B:</strong> smaller, more conservative semantic footprint</li>
+  <li><strong>LLaVA-OneVision (Qwen2–7B backbone):</strong> moderate concepts, consistently low triple production</li>
+</ul>
+
+
+<h2 class="section-title">🧾 Provenance Record (What Gets Hashed)</h2>
+
+<p>
+  Each slide produces a canonical provenance JSON containing normalized concept and triple sets for all four models,
+  plus evidence and metadata. Keys are serialized in sorted order before hashing to ensure platform-invariant commitments.
+  The smart contract stores only the hash and optional URI, keeping full semantics off-chain for scalability.
+</p>
+
+<div style="background:#f8f9fa; border:1px solid #e9ecef; border-radius:12px; padding:1rem; margin:1.25rem 0;">
+  <p style="margin:0; font-family:monospace; font-size:0.95rem; line-height:1.55; white-space:pre-wrap;">
+{
+  "lecture": "Lecture k",
+  "slide_id": n,
+  "models": {
+    "InternVL3-14B": { "concepts": [...], "triples": [...], "evidence": [...], "raw_output": "..." },
+    "Qwen2-VL-7B":   { "concepts": [...], "triples": [...], "evidence": [...], "raw_output": "..." },
+    "Qwen3-VL-4B":   { "concepts": [...], "triples": [...], "evidence": [...], "raw_output": "..." },
+    "LLaVA-OneVision": { "concepts": [...], "triples": [...], "evidence": [...], "raw_output": "..." }
+  },
+  "paths": { "image": "...", "text": "...", "json": "..." },
+  "metadata": { "timestamp": "...", "source": "...", "hash_input_format": "sorted-keys-json" }
+}
+  </p>
+</div>
+
+
+<h2 class="section-title">📉 Semantic Disagreement & Cross-Model Similarity</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig2_concept_disagreement.png"
+       alt="Concept disagreement distribution (Fig. 2)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 2: Concept disagreement distribution.</strong>
+    Across 1,117 slides, the union of concepts extracted by four VLMs varies widely per slide, showing that different models
+    often propose substantially different semantic “coverage” even under the same input.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig3_triple_disagreement.png"
+       alt="Triple disagreement distribution (Fig. 3)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 3: Triple disagreement distribution.</strong>
+    Relational triples are overall sparse, but still highly inconsistent: many triples proposed by one model do not appear
+    in others, highlighting fragility of relational grounding on technical slides.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig6_concept_jaccard_matrix.png"
+       alt="Concept Jaccard similarity matrix (Fig. 6)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 6: Pairwise concept Jaccard similarity across models.</strong>
+    Cross-model agreement is consistently modest, indicating that “high-level slide meaning” varies across architectures
+    and training regimes even when inputs are identical.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig7_triple_jaccard_matrix.png"
+       alt="Triple Jaccard similarity matrix (Fig. 7)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 7: Pairwise triple Jaccard similarity across models.</strong>
+    Triple overlap is near zero for several model pairs, reinforcing that relational extraction on dense STEM slides remains
+    brittle and model-dependent.
+  </p>
+</div>
+
+
+<h2 class="section-title">📚 Lecture-Level Variability & Stability Categories</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig8_concept_disagreement_by_lecture.png"
+       alt="Average concept disagreement per lecture (Fig. 8)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 8: Average concept disagreement per lecture.</strong>
+    Disagreement is not uniform: lectures with dense diagrams, reconstruction pipelines, or symbol-heavy content show higher variability.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig10_stability_distribution.png"
+       alt="Semantic stability distribution (Fig. 10)"
+       style="width:100%; max-width:450px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 10: Stability category distribution.</strong>
+    Slides are classified into stable, moderate, and unstable bins using concept-disagreement percentiles.
+    A large fraction fall into moderate/unstable ranges, motivating provenance-aware, uncertainty-aware downstream use.
+  </p>
+</div>
+
+
+<h2 class="section-title">🧪 Single-Model vs. Multi-Model Coverage</h2>
+
+<p>
+  To quantify what is missed when relying on a single VLM, the paper compares InternVL3 (as a strong single-model baseline)
+  against the union of all four models. Reported distributions show substantial coverage loss under single-model provenance:
+  concept coverage loss mean <strong>0.62</strong> (median <strong>0.67</strong>) and triple coverage loss mean <strong>0.40</strong> (median <strong>0.56</strong>).
+</p>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig11_concept_coverage_loss.png"
+       alt="Concept coverage loss single vs multi-model (Fig. 11)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 11: Concept coverage loss.</strong>
+    Values close to 1 indicate the single-model baseline misses most concepts present in the multi-model union.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig12_triple_coverage_loss.png"
+       alt="Triple coverage loss single vs multi-model (Fig. 12)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 12: Triple coverage loss.</strong>
+    Many slides exhibit partial or complete loss of relational semantics when relying on only one model.
+  </p>
+</div>
+
+
+<h2 class="section-title">⛓️ Blockchain Setup & Registration Procedure</h2>
+
+<p>
+  SlideChain deploys a lightweight Solidity smart contract on a deterministic local Hardhat EVM chain, registering one transaction per slide.
+  Each registration stores (lectureId, slideId) → (hash, optional URI, timestamp, registrant), and rejects duplicates to keep provenance immutable.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">🖥️ Experimental Environment (Tables 1–3)</h4>
+
+<!-- Table 1 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem; margin-top:0.75rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Hardware (Table 1)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Details</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">GPUs</td><td style="padding:10px; border:1px solid #dee2e6;">4 × NVIDIA RTX A5000 (24 GB VRAM each)</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">CPU</td><td style="padding:10px; border:1px solid #dee2e6;">Intel Xeon-class processor</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">System RAM</td><td style="padding:10px; border:1px solid #dee2e6;">256 GB</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">CUDA</td><td style="padding:10px; border:1px solid #dee2e6;">12.1</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Storage</td><td style="padding:10px; border:1px solid #dee2e6;">Local SSD (blockchain + provenance artifacts)</td></tr>
+</table>
+
+<!-- Table 2 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem; margin-top:1rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Software (Table 2)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Version / Notes</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Python</td><td style="padding:10px; border:1px solid #dee2e6;">3.10</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">PyTorch</td><td style="padding:10px; border:1px solid #dee2e6;">2.2 (CUDA 12.1)</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Transformers</td><td style="padding:10px; border:1px solid #dee2e6;">HuggingFace implementations for all VLMs</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Scientific Stack</td><td style="padding:10px; border:1px solid #dee2e6;">NumPy, Pandas, Matplotlib, Seaborn</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Node.js</td><td style="padding:10px; border:1px solid #dee2e6;">v22.10.0</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Hardhat</td><td style="padding:10px; border:1px solid #dee2e6;">v3.0.17</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Solidity Compiler</td><td style="padding:10px; border:1px solid #dee2e6;">0.8.20</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">OS</td><td style="padding:10px; border:1px solid #dee2e6;">Windows 11</td></tr>
+</table>
+
+<!-- Table 3 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem; margin-top:1rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Hardhat Chain Config (Table 3)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Setting</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">RPC</td><td style="padding:10px; border:1px solid #dee2e6;">http://127.0.0.1:8545</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Accounts</td><td style="padding:10px; border:1px solid #dee2e6;">20 deterministic pre-funded accounts</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Gas Model</td><td style="padding:10px; border:1px solid #dee2e6;">EIP-1559 base fee with deterministic tip</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Block Policy</td><td style="padding:10px; border:1px solid #dee2e6;">One block per transaction (zero-delay mining)</td></tr>
+</table>
+
+
+<h2 class="section-title">📈 Blockchain Performance & Cost</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig13_gas_hist.png"
+       alt="Gas usage distribution (Fig. 13)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 13: Gas usage distribution across all 1,117 registrations.</strong>
+    Gas usage clusters tightly around <strong>≈231,430</strong> gas per slide, reflecting constant-time contract behavior.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig20_timeline.png"
+       alt="Registration timeline (Fig. 20)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 20: Registration timeline.</strong>
+    With Hardhat mining one block per transaction, registration proceeds at a stable throughput of about
+    <strong>1.0009 slides/sec</strong>.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig21_cost_hist.png"
+       alt="Per-slide cost distribution (Fig. 21)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 21: Distribution of per-slide registration cost (USD).</strong>
+    Using the paper’s reference assumptions (including $3000/ETH), an Ethereum-like L1 cost model yields per-slide costs
+    roughly in the range <strong>$0.69–$1.23</strong>, totaling about <strong>$780</strong> for 1,117 slides.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig24_cost_scaling.png"
+       alt="Projected costs across networks (Fig. 24)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 24: Projected registration costs across networks.</strong>
+    Because gas per slide is near-constant, total cost scales linearly with dataset size; L2/sidechain environments reduce costs
+    by one to two orders of magnitude compared to L1.
+  </p>
+</div>
+
+
+<h2 class="section-title">🛡️ Integrity: Time Gaps, Tamper Detection, Reproducibility</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig25_time_gap.png"
+       alt="Time gap distribution (Fig. 25)"
+       style="width:100%; max-width:450px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 25: Time gap between local provenance creation and on-chain registration.</strong>
+    The distribution is narrow and concentrated (centered around ~3300 seconds in the reported experiment),
+    supporting consistent chronological ordering under the deterministic batch registration procedure.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/slidechain_fig26_tamper_detection.png"
+       alt="Tamper detection performance (Fig. 26)"
+       style="width:100%; max-width:450px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 26: Tamper detection performance.</strong>
+    Controlled corruption on a randomly selected subset of <strong>20</strong> provenance files was detected with <strong>100%</strong> accuracy,
+    because any change alters the Keccak-256 hash.
+  </p>
+</div>
+
+<ul>
+  <li><strong>Reproducibility across runs:</strong> Two independent full executions produced identical concept and triple sets for every model–slide pair (Jaccard = 1.0 throughout).</li>
+  <li><strong>What this enables:</strong> Any future mismatch against the on-chain commitment is strong evidence of semantic drift due to model/prompt/pipeline changes or unauthorized edits.</li>
+</ul>
+
+
+<h2 class="section-title">📌 Why Blockchain (vs Git/DVC/Logging)?</h2>
+
+<p>
+  The paper contrasts provenance mechanisms and argues that blockchain commitments provide third-party verifiability,
+  immutable timestamps, and guaranteed detection of silent overwrites beyond typical repository or logging trust assumptions.
+</p>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem; margin-top:0.75rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Property</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Git / DVC</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Centralized Logging</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Blockchain-backed (SlideChain)</th>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Third-party verifiability</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">No</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">No</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Yes</td>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Tamper resistance</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Limited (admin trust)</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Limited (operator trust)</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Strong (cryptographic)</td>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Timestamp immutability</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">No</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">No</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Yes</td>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Silent overwrite detection</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Partial</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Partial</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Guaranteed</td>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Long-term auditability</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Limited</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Limited</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">Strong</td>
+  </tr>
+</table>
+
+
+<h2 class="section-title">🚀 Key Contributions</h2>
+
+<ul>
+  <li>Multi-model semantic extraction pipeline producing structured concepts + triples per slide</li>
+  <li>Unified provenance JSON schema enabling cross-model comparison and deterministic hashing</li>
+  <li>Lightweight EVM smart contract storing only slide-level hash commitments and metadata</li>
+  <li>First systematic stability analysis of VLM semantics on real STEM lecture slides</li>
+  <li>Comprehensive gas/cost/throughput evaluation showing near-constant per-slide gas usage and linear scaling</li>
+  <li>100% tamper detection and perfect reproducibility under controlled execution settings</li>
+</ul>
+
+
+<div style="background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%); padding:2rem; border-radius:15px; margin:2rem 0; border-left:5px solid #2E8B57;">
+  <h4 style="color:#011627; margin-bottom:1rem;">🎯 Research Significance</h4>
+  <p style="font-size:1.05rem; line-height:1.7; margin:0;">
+    SlideChain argues that provenance must be a first-class component of educational AI: not just tracking datasets and code,
+    but anchoring the <em>semantic outputs</em> produced by VLMs. By storing only compact Keccak-256 commitments on-chain and keeping
+    full semantics off-chain, SlideChain provides strong integrity guarantees with practical scalability. The empirical results
+    reveal substantial cross-model semantic divergence on real STEM slides and show how immutable commitments enable long-term
+    auditing of semantic drift, reproducibility, and integrity in AI-assisted instructional pipelines.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>SlideChain</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{motaleb2025slidechain,
+  title={SlideChain: Semantic Provenance for Lecture Understanding via Blockchain Registration},
+  author={Motaleb Hossen Manik, Md and Zabirul Islam, Md and Wang, Ge},
+  journal={arXiv e-prints},
+  pages={arXiv--2512},
+  year={2025}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://arxiv.org/abs/2506.05360" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        arXiv:2512.21684 (2025)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- ----------- 3rd Paper--------------------->
+
+
+
+
+
+
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Development of an optically emulated computed tomography scanner for college education
+</h1>
+    
+    <div class="authors">
+        Md Motaleb Hossen Manik, William Muldowney, <strong>Md Zabirul Islam</strong>, Ge Wang
+    </div>
+    
+    <div class="affiliations">
+Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://link.springer.com/article/10.1186/s42492-025-00211-z" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="#" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- OECT Project Page (Visual Computing for Industry,   -->
+<!-- Biomedicine, and Art, 2026, 9:2)                     -->
+<!-- Figures and Tables match published paper numbering   -->
+<!-- ===================================================== -->
+
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+  <p>
+    Conventional computed tomography (CT) systems rely on ionizing radiation, high-cost equipment,
+    and regulatory oversight, limiting their accessibility in educational environments. We present a 
+    <strong>low-cost Optically Emulated Computed Tomography (OECT) scanner</strong> that uses visible light
+    transmission instead of X-rays to safely demonstrate tomographic principles.
+  </p>
+
+  <p><strong>Key Achievements:</strong></p>
+  <ul>
+    <li><strong>🔒 Radiation-Free Imaging:</strong> Uses visible light instead of ionizing radiation</li>
+    <li><strong>💰 Low-Cost System:</strong> Total build cost approximately <strong>$705</strong></li>
+    <li><strong>⚙️ Modular Hardware:</strong> 3D-printed stage + Teensy microcontroller + DSLR imaging</li>
+    <li><strong>📐 Tomographic Reconstruction:</strong> MATLAB-based sinogram generation + inverse Radon transform</li>
+    <li><strong>📊 Spatial Resolution:</strong> Achieves ~<strong>0.1–0.2 mm</strong> resolution</li>
+    <li><strong>⏱️ Scan Time:</strong> Full 360° scan in ~<strong>200 seconds</strong></li>
+    <li><strong>🧪 Validated on Lemon Slice:</strong> Successfully reconstructed peel, pulp, and seeds</li>
+  </ul>
+</div>
+
+
+<h2 class="section-title">🏗️ System Architecture</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_system_design.png"
+       style="max-width:600px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 1. Design of the OECT system.</strong> 
+    The scanner integrates a light-isolated plywood enclosure, Milwaukee LED backlight,
+    3D-printed rotating stage, NEMA 17 stepper motor, Teensy 2.0 microcontroller,
+    DSLR camera with 50mm prime lens, and breadboard control circuitry.
+  </p>
+</div>
+
+
+<h2 class="section-title">💡 Illumination & Optical Setup</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_light_source.png"
+       style="max-width:550px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 2. LED light source and diffuser.</strong> 
+    A Milwaukee LED bar with diffuser ensures uniform transmission illumination.
+    The interior of the light box is painted matte black to suppress reflections.
+  </p>
+</div>
+
+
+<h2 class="section-title">🔄 Rotating Stage & Camera Integration</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_stage_camera.png"
+       style="max-width:600px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figures 3–5.</strong> 
+    The 3D-printed PLA rotating stage is driven by a NEMA 17 stepper motor.
+    A Nikon D5600 DSLR with 50mm f/1.8 lens is mounted via PVC stabilizers
+    aligned precisely with the rotational axis.
+  </p>
+</div>
+
+
+<h2 class="section-title">⚡ Control Electronics</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_circuit.png"
+       style="max-width:500px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 6.</strong> Breadboard circuit with Teensy 2.0 and A4988 motor driver.
+    The microcontroller regulates angular increments while the DSLR performs interval capture.
+  </p>
+</div>
+
+
+<h2 class="section-title">📊 System Cost Breakdown</h2>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+<tr style="background:#f1f3f5;">
+<th style="padding:8px; border:1px solid #ddd;">Component</th>
+<th style="padding:8px; border:1px solid #ddd;">Cost (USD)</th>
+</tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Nikon D5600 DSLR</td><td style="padding:8px; border:1px solid #ddd;">$500</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">50mm f/1.8 Lens</td><td style="padding:8px; border:1px solid #ddd;">$100</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Stepper Motor + Driver</td><td style="padding:8px; border:1px solid #ddd;">$15</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Teensy 2.0</td><td style="padding:8px; border:1px solid #ddd;">$20</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">LED + Diffuser</td><td style="padding:8px; border:1px solid #ddd;">$30</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Miscellaneous + PLA</td><td style="padding:8px; border:1px solid #ddd;">$40</td></tr>
+<tr style="background:#e9ecef;">
+<td style="padding:8px; border:1px solid #ddd;"><strong>Total</strong></td>
+<td style="padding:8px; border:1px solid #ddd;"><strong>$705</strong></td>
+</tr>
+</table>
+
+
+<h2 class="section-title">📈 Reconstruction Results</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_sinogram.png"
+       style="max-width:550px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 9.</strong> Sinogram generated from 200 projections.
+    Repeating features reflect lemon symmetry.
+  </p>
+</div>
+
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_cross_section.png"
+       style="max-width:550px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 10.</strong> Reconstructed cross-section using inverse Radon transform.
+    Peel and seeds appear as darker regions.
+  </p>
+</div>
+
+
+<h2 class="section-title">🧪 Quantitative ROI Analysis</h2>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+<tr style="background:#f1f3f5;">
+<th style="padding:8px; border:1px solid #ddd;">Region</th>
+<th style="padding:8px; border:1px solid #ddd;">Mean Intensity (AU)</th>
+</tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Peel</td><td style="padding:8px; border:1px solid #ddd;">0.99 ± 0.02</td></tr>
+<tr><td style="padding:8px; border:1px solid #ddd;">Seeds</td><td style="padding:8px; border:1px solid #ddd;">0.71 ± 0.04</td></tr>
+</table>
+
+<p style="margin-top:1rem;">
+Intensity difference: <strong>0.28 AU (P &lt; 0.001)</strong>, confirming contrast sensitivity.
+</p>
+
+
+<h2 class="section-title">🌐 3D Volume Rendering</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./projectpage/oect_3d_render.png"
+       style="max-width:600px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:750px; margin:auto; text-align:left;">
+    <strong>Figure 11.</strong> Volumetric rendering using Vol3D in MATLAB.
+    Peel appears high-opacity; pulp semi-transparent; seeds clearly visible.
+  </p>
+</div>
+
+
+<h2 class="section-title">🎓 Educational & Technical Impact</h2>
+
+<ul>
+  <li>Radiation-free demonstration of CT principles</li>
+  <li>Hands-on integration of optics, electronics, and reconstruction math</li>
+  <li>Low-cost replicable design using consumer components</li>
+  <li>Platform for STEM, digital art, and prototyping education</li>
+</ul>
+
+
+<div style="background:linear-gradient(135deg,#f8f9fa,#e9ecef); padding:2rem; border-radius:12px; border-left:5px solid #2E8B57;">
+  <h4>🔬 Research Significance</h4>
+  <p>
+    This work demonstrates that tomographic imaging principles can be effectively 
+    adapted to visible-light transmission using consumer-grade hardware. 
+    The OECT system provides a safe, reproducible, and modular platform that bridges 
+    theory and hands-on experimentation in imaging science.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>emulated computed tomography scanner</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{hossen2026development,
+  title={Development of an optically emulated computed tomography scanner for college education},
+  author={Hossen Manik, Md Motaleb and Muldowney, William and Islam, Md Zabirul and Wang, Ge},
+  journal={Visual Computing for Industry, Biomedicine, and Art},
+  volume={9},
+  number={1},
+  pages={2},
+  year={2026},
+  publisher={Springer}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://link.springer.com/article/10.1186/s42492-025-00211-z" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        Visual Computing for Industry, Biomedicine, and Art (2026)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- ----------- 4th Paper--------------------->
+
+
+
+
+
+
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Avatars in the educational metaverse
+</h1>
+    
+    <div class="authors">
+         <strong>Md Zabirul Islam</strong>, Ge Wang
+    </div>
+    
+    <div class="affiliations">
+Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://link.springer.com/article/10.1186/s42492-025-00196-9" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+  </div>
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- Avatars in the Educational Metaverse Project Page      -->
+<!-- Visual Computing for Industry, Biomedicine, and Art    -->
+<!-- (2025) 8:15 | Islam & Wang                             -->
+<!-- Figures/Tables match paper numbering: Fig.1–3, Table 1 -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+  <p>
+    The educational metaverse promises immersive, collaborative learning, but effective learning inside virtual worlds
+    depends on <strong>avatars</strong> that can teach, guide, and interact naturally. This review analyzes how avatars are used in
+    metaverse-based education and how recent advances in <strong>AI (LLMs, ASR, TTS, generative models)</strong> are expanding avatar
+    capabilities for personalized learning, contextual teaching, and simulation-based training, while also surfacing key
+    risks in <strong>hallucinations, privacy, ethics, and infrastructure</strong>.
+  </p>
+
+  <p><strong>Key Achievements:</strong></p>
+  <ul>
+    <li><strong>📚 Systematic + Bibliometric Review:</strong> Combined bibliometric analysis and systematic literature review methodology</li>
+    <li><strong>🔎 Scopus-Driven Evidence Base:</strong> Scopus search (Nov 2024) identified <strong>1,431</strong> records; curated to <strong>623</strong> articles (1997–2024)</li>
+    <li><strong>🧪 Empirical Deep Dive:</strong> Selected <strong>45</strong> high-quality empirical studies (Q1/Q2 venues) for content analysis</li>
+    <li><strong>📈 Research Growth Trend:</strong> Annual publication trajectory shows major growth after the early 2010s, accelerating through 2017–2024</li>
+    <li><strong>🧠 AI-Driven Avatar Capabilities:</strong> Reviews how LLMs + multimodal systems enable more natural instruction and feedback loops</li>
+    <li><strong>⚠️ Practical Barriers Mapped:</strong> Identifies core challenges: hallucinations/trust, privacy/security, accessibility/infrastructure</li>
+    <li><strong>🧭 Future Research Agenda:</strong> Outlines directions including trust modeling, emotional attachment, ethical safeguards, and scalable deployment</li>
+  </ul>
+</div>
+
+
+<h2 class="section-title">🏗️ Study Overview & Methodology</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/aem_fig1_methodology_overview.png"
+       alt="Graphical overview of educational metaverse (Fig. 1)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1.25rem; font-size:1rem; color:#495057; max-width:750px; margin-left:auto; margin-right:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 1: Graphical overview of educational metaverse (systematic review workflow).</strong>
+    The paper uses a mixed approach: (1) Scopus keyword search and filtering,
+    (2) bibliometric analysis to quantify trends, and (3) thematic/content coding of a curated empirical subset
+    focusing on avatar applications in personalized learning, collaborative teaching, and virtual simulations.
+  </p>
+</div>
+
+<p>
+  The literature pipeline begins with a Scopus search (Nov 2024) over English publications containing
+  “avatars”, “metaverse”, and “education” (title/abstract/keywords). From <strong>1,431</strong> initial results, manual screening and
+  inclusion/exclusion criteria yield a final dataset of <strong>623</strong> articles published between <strong>1997–2024</strong>.
+  A refined subset of <strong>45</strong> empirical studies (Q1/Q2 sources, strong relevance, data-driven focus) is then analyzed in depth.
+</p>
+
+
+<h2 class="section-title">📊 Dataset Summary (Bibliometrics)</h2>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem; margin-top:0.75rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Category</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Value</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Year range</td><td style="padding:10px; border:1px solid #dee2e6;">1997–2024 (Nov)</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Total journals</td><td style="padding:10px; border:1px solid #dee2e6;">278</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Total articles</td><td style="padding:10px; border:1px solid #dee2e6;">623</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Average age of articles</td><td style="padding:10px; border:1px solid #dee2e6;">6.57 years</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Average citations per article</td><td style="padding:10px; border:1px solid #dee2e6;">12.86</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Total references / citing publications</td><td style="padding:10px; border:1px solid #dee2e6;">8,010</td></tr>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 1 (paper):</strong> Summary statistics of the curated bibliometric dataset.
+</p>
+
+
+<h2 class="section-title">📈 Publication Growth Trend</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/aem_fig2_publication_trend.png"
+       alt="Annual publication trends 1997–2024 (Fig. 2)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1.25rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 2: Annual publication trends (1997–2024).</strong>
+    Output remains low until the early 2010s, then rises sharply, with strong acceleration in the 2017–2024 period,
+    reflecting rapid adoption of metaverse platforms and AI-enabled avatar technologies in education research.
+  </p>
+</div>
+
+
+<h2 class="section-title">🧩 Content Analysis Coding Framework</h2>
+
+<div style="text-align:center; margin:2.5rem auto; max-width:100%;">
+  <img src="./projectpage/aem_fig3_coding_framework.png"
+       alt="Coding framework for content analysis (Fig. 3)"
+       style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:block; margin:0 auto;">
+
+  <p style="margin-top:1.25rem; font-size:1rem; color:#495057; max-width:750px; margin:auto; text-align:left; line-height:1.6;">
+    <strong>Figure 3: Coding framework for content analysis.</strong>
+    The review codes empirical studies along dimensions such as: study goals, core elements (which avatar),
+    research approaches (methods), theoretical foundations, and learning environments (educational context).
+  </p>
+</div>
+
+
+<h2 class="section-title">🧠 Key Themes: How Avatars Support Learning</h2>
+
+<p>
+  The paper describes three principal educational roles for avatars:
+  <strong>(1) supporting learning</strong> (instruction + assessment),
+  <strong>(2) facilitating tasks</strong> (guidance and process support),
+  and <strong>(3) mentoring</strong> (skill development and self-regulation).
+  Across the literature, avatars are most impactful when they are adaptive, interactive, and embedded in the learner’s context.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">1) Technological Advances in Avatar Design</h4>
+<ul>
+  <li><strong>Speech + Dialogue Foundations:</strong> Progress in ASR and TTS makes real-time spoken interaction practical in learning agents</li>
+  <li><strong>LLM & Generative AI Expansion:</strong> Modern avatars increasingly use LLMs for flexible instruction, explanation, and Q&amp;A</li>
+  <li><strong>Multimodal Interaction:</strong> Ability to incorporate images/video context expands tutoring beyond plain text</li>
+  <li><strong>Design & Comfort:</strong> Realism can improve presence, but excessive realism risks the <em>uncanny valley</em> effect</li>
+</ul>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">2) Personalized Learning</h4>
+<ul>
+  <li><strong>Adaptive Difficulty & Feedback:</strong> Avatars can adjust content based on learner performance and interaction signals</li>
+  <li><strong>Language Learning:</strong> Real-time conversation practice using ASR/TTS is a common effective use case</li>
+  <li><strong>Engagement Mechanisms:</strong> Facial expression, culturally appropriate appearance, and interactive pacing support motivation</li>
+</ul>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">3) Contextualized Teaching</h4>
+<ul>
+  <li><strong>Role-Play & Case-Based Learning:</strong> Avatars enable simulations that are difficult/costly in physical settings (e.g., medical training)</li>
+  <li><strong>Teacher Training:</strong> Classroom simulation supports practicing strategies, managing behaviors, and improving confidence</li>
+  <li><strong>Real-time Responsiveness:</strong> NLP-driven avatars can react dynamically to learner decisions and questions</li>
+</ul>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">4) Virtual Learning in VR/AR/MR</h4>
+<ul>
+  <li><strong>Navigational Support:</strong> Avatars guide learners through complex virtual spaces, reducing cognitive load</li>
+  <li><strong>Generative Learning Prompts:</strong> Avatars can prompt concept mapping, explanation, and “teach-back” behaviors to improve retention</li>
+  <li><strong>Collaboration:</strong> Metaverse environments support group interaction, teamwork, and communication skill development</li>
+</ul>
+
+
+<h2 class="section-title">⚠️ Challenges & Ethical Considerations</h2>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">1) Hallucinations & Trust</h4>
+<p>
+  A core risk is that LLM-driven avatars may generate plausible but incorrect information (“hallucinations”).
+  The paper emphasizes that photorealistic avatars and human-like delivery can amplify perceived credibility,
+  increasing the chance that learners accept incorrect content as true.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">2) Data Security & Privacy</h4>
+<p>
+  Educational avatars often process sensitive learner information (performance, goals, emotional state).
+  The paper notes risks from cloud-based pipelines across jurisdictions, voice/image misuse (deepfake threats),
+  and the need for careful handling of personal data to maintain confidentiality and trust.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1.25rem;">3) Accessibility & Infrastructure</h4>
+<p>
+  Immersive metaverse learning requires high-speed networking, low latency, capable hardware, and technical expertise.
+  The paper highlights that cost and technical requirements can limit adoption in resource-constrained institutions and regions.
+</p>
+
+
+<h2 class="section-title">🧭 Future Research Directions</h2>
+
+<ul>
+  <li><strong>Trust & Long-term Attachment:</strong> How learners build trust and emotional connection with avatars over extended periods</li>
+  <li><strong>Ethical Safeguards:</strong> Stronger guidance for use with children/vulnerable groups, plus bias and misinformation mitigation</li>
+  <li><strong>Hallucination Controls:</strong> Mechanisms to detect and reduce inaccurate content in avatar-delivered explanations</li>
+  <li><strong>Data + Digital Twins:</strong> Integrating real-world signals (IoT, simulations) into meaningful, context-aware learning loops</li>
+  <li><strong>Scalable Access:</strong> Lower-cost, lightweight avatar systems that work under limited bandwidth and modest hardware</li>
+</ul>
+
+
+<h2 class="section-title">🎓 Educational & Practical Impact</h2>
+
+<ul>
+  <li><strong>Improved Engagement:</strong> Avatars increase presence and interaction in immersive learning spaces</li>
+  <li><strong>Personalized Support:</strong> Adaptive tutoring and real-time feedback in language, STEM, and professional training</li>
+  <li><strong>Safe Simulation:</strong> Cost-effective practice for scenarios that are expensive, risky, or hard to stage physically</li>
+  <li><strong>Clear Deployment Warnings:</strong> Strong emphasis on privacy, hallucination risk, and equitable access requirements</li>
+</ul>
+
+
+<div style="background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%); padding:2rem; border-radius:12px; border-left:5px solid #2E8B57; margin:2rem 0;">
+  <h4 style="color:#011627; margin-bottom:1rem;">🔬 Research Significance</h4>
+  <p style="font-size:1.05rem; line-height:1.7; margin:0;">
+    This review consolidates the evidence that avatars can meaningfully enhance metaverse-based education through adaptive,
+    interactive learning support, contextual simulations, and collaborative virtual environments. At the same time, it clarifies
+    why responsible deployment requires explicit safeguards against hallucinations, robust privacy and security practices,
+    and practical solutions for infrastructure and accessibility barriers.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>Avatars in the educational metaverse</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{islam2025avatars,
+  title={Avatars in the educational metaverse},
+  author={Islam, Md Zabirul and Wang, Ge},
+  journal={Visual Computing for Industry, Biomedicine, and Art},
+  volume={8},
+  number={1},
+  pages={15},
+  year={2025},
+  publisher={Springer}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://link.springer.com/article/10.1186/s42492-025-00211-z" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        Visual Computing for Industry, Biomedicine, and Art (2025)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+
+
+</main>
+
+<footer class="footer">
+  <p><i class="fa-brands fa-creative-commons"></i> 2026 Md Zabirul Islam</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

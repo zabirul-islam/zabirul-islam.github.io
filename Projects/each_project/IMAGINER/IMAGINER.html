@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Md Zabirul Islam<">
+<meta name="description" content="IMAGINER: Intelligent Multimodal Medical Architecture for Generating Integrated, Navigable, and Explainable Radiology Reports">
+
+<title>IMAGINER | Md Zabirul Islam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em;
+  vertical-align: middle;
+}
+.project-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  
+}
+.project-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+.authors {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.affiliations {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.project-link {
+  background: transparent;
+  color: #495057;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-link:hover {
+  border-color: #750505;
+  color: #750505;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.journal-badge {
+  background: #000000;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 0.5rem;
+  cursor: default;
+}
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #011627;
+  border-bottom: 3px solid #011627;
+  padding-bottom: 0.5rem;
+}
+.architecture-image {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.result-item {
+  text-align: center;
+}
+.result-image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+.abstract-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  border-left: 5px solid #750505;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Fix navbar centering on mobile - use flexbox approach */
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar-brand-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 !important;
+  }
+  
+  .navbar-toggler {
+    order: 3;
+    flex-shrink: 0;
+  }
+  
+  /* Add invisible spacer to balance the toggler */
+  .navbar-container::before {
+    content: '';
+    width: 48px; /* Same width as navbar-toggler */
+    height: 1px;
+    order: 1;
+    flex-shrink: 0;
+  }
+  
+  .project-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .authors {
+    font-size: 1rem;
+  }
+  
+  .affiliations {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .abstract-section {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-section {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  /* Fix main content padding on mobile */
+  main.content {
+    padding: 0 1rem !important;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Adjust image sizes for mobile */
+  img[style*="max-width: 800px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 700px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 650px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 600px"] {
+    max-width: 95% !important;
+  }
+  
+  /* Better spacing for mobile */
+  div[style*="margin: 3rem 0"] {
+    margin: 2rem 0 !important;
+  }
+  
+  div[style*="margin: 2rem 0"] {
+    margin: 1.5rem 0 !important;
+  }
+  
+  /* Responsive text containers */
+  p[style*="max-width: 900px"],
+  p[style*="max-width: 1000px"],
+  p[style*="max-width: 800px"] {
+    max-width: 100% !important;
+    padding: 0 0.5rem;
+  }
+  
+  /* Code blocks responsive */
+  pre {
+    font-size: 0.8rem;
+    overflow-x: auto;
+  }
+  
+  /* Button styling for mobile */
+  a[style*="background: #750505"] {
+    display: block !important;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  main.content {
+    padding: 0 0.75rem !important;
+  }
+  
+  .abstract-section {
+    padding: 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  h3[style*="color: #2E8B57"] {
+    font-size: 1.1rem !important;
+  }
+  
+  h4[style*="color: #2E8B57"] {
+    font-size: 1rem !important;
+  }
+}
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon-512.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3THLGK2G1N"></script>
+<script type="text/javascript">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+  <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <!-- <div class="navbar-container container-fluid"> -->
+    <div class="navbar-brand-container mx-auto">
+      <a class="navbar-brand" href="../../../index.html">
+      <span class="navbar-title"><strong>Md Zabirul</strong> Islam</span>
+      </a>
+    </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+<span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+</li>  
+<li class="nav-item">
+  <a class="nav-link" href="../../../Research/research/research.html"> 
+<span class="menu-text">Publications</span></a>
+</li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://drive.google.com/file/d/1GCkPSaetzVUy3luxc_i1LqJS0ahBs0cY/view?usp=sharing" target="_blank"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+<!--   <li class="nav-item">
+    <a class="nav-link" href="../../service/index.html"> 
+<span class="menu-text">Service</span></a>
+  </li>  --> 
+</ul>
+          </div>
+      </div>
+    </nav>
+</header>
+
+
+<div class="project-header">
+<div class="container">
+  <h2 class="project-title">
+    Development and Validation of a Dynamic-Template-Constrained Large Language Model for Generating Fully-Structured Radiology Reports
+  </h2>
+  
+  <div class="authors">
+      <strong>Md Zabirul Islam, Chuang Niu, Md Sayed Tanveer,</strong>, 
+    Parisa Kaviani, Qing Lyu, Mannudeep K. Kalra, Christopher T. Whitlow, Ge Wang.
+  </div>
+  
+  <div class="affiliations">
+    Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+  </div>
+</div>
+
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+
+<main class="content column-page-left container-fluid" id="quarto-document-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: left;">
+
+  <div class="links-section" style="text-align: center;">
+    <span class="journal-badge">arXiv Preprint 2025</span>
+    <a href="https://arxiv.org/abs/2409.18319" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="https://github.com/niuchuangnn/vllm_structure" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code (vLLM-Structure)
+    </a>
+  </div>
+
+  <div class="abstract-section">
+    <h2 class="section-title">Overview</h2>
+
+    <p>
+      This work presents a <strong>dynamic template-constrained large language model (LLM)</strong> 
+      framework for converting free-text lung cancer screening (LCS) radiology reports 
+      into <strong>fully-structured reports (FSR)</strong> with zero formatting errors and zero hallucinations.
+    </p>
+
+    <p>
+      Unlike prompt-based approaches, this method constrains every generated token 
+      using a predefined clinical template with standardized candidate values.
+      The system was validated across <strong>two institutions</strong> using 
+      <strong>7,442 LDCT reports</strong>, achieving state-of-the-art performance.
+    </p>
+  </div>
+
+  <h2 class="section-title">Clinical Motivation</h2>
+
+  <p>
+    Radiology reporting traditionally uses loosely-structured or free-text formats (LSR), 
+    which limit large-scale statistical analysis and reliable retrieval. 
+    Fully-structured reporting (FSR) enables:
+  </p>
+
+  <ul>
+    <li>Standardized discrete feature extraction</li>
+    <li>Automated statistical mining</li>
+    <li>Nodule-level semantic retrieval</li>
+    <li>Cross-institutional consistency</li>
+    <li>Downstream AI model training</li>
+  </ul>
+
+  <p>
+    However, conventional LLM prompting fails in clinical settings due to:
+  </p>
+
+  <ul>
+    <li>JSON formatting errors</li>
+    <li>Content hallucinations</li>
+    <li>Privacy risks (cloud-based proprietary models)</li>
+    <li>Long inference time and high token cost</li>
+  </ul>
+
+  <h2 class="section-title">📐 Structured Template Design</h2>
+
+  <p>
+    Two radiologists created a standardized lung nodule template 
+    containing <strong>28 features</strong>:
+  </p>
+
+  <ul>
+    <li>24 nodule-level features (e.g., lobe, segment, attenuation, margin, shape, size)</li>
+    <li>3 report-level management features</li>
+    <li>1 auxiliary feature (number of nodules)</li>
+  </ul>
+
+  <p>
+    Each feature has a predefined candidate set (e.g., attenuation ∈ {solid, part-solid, ground-glass, ...}).
+    This predefined schema is the foundation of the constrained decoding.
+  </p>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="fig1_dataset.jpeg" class="img-fluid" style="max-width: 750px;">
+    <p><strong>Figure 1:</strong> Cross-institutional dataset construction (Institution-1 & Institution-2).</p>
+  </div>
+
+  <h2 class="section-title">🏗 Dynamic Template-Constrained Decoding</h2>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="fig2_framework.jpeg" class="img-fluid" style="max-width: 800px;">
+    <p>
+      <strong>Figure 2:</strong> The LLM receives system instruction + free-text report, 
+      while decoding is strictly constrained by a structured template.
+    </p>
+  </div>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="fig3_architecture.jpeg" class="img-fluid" style="max-width: 850px;">
+    <p>
+      <strong>Figure 3:</strong> Modified inference architecture integrated into vLLM.
+      Special template tokens restrict candidate outputs during decoding.
+    </p>
+  </div>
+
+  <p>
+    During decoding:
+  </p>
+
+  <ul>
+    <li>Template format tokens are fixed → ensures valid JSON</li>
+    <li>Special template tokens select only predefined candidates</li>
+    <li>Dynamic adjustment handles variable number of nodules</li>
+    <li>Maximum-probability candidate is deterministically selected</li>
+  </ul>
+
+  <p>
+    This guarantees:
+  </p>
+
+  <ul>
+    <li>🚫 Zero formatting errors</li>
+    <li>🚫 Zero hallucinations</li>
+    <li>🔒 Local deployment (no privacy leakage)</li>
+  </ul>
+
+  <h2 class="section-title">📊 Cross-Institutional Validation</h2>
+
+<p>
+  Evaluation was initially performed on 500 manually labeled reports 
+  (250 per institution) to assess generalizability across clinical settings.
+</p>
+
+<ul>
+  <li><strong>Institution-1:</strong> F1 = 97.60% (95% CI: 96.5–98.6%)</li>
+  <li><strong>Institution-2:</strong> F1 = 96.92% (95% CI: 95.8–98.0%)</li>
+</ul>
+
+<p><strong>Performance Improvements over Baselines:</strong></p>
+
+<ul>
+  <li>LLaMA-3.1-405B: +10.42%</li>
+  <li>GPT-4o: +17.18%</li>
+  <li>Consistent gains across all 27 nodule features (p &lt; 0.01)</li>
+</ul>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="fig6_performance.jpeg" class="img-fluid" style="max-width: 750px;">
+  <p><strong>Figure 6:</strong> Institution-1 performance comparison.</p>
+</div>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="fig7_performance.jpeg" class="img-fluid" style="max-width: 750px;">
+  <p><strong>Figure 7:</strong> Institution-2 performance comparison.</p>
+</div>
+
+
+<h3 style="margin-top:3rem;">📈 Extended Large-Scale Evaluation (Unpublished Update)</h3>
+
+<p>
+  Beyond the cross-institutional validation reported in the manuscript, 
+  we further evaluated updated model variants on a <strong>5,000-report dataset</strong> 
+  derived from our newly curated structured radiology corpus.
+</p>
+
+<ul>
+  <li><strong>LLaMA-3.1–8B (Template-Constrained):</strong> <strong>98.05% F1</strong> on 5k evaluation set</li>
+  <li><strong>LLaMA-3.2–1B (Fine-Tuned & Constrained):</strong> <strong>94.27% F1</strong> on 5k evaluation set</li>
+</ul>
+
+<p>
+  These results demonstrate that:
+</p>
+
+<ul>
+  <li>The constrained decoding framework scales effectively to larger evaluation sets</li>
+  <li>An 8B model achieves near-clinical-grade performance (>98% F1)</li>
+  <li>Even a lightweight 1B model maintains strong structural fidelity (>94% F1)</li>
+  <li>Model size-performance trade-offs enable deployment flexibility</li>
+</ul>
+
+<p style="font-size:0.95rem; color:#6c757d;">
+  <em>Note: These extended results are not included in the current arXiv manuscript version but reflect subsequent internal evaluation.</em>
+</p>
+
+
+
+  <h2 class="section-title">🔎 Large-Scale Statistical Mining</h2>
+
+  <p>
+    5,192 consecutive LDCT reports (3 years) were automatically converted to FSR.
+  </p>
+
+  <p>
+    Automatically derived statistics matched prior clinical literature:
+  </p>
+
+  <ul>
+    <li>Upper lobes had significantly more nodules (p < 0.01)</li>
+    <li>Right lung > left lung (p < 0.01)</li>
+    <li>Ground-glass nodules more common in females (p < 0.01)</li>
+    <li>Lung-RADS distribution consistent with prior studies</li>
+  </ul>
+
+  <h2 class="section-title">🔍 Nodule-Level Retrieval System</h2>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="fig8_retrieval.jpeg" class="img-fluid" style="max-width: 850px;">
+    <p>
+      <strong>Figure 8:</strong> Complex semantic query:
+      solid AND (increase OR new) → 272 nodules retrieved.
+    </p>
+  </div>
+
+  <p>
+    Unlike keyword matching, semantic reasoning detects growth 
+    even when "increase" is not explicitly mentioned.
+  </p>
+
+<h2 class="section-title">⚙️ Synthetic Fine-Tuning & Efficient Model Scaling</h2>
+
+<p>
+  To reduce computational cost and enable local deployment, a LLaMA-3.1–8B model 
+  was fine-tuned using a large-scale synthetic radiology dataset generated through 
+  template-driven structured sampling and free-text synthesis.
+</p>
+
+<ul>
+  <li>Training samples: <strong>189,950</strong></li>
+  <li>Testing samples: <strong>49,965</strong></li>
+  <li>Mean IoU: <strong>0.183 → 0.840</strong></li>
+  <li>Mean F1: <strong>0.349 → 0.899</strong></li>
+  <li>Inference time (5,000 reports): <strong>9h → 2.5h</strong></li>
+</ul>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="fig9_iou.jpeg" class="img-fluid" style="max-width: 800px;">
+  <p><strong>Figure 9:</strong> Structural IoU & feature-wise F1 improvement after fine-tuning.</p>
+</div>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="fig10_features.jpeg" class="img-fluid" style="max-width: 800px;">
+  <p><strong>Figures 10:</strong> Lung/Pleura feature-level F1 improvements across anatomical systems.</p>
+</div>
+
+
+  <h2 class="section-title">🚀 Key Contributions</h2>
+
+  <ul>
+    <li>Dynamic template-constrained decoding eliminating hallucinations</li>
+    <li>Cross-institutional validation (n=7,442)</li>
+    <li>Zero formatting errors</li>
+    <li>Open-source vLLM-Structure framework</li>
+    <li>Efficient fine-tuned 8B model for scalable deployment</li>
+    <li>Automatic statistical mining & semantic retrieval</li>
+  </ul>
+
+</main>
+</div>
+
+
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 Md Zabirul Islam</span></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+</body></html>

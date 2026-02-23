@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="COVID-AI: Deep Learning for COVID-19 Diagnosis and Epidemiological Modeling">
+
+<title>COVID-AI | Md Zabirul Islam</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.project-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.authors {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.affiliations {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0 2rem 0;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  background: transparent;
+  color: #495057;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-link:hover {
+  border-color: #750505;
+  color: #750505;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.journal-badge {
+  background: #8b0808;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 0.5rem;
+  cursor: default;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #011627;
+  border-bottom: 3px solid #011627;
+  padding-bottom: 0.5rem;
+}
+
+.abstract-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  border-left: 5px solid #750505;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  text-align: center;
+  background: #f8f9fa;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .project-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .authors {
+    font-size: 1rem;
+  }
+  
+  .affiliations {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .abstract-section {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-section {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+  
+  main {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  main {
+    padding: 0 0.75rem !important;
+  }
+  
+  .abstract-section {
+    padding: 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3THLGK2G1N"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
+</script>
+</head>
+
+<body>
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">A combined deep CNN-LSTM network for the detection of novel coronavirus (COVID-19) using X-ray images</h1>
+    
+    <div class="authors">
+      <strong>Md Zabirul Islam</strong>, Md Milon Islam, Amanullah Asraf
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://www.sciencedirect.com/science/article/pii/S2352914820305621" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="https://github.com/zabir110/COVID19-CNN-LSTM" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+
+
+
+<!-- ===================================================== -->
+<!-- CNN-LSTM Project Page                                 -->
+<!-- Informatics in Medicine Unlocked 20 (2020) 100412      -->
+<!-- "A combined deep CNN-LSTM network for the detection    -->
+<!--  of novel coronavirus (COVID-19) using X-ray images"   -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    Fast and consistent COVID-19 screening can reduce diagnostic delay when clinical resources are limited. This paper proposes a
+    <strong>hybrid deep CNN–LSTM network</strong> that detects COVID-19 from <strong>chest X-ray</strong> images by using a CNN for deep feature extraction
+    and an LSTM as the classifier. The study evaluates the approach on a <strong>3-class dataset</strong>
+    (<em>COVID-19</em>, <em>Pneumonia</em>, <em>Normal</em>) collected from multiple public sources and reports strong classification performance.
+  </p>
+
+  <p><strong>Key Achievements:</strong></p>
+  <ul>
+    <li><strong>🧠 Hybrid Model:</strong> CNN feature extractor + LSTM classifier (3-class prediction: COVID-19 / Pneumonia / Normal)</li>
+    <li><strong>📦 Public Multi-Source Dataset:</strong> <strong>4,575</strong> X-rays total; <strong>1,525</strong> per class (COVID-19, Normal, Pneumonia)</li>
+    <li><strong>🖼️ Standardized Input:</strong> Images resized to <strong>224 × 224</strong></li>
+    <li><strong>✅ Strong Test Performance:</strong> Reported overall accuracy <strong>99.4%</strong>, AUC <strong>99.9%</strong>, specificity <strong>99.2%</strong>, sensitivity <strong>99.3%</strong>, F1-score <strong>98.9%</strong></li>
+    <li><strong>📊 Detailed Evaluation:</strong> Confusion matrices, ROC/AUC, accuracy/loss curves, and Grad-CAM visual explanations</li>
+    <li><strong>⚙️ Reproducible Setup:</strong> Implemented in Python/Keras (TensorFlow2), trained with 5-fold cross-validation</li>
+  </ul>
+</div>
+
+
+<h2 class="section-title">🏗️ Overall System Pipeline (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig1_system_architecture.png"
+       alt="Overall system architecture (Fig. 1)"
+       style="width:100%; max-width:700px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1. Overall system architecture.</strong>
+    Raw chest X-rays are preprocessed (shuffle, resize, normalization), split into training/testing sets, and used to train
+    both a baseline CNN and the proposed CNN-LSTM. Performance is evaluated using accuracy, specificity, sensitivity,
+    F1-score, confusion matrix, and ROC/AUC. 
+  </p>
+</div>
+
+
+<h2 class="section-title" id="datasets">📊 Dataset & Class Partition (Table 1, Fig. 2)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  Because large labeled COVID-19 X-ray repositories were limited at the time, the dataset was assembled from multiple public sources.
+  Images were resized to <strong>224 × 224</strong>. The final dataset contains <strong>4,575</strong> X-rays with balanced classes:
+  <strong>1,525 COVID-19</strong>, <strong>1,525 Normal</strong>, and <strong>1,525 Pneumonia</strong>. 
+</p>
+
+<!-- Table 1 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Split</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">COVID-19</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Normal</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Pneumonia</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Overall</th>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Training</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">1220</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">1220</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">1220</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">3660</td>
+  </tr>
+  <tr>
+    <td style="padding:10px; border:1px solid #dee2e6;">Testing</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">305</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">305</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">305</td>
+    <td style="padding:10px; border:1px solid #dee2e6;">915</td>
+  </tr>
+  <tr style="background:#fafafa;">
+    <td style="padding:10px; border:1px solid #dee2e6;"><strong>Overall</strong></td>
+    <td style="padding:10px; border:1px solid #dee2e6;"><strong>1525</strong></td>
+    <td style="padding:10px; border:1px solid #dee2e6;"><strong>1525</strong></td>
+    <td style="padding:10px; border:1px solid #dee2e6;"><strong>1525</strong></td>
+    <td style="padding:10px; border:1px solid #dee2e6;"><strong>4575</strong></td>
+  </tr>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 1.</strong> Partitioning description of the used dataset. 
+</p>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig2_samples.png"
+       alt="Sample images (Fig. 2)"
+       style="width:100%; max-width:600px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 2. Sample images from each class.</strong>
+    The paper shows example X-rays for COVID-19, Pneumonia, and Normal categories. :
+  </p>
+</div>
+
+
+<h2 class="section-title">🧠 Model Components (Figs. 3–5)</h2>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">CNN Feature Extraction (Fig. 3)</h4>
+    <ul>
+      <li><strong>Core layers:</strong> Convolution → ReLU → Pooling → Fully Connected</li>
+      <li><strong>Goal:</strong> Learn hierarchical visual features from X-ray images</li>
+      <li><strong>Output:</strong> High-level feature maps passed to the classifier stage</li>
+    </ul>
+
+    <div style="text-align:center; margin:1.5rem 0;">
+      <img src="./project_page/fig3_cnn_architecture.png"
+           alt="Typical CNN architecture (Fig. 3)"
+           style="width:100%; max-width:450px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+      <p style="margin-top:0.75rem; font-size:0.98rem; max-width:700px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+        <strong>Figure 3.</strong> Typical CNN architecture (feature extraction + classification). 
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">LSTM Classifier (Fig. 4)</h4>
+    <ul>
+      <li><strong>Motivation:</strong> LSTM is used as the classifier after CNN feature extraction</li>
+      <li><strong>Mechanism:</strong> Input/forget/output gates maintain and update memory state</li>
+      <li><strong>Paper focus:</strong> Explains LSTM equations and gate operations used in the model</li>
+    </ul>
+
+    <div style="text-align:center; margin:1.5rem 0;">
+      <img src="./project_page/fig4_lstm_structure.png"
+           alt="Internal structure of LSTM (Fig. 4)"
+           style="width:100%; max-width:450px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+      <p style="margin-top:0.75rem; font-size:0.98rem; max-width:700px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+        <strong>Figure 4.</strong> Internal structure of Long Short-Term Memory (LSTM). 
+      </p>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig5_hybrid_cnn_lstm.png"
+       alt="Hybrid CNN-LSTM network (Fig. 5)"
+       style="width:100%; max-width:650px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 5. Proposed hybrid CNN-LSTM network.</strong>
+    After multiple Conv+Pool blocks, the feature map shape becomes (7, 7, 512), reshaped to (49, 512) before entering the LSTM,
+    then passed through a fully connected layer and softmax output for 3-class prediction. 
+  </p>
+</div>
+
+
+<h2 class="section-title">📐 Full Architecture Summary (Table 2)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The proposed network has <strong>20 layers</strong>: <strong>12 convolution</strong>, <strong>5 pooling</strong>, <strong>1 LSTM</strong>, <strong>1 fully connected</strong>,
+  and <strong>1 output</strong> (softmax). Dropout is applied after pooling with a <strong>25%</strong> rate, and convolution uses <strong>3×3</strong> kernels with ReLU activation. 
+</p>
+
+<!-- Table 2 (condensed, but faithful to the paper) -->
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:8px; border:1px solid #dee2e6;">Layer</th>
+    <th style="padding:8px; border:1px solid #dee2e6;">Type</th>
+    <th style="padding:8px; border:1px solid #dee2e6;">Kernel</th>
+    <th style="padding:8px; border:1px solid #dee2e6;">Stride</th>
+    <th style="padding:8px; border:1px solid #dee2e6;">#Kernels / Units</th>
+    <th style="padding:8px; border:1px solid #dee2e6;">Input Size</th>
+  </tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">1</td><td style="padding:8px; border:1px solid #dee2e6;">Conv2D</td><td style="padding:8px; border:1px solid #dee2e6;">3×3</td><td style="padding:8px; border:1px solid #dee2e6;">1</td><td style="padding:8px; border:1px solid #dee2e6;">64</td><td style="padding:8px; border:1px solid #dee2e6;">224×224×3</td></tr>
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">2</td><td style="padding:8px; border:1px solid #dee2e6;">Conv2D</td><td style="padding:8px; border:1px solid #dee2e6;">3×3</td><td style="padding:8px; border:1px solid #dee2e6;">1</td><td style="padding:8px; border:1px solid #dee2e6;">64</td><td style="padding:8px; border:1px solid #dee2e6;">224×224×64</td></tr>
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">3</td><td style="padding:8px; border:1px solid #dee2e6;">Pool</td><td style="padding:8px; border:1px solid #dee2e6;">2×2</td><td style="padding:8px; border:1px solid #dee2e6;">2</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">224×224×64</td></tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">4–6</td><td style="padding:8px; border:1px solid #dee2e6;">Conv/Conv/Pool</td><td style="padding:8px; border:1px solid #dee2e6;">3×3, 3×3, 2×2</td><td style="padding:8px; border:1px solid #dee2e6;">1, 1, 2</td><td style="padding:8px; border:1px solid #dee2e6;">128, 128, –</td><td style="padding:8px; border:1px solid #dee2e6;">112×112×64 → 112×112×128</td></tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">7–9</td><td style="padding:8px; border:1px solid #dee2e6;">Conv/Conv/Pool</td><td style="padding:8px; border:1px solid #dee2e6;">3×3, 3×3, 2×2</td><td style="padding:8px; border:1px solid #dee2e6;">1, 1, 2</td><td style="padding:8px; border:1px solid #dee2e6;">256, 256, –</td><td style="padding:8px; border:1px solid #dee2e6;">56×56×128 → 56×56×256</td></tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">10–13</td><td style="padding:8px; border:1px solid #dee2e6;">Conv/Conv/Conv/Pool</td><td style="padding:8px; border:1px solid #dee2e6;">3×3, 3×3, 3×3, 2×2</td><td style="padding:8px; border:1px solid #dee2e6;">1, 1, 1, 2</td><td style="padding:8px; border:1px solid #dee2e6;">512, 512, 512, –</td><td style="padding:8px; border:1px solid #dee2e6;">28×28×256 → 28×28×512</td></tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">14–17</td><td style="padding:8px; border:1px solid #dee2e6;">Conv/Conv/Conv/Pool</td><td style="padding:8px; border:1px solid #dee2e6;">3×3, 3×3, 3×3, 2×2</td><td style="padding:8px; border:1px solid #dee2e6;">1, 1, 1, 2</td><td style="padding:8px; border:1px solid #dee2e6;">512, 512, 512, –</td><td style="padding:8px; border:1px solid #dee2e6;">14×14×512 → 14×14×512</td></tr>
+
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">18</td><td style="padding:8px; border:1px solid #dee2e6;">LSTM</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">49×512</td></tr>
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">19</td><td style="padding:8px; border:1px solid #dee2e6;">FC</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">64</td><td style="padding:8px; border:1px solid #dee2e6;">25,088</td></tr>
+  <tr><td style="padding:8px; border:1px solid #dee2e6;">20</td><td style="padding:8px; border:1px solid #dee2e6;">Output</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">–</td><td style="padding:8px; border:1px solid #dee2e6;">3</td><td style="padding:8px; border:1px solid #dee2e6;">64</td></tr>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 2.</strong> Full summary of the CNN-LSTM network (layer-by-layer). 
+</p>
+
+
+<h2 class="section-title">🧪 Experimental Setup</h2>
+<ul>
+  <li><strong>Train/Test split:</strong> 80% / 20% (training 3660, testing 915)</li>
+  <li><strong>Validation:</strong> 5-fold cross-validation</li>
+  <li><strong>Learning rate:</strong> 0.0001</li>
+  <li><strong>Epochs:</strong> 125</li>
+  <li><strong>Implementation:</strong> Python + Keras (TensorFlow2)</li>
+  <li><strong>Hardware:</strong> Intel Core i7 (2.2 GHz), NVIDIA GTX 1050 Ti (4 GB), 16 GB RAM</li>
+</ul>
+<p style="color:#495057;">
+  (All values above are reported in the paper’s experimental setup section.) 
+</p>
+
+
+<h2 class="section-title">📈 Results & Analysis</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig6_confusion_matrix.png"
+       alt="Confusion matrix (Fig. 6)"
+       style="width:100%; max-width:350px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 6. Confusion matrices.</strong>
+    The paper compares baseline CNN vs proposed CNN-LSTM on the same 915-image test set, showing fewer misclassifications for CNN-LSTM. 
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig7_cnn_training_curves.png"
+       alt="CNN accuracy/loss (Fig. 7)"
+       style="width:100%; max-width:400px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 7. CNN training/validation accuracy and loss.</strong> 
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig8_cnn_lstm_training_curves.png"
+       alt="CNN-LSTM accuracy/loss (Fig. 8)"
+       style="width:100%; max-width:400px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 8. CNN-LSTM training/validation accuracy and loss.</strong> 
+  </p>
+</div>
+
+
+<h2 class="section-title">📊 Quantitative Performance (Tables 3–5)</h2>
+
+<!-- Table 3 -->
+<h4 style="color:#3252b3; margin-top:1rem;">Baseline CNN Performance (Table 3)</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Class</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Accuracy (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Specificity (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Sensitivity (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">F1-Score (%)</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td><td style="padding:10px; border:1px solid #dee2e6;">98.5</td><td style="padding:10px; border:1px solid #dee2e6;">98.2</td><td style="padding:10px; border:1px solid #dee2e6;">99.0</td><td style="padding:10px; border:1px solid #dee2e6;">97.7</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Pneumonia</td><td style="padding:10px; border:1px solid #dee2e6;">98.6</td><td style="padding:10px; border:1px solid #dee2e6;">99.7</td><td style="padding:10px; border:1px solid #dee2e6;">96.4</td><td style="padding:10px; border:1px solid #dee2e6;">97.8</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Normal</td><td style="padding:10px; border:1px solid #dee2e6;">99.9</td><td style="padding:10px; border:1px solid #dee2e6;">99.8</td><td style="padding:10px; border:1px solid #dee2e6;">100.0</td><td style="padding:10px; border:1px solid #dee2e6;">99.8</td></tr>
+</table>
+<p style="margin-top:0.5rem; color:#495057;"><strong>Table 3.</strong> Performance of the CNN network. :contentReference[oaicite:14]{index=14}</p>
+
+<!-- Table 4 -->
+<h4 style="color:#3252b3; margin-top:1.25rem;">Proposed CNN-LSTM Performance (Table 4)</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <tr style="background:#f1f3f5;">
+    <th style="padding:10px; border:1px solid #dee2e6;">Class</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Accuracy (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Specificity (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">Sensitivity (%)</th>
+    <th style="padding:10px; border:1px solid #dee2e6;">F1-Score (%)</th>
+  </tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td><td style="padding:10px; border:1px solid #dee2e6;">99.2</td><td style="padding:10px; border:1px solid #dee2e6;">99.2</td><td style="padding:10px; border:1px solid #dee2e6;">99.3</td><td style="padding:10px; border:1px solid #dee2e6;">98.9</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Pneumonia</td><td style="padding:10px; border:1px solid #dee2e6;">99.2</td><td style="padding:10px; border:1px solid #dee2e6;">99.8</td><td style="padding:10px; border:1px solid #dee2e6;">98.0</td><td style="padding:10px; border:1px solid #dee2e6;">98.8</td></tr>
+  <tr><td style="padding:10px; border:1px solid #dee2e6;">Normal</td><td style="padding:10px; border:1px solid #dee2e6;">99.8</td><td style="padding:10px; border:1px solid #dee2e6;">99.7</td><td style="padding:10px; border:1px solid #dee2e6;">100.0</td><td style="padding:10px; border:1px solid #dee2e6;">99.7</td></tr>
+</table>
+<p style="margin-top:0.5rem; color:#495057;"><strong>Table 4.</strong> Performance of the CNN-LSTM network. </p>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig11_roc.png"
+       alt="ROC curves (Fig. 11)"
+       style="width:100%; max-width:350px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 11. ROC analysis.</strong>
+    The paper reports AUC ≈ 99.8% for CNN and ≈ 99.9% for CNN-LSTM, indicating stronger overall separability for the proposed model. 
+  </p>
+</div>
+
+<h4 style="color:#3252b3; margin-top:1rem;">Comparison with Prior Work (Table 5)</h4>
+<p style="color:#495057; margin-bottom:0.5rem;">
+  The paper includes a comparison table across multiple published COVID-19 X-ray studies (accuracy and, when available, training/testing time),
+  and reports the proposed CNN-LSTM as <strong>99.4% overall accuracy</strong> with reported training/testing times of <strong>18372.0 s</strong> / <strong>113.0 s</strong>. 
+</p>
+
+<div style="text-align:center; margin:2rem 0;">
+  <img src="./project_page/table5_comparison.png"
+       alt="Comparison table (Table 5)"
+       style="width:100%; max-width:700px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:0.75rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Table 5.</strong> Comparison of the proposed system with existing systems in terms of accuracy and computational time. 
+  </p>
+</div>
+
+
+<h2 class="section-title">🩻 Interpretability: Grad-CAM Visual Explanations (Fig. 12)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img src="./project_page/fig12_gradcam.png"
+       alt="Grad-CAM visualization (Fig. 12)"
+       style="width:100%; max-width:650px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;">
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 12. Grad-CAM heatmaps.</strong>
+    The paper visualizes attention regions for COVID-19, Pneumonia, and Normal samples, showing heatmaps and superimposed views for both
+    CNN and CNN-LSTM models.
+  </p>
+</div>
+
+
+<h2 class="section-title">🚀 Key Contributions & Practical Impact</h2>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">Technical Contributions</h4>
+    <ul>
+      <li><strong>Hybrid design:</strong> CNN extracts deep spatial features; LSTM performs classification on reshaped features</li>
+      <li><strong>Balanced 3-class dataset:</strong> 1,525 images per class for COVID-19 / Normal / Pneumonia</li>
+      <li><strong>Full evaluation suite:</strong> Confusion matrix, ROC/AUC, accuracy/loss curves, and Grad-CAM interpretation</li>
+      <li><strong>Reproducible configuration:</strong> Learning rate 0.0001, 125 epochs, 5-fold cross-validation</li>
+    </ul>
+  </div>
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">Clinical / Deployment Notes (as stated in the paper)</h4>
+    <ul>
+      <li><strong>Goal:</strong> Assist clinicians by providing fast, consistent screening support from chest X-rays</li>
+      <li><strong>Limitations:</strong> Dataset size (generalizability), PA-view focus only, complex multi-symptom COVID-19 cases, and no radiologist comparison</li>
+      <li><strong>Future work:</strong> Increase sample size, support other X-ray views (AP/lateral), and compare with radiologists</li>
+    </ul>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%); padding:2rem; border-radius:15px; margin:2rem 0; border-left:5px solid #2E8B57;">
+  <h4 style="color:#011627; margin-bottom:1rem;">🔬 Research Significance</h4>
+  <p style="font-size:1.05rem; line-height:1.7; margin-bottom:0;">
+    This work demonstrates that combining CNN feature extraction with an LSTM classifier can achieve strong COVID-19 vs Pneumonia vs Normal
+    discrimination on a balanced chest X-ray dataset, while also providing interpretability via Grad-CAM and reporting end-to-end experimental details.
+    The paper also clearly states practical limitations and future directions needed for broader clinical validation. :contentReference[oaicite:20]{index=20}
+  </p>
+</div>
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>CNN-LSTM paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{islam2020combined,
+  title={A combined deep CNN-LSTM network for the detection of novel coronavirus (COVID-19) using X-ray images},
+  author={Islam, Md Zabirul and Islam, Md Milon and Asraf, Amanullah},
+  journal={Informatics in medicine unlocked},
+  volume={20},
+  pages={100412},
+  year={2020},
+  publisher={Elsevier}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://www.sciencedirect.com/science/article/pii/S2352914820305621" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        Informatics in medicine unlocked (2020)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- #----------- 2nd Paper--------------------->
+
+<!-- #----------- Heading--------------------->
+
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Diagnosis of COVID-19 from X-rays using combined CNN-RNN architecture with transfer learning</h1>
+    
+    <div class="authors">
+      Md Milon Islam, <strong>Md Zabirul Islam,</strong>  Amanullah Asraf, Mabrook S Al-Rakhami, Weiping Ding, Ali Hassan Sodhro
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://www.sciencedirect.com/science/article/pii/S2772485923000054" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+    <a href="https://github.com/zabir110/COVID19-CNN-RNN" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- CNN–RNN (Transfer Learning) Project Page              -->
+<!-- BenchCouncil Transactions on Benchmarks, Standards     -->
+<!-- and Evaluations 2 (2022) 100088                        -->
+<!-- "Diagnosis of COVID-19 from X-rays using combined      -->
+<!--  CNN-RNN architecture with transfer learning"          -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    This paper proposes a <strong>combined CNN–RNN (LSTM) architecture with transfer learning</strong> to classify
+    <strong>chest X-ray images</strong> into <em>COVID-19</em>, <em>Pneumonia</em>, and <em>Normal</em>.
+    Four ImageNet-pretrained CNN backbones (<strong>VGG19</strong>, <strong>DenseNet121</strong>, <strong>InceptionV3</strong>,
+    <strong>Inception-ResNetV2</strong>) are used for feature extraction, and a recurrent layer is used to classify the reshaped feature sequence.
+    The study reports that <strong>VGG19-RNN</strong> achieves the best overall performance and visualizes decision regions with <strong>Grad-CAM</strong>.
+  </p>
+
+  <p><strong>Key Achievements (as reported in the paper):</strong></p>
+  <ul>
+    <li><strong>🧠 Hybrid Transfer Model:</strong> Frozen pretrained CNN for feature extraction + <strong>single-layer recurrent classifier</strong> + FC + softmax</li>
+    <li><strong>📦 Balanced 3-Class Dataset:</strong> <strong>6,939</strong> total X-rays; <strong>2,313 per class</strong> (COVID-19 / Pneumonia / Normal)</li>
+    <li><strong>🖼️ Standardized Input:</strong> Images resized to <strong>224 × 224 × 3</strong>, shuffled and <strong>pixel-normalized</strong></li>
+    <li><strong>✅ Best Model:</strong> <strong>VGG19-RNN</strong> reported as top performer (overall accuracy <strong>99.86%</strong>, AUC <strong>99.99%</strong>)</li>
+    <li><strong>📊 Evaluation Suite:</strong> Confusion matrix, Accuracy, Precision, Recall, F1, ROC curve, PR curve</li>
+    <li><strong>🔥 Interpretability:</strong> Grad-CAM heatmaps + superimposed views for COVID-19 / Pneumonia / Normal</li>
+    <li><strong>⚙️ Training Setup:</strong> RMSprop, batch size <strong>32</strong>, learning rate <strong>1e-5</strong>, <strong>100 epochs</strong>, 5-fold cross-validation</li>
+    <li><strong>🧾 Open Resources:</strong> Data and code links are provided by the authors in the paper</li>
+  </ul>
+</div>
+
+<!-- ===================================================== -->
+<!-- Overall System Pipeline -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏗️ Overall System Pipeline (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <!-- Replace src with your local asset path -->
+  <img
+    src="./project_page/fig1_overall_pipeline.png"
+    alt="Overall system architecture (Fig. 1)"
+    style="width:100%; max-width:650px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1. Overall system architecture of the COVID-19 diagnosis framework.</strong>
+    The workflow starts with dataset collection and preprocessing (resize, shuffle, normalization),
+    then splits data into train/test sets. Training evaluates four transfer-learning backbones
+    (<em>VGG19</em>, <em>DenseNet121</em>, <em>InceptionV3</em>, <em>Inception-ResNetV2</em>) combined with a recurrent classifier.
+    Performance is reported using Accuracy/Precision/Recall/F1/AUC and confusion matrices.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Dataset & Partition -->
+<!-- ===================================================== -->
+<h2 class="section-title" id="datasets">📊 Dataset &amp; Class Partition (Table 1)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper constructs a <strong>balanced</strong> dataset by gathering COVID-19 X-rays from multiple public sources,
+  and Pneumonia/Normal X-rays from Kaggle sources. The final dataset contains <strong>6,939</strong> images total:
+  <strong>2,313</strong> COVID-19, <strong>2,312</strong> Pneumonia, and <strong>2,313</strong> Normal.
+  An <strong>80% / 20%</strong> train/test split is used, and the authors note that the test set contains only original images.
+</p>
+
+<!-- Table 1 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Images</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">COVID-19</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Pneumonia</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Normal</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Training</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">1850</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">1851</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">1850</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">5551</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Testing</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">463</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">462</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">463</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">1388</td>
+    </tr>
+    <tr style="background:#fafafa;">
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Total</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>2313</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>2312</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>2313</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>6939</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 1.</strong> Dataset composition and train/test split used in the paper.
+</p>
+
+<!-- ===================================================== -->
+<!-- Backbones (Transfer Learning) -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧠 Transfer Learning Backbones (Table 2)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The authors compare four pretrained CNN architectures (ImageNet weights) as feature extractors.
+  Their depths and parameter counts are summarized below.
+</p>
+
+<!-- Table 2 -->
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Network</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Depth</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Parameters (10<sup>6</sup>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">VGG19</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">26</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">143.67</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">DenseNet121</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">121</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">8.06</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">InceptionV3</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">159</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">23.85</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Inception-ResNetV2</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">572</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">55.87</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 2.</strong> Characteristics of the four pre-trained CNN architectures.
+</p>
+
+<!-- ===================================================== -->
+<!-- Recurrent Classifier -->
+<!-- ===================================================== -->
+<h2 class="section-title">🔁 Recurrent Classifier Background (Fig. 2)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig2_rnn_structure.png"
+    alt="Structure of recurrent neural networks (Fig. 2)"
+    style="width:100%; max-width:600px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 2. The structure of recurrent neural networks.</strong>
+    The paper introduces RNNs for sequence modeling and motivates LSTM gating (input/forget/output gates)
+    to handle long-term dependencies.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- CNN–RNN workflow -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧩 CNN–RNN Workflow (Fig. 3)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig3_cnn_rnn_workflow.png"
+    alt="Workflow of the CNN-RNN architecture (Fig. 3)"
+    style="width:100%; max-width:300px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 3. Workflow of the CNN-RNN architecture for COVID-19 diagnosis.</strong>
+    A pretrained CNN extracts feature maps, the feature tensor is reshaped into a sequence,
+    and a single recurrent layer processes the sequence before a softmax layer produces the final 3-class prediction.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Combined architecture diagram -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧠 Combined CNN–RNN Architecture (Fig. 4)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig4_combined_architecture.png"
+    alt="Combined CNN-RNN architecture (Fig. 4)"
+    style="width:100%; max-width:700px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 4. The structure of the combined CNN-RNN architecture for COVID-19 diagnosis.</strong>
+    The figure summarizes the four backbone options feeding into the recurrent stage, followed by fully connected layers and a softmax output.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Architecture summary table -->
+<!-- ===================================================== -->
+<h2 class="section-title">📐 Architecture Summary (Table 3)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper reports feature-map sizes and the reshape-to-sequence design for each backbone.
+  Below is the architecture summary (Table 3 a–d), transcribed into HTML.
+</p>
+
+<!-- Table 3a -->
+<h4 style="color:#3252b3; margin-top:1rem;">(a) VGG19-RNN</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Layer (type)</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Input size</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Output size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">pretrained (VGG19)</td><td style="padding:8px; border:1px solid #dee2e6;">224, 224, 3</td><td style="padding:8px; border:1px solid #dee2e6;">7, 7, 512</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">reshape (Reshape)</td><td style="padding:8px; border:1px solid #dee2e6;">7, 7, 512</td><td style="padding:8px; border:1px solid #dee2e6;">49, 512</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">lstm (LSTM)</td><td style="padding:8px; border:1px solid #dee2e6;">49, 512</td><td style="padding:8px; border:1px solid #dee2e6;">49, 512</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">flatten (Flatten)</td><td style="padding:8px; border:1px solid #dee2e6;">49, 512</td><td style="padding:8px; border:1px solid #dee2e6;">25088</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_1 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">25088</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_2 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">output (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">3</td></tr>
+  </tbody>
+</table>
+
+<!-- Table 3b -->
+<h4 style="color:#3252b3; margin-top:1.25rem;">(b) DenseNet121-RNN</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Layer (type)</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Input size</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Output size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">pretrained (DenseNet121)</td><td style="padding:8px; border:1px solid #dee2e6;">224, 224, 3</td><td style="padding:8px; border:1px solid #dee2e6;">7, 7, 1024</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">reshape (Reshape)</td><td style="padding:8px; border:1px solid #dee2e6;">7, 7, 1024</td><td style="padding:8px; border:1px solid #dee2e6;">49, 1024</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">lstm (LSTM)</td><td style="padding:8px; border:1px solid #dee2e6;">49, 1024</td><td style="padding:8px; border:1px solid #dee2e6;">49, 1024</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">flatten (Flatten)</td><td style="padding:8px; border:1px solid #dee2e6;">49, 1024</td><td style="padding:8px; border:1px solid #dee2e6;">50176</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_1 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">50176</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_2 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">output (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">3</td></tr>
+  </tbody>
+</table>
+
+<!-- Table 3c -->
+<h4 style="color:#3252b3; margin-top:1.25rem;">(c) Inception-ResNetV2-RNN</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Layer (type)</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Input size</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Output size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">pretrained (Inception-ResNetV2)</td><td style="padding:8px; border:1px solid #dee2e6;">224, 224, 3</td><td style="padding:8px; border:1px solid #dee2e6;">5, 5, 1536</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">reshape (Reshape)</td><td style="padding:8px; border:1px solid #dee2e6;">5, 5, 1536</td><td style="padding:8px; border:1px solid #dee2e6;">25, 1536</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">lstm (LSTM)</td><td style="padding:8px; border:1px solid #dee2e6;">25, 1536</td><td style="padding:8px; border:1px solid #dee2e6;">25, 512</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">flatten (Flatten)</td><td style="padding:8px; border:1px solid #dee2e6;">25, 512</td><td style="padding:8px; border:1px solid #dee2e6;">12800</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_1 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">12800</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_2 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">output (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">3</td></tr>
+  </tbody>
+</table>
+
+<!-- Table 3d -->
+<h4 style="color:#3252b3; margin-top:1.25rem;">(d) InceptionV3-RNN</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Layer (type)</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Input size</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Output size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">pretrained (InceptionV3)</td><td style="padding:8px; border:1px solid #dee2e6;">224, 224, 3</td><td style="padding:8px; border:1px solid #dee2e6;">5, 5, 2048</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">reshape (Reshape)</td><td style="padding:8px; border:1px solid #dee2e6;">5, 5, 2048</td><td style="padding:8px; border:1px solid #dee2e6;">25, 2048</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">lstm (LSTM)</td><td style="padding:8px; border:1px solid #dee2e6;">25, 2048</td><td style="padding:8px; border:1px solid #dee2e6;">25, 512</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">flatten (Flatten)</td><td style="padding:8px; border:1px solid #dee2e6;">25, 512</td><td style="padding:8px; border:1px solid #dee2e6;">12800</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_1 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">12800</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">fc_2 (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">output (Dense)</td><td style="padding:8px; border:1px solid #dee2e6;">4096</td><td style="padding:8px; border:1px solid #dee2e6;">3</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 3.</strong> Summary of the used architectures (a–d).
+</p>
+
+<!-- ===================================================== -->
+<!-- Experimental setup -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧪 Experimental Setup</h2>
+<ul>
+  <li><strong>Platform:</strong> Google Colaboratory Linux (Ubuntu 16.04)</li>
+  <li><strong>GPU:</strong> Tesla K80</li>
+  <li><strong>Framework:</strong> Python (TensorFlow/Keras)</li>
+  <li><strong>Optimization:</strong> RMSprop</li>
+  <li><strong>Batch size:</strong> 32</li>
+  <li><strong>Learning rate:</strong> 1e-5</li>
+  <li><strong>Epochs:</strong> 100</li>
+  <li><strong>Validation:</strong> 5-fold cross-validation</li>
+  <li><strong>Training policy:</strong> Pretrained CNN layers frozen; recurrent + FC layers trained; dropout used to reduce overfitting</li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Results -->
+<!-- ===================================================== -->
+<h2 class="section-title">📈 Results &amp; Analysis</h2>
+
+<h4 style="color:#3252b3; margin-top:1rem;">Training &amp; Validation Curves (Fig. 5)</h4>
+<div style="text-align:center; margin:2rem 0;">
+  <img
+    src="./project_page/fig5_accuracy_loss.png"
+    alt="Accuracy and loss curve (Fig. 5)"
+    style="width:100%; max-width:500px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 5.</strong> Accuracy and loss curves for all four CNN-RNN architectures (VGG19, DenseNet121, InceptionV3, Inception-ResNetV2).
+  </p>
+</div>
+
+<h4 style="color:#3252b3; margin-top:1rem;">Confusion Matrices (Fig. 6)</h4>
+<div style="text-align:center; margin:2rem 0;">
+  <img
+    src="./project_page/fig6_confusion_matrices.png"
+    alt="Confusion matrices (Fig. 6)"
+    style="width:100%; max-width:500px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 6.</strong> Confusion matrices for the four architectures on the 1,388-image test set.
+  </p>
+</div>
+
+<h4 style="color:#3252b3; margin-top:1rem;">Computational Time Comparison (Table 4)</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Model</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Training time (s)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Testing time (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">VGG19</td><td style="padding:10px; border:1px solid #dee2e6;">16722.41</td><td style="padding:10px; border:1px solid #dee2e6;">129.69</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">DenseNet121</td><td style="padding:10px; border:1px solid #dee2e6;">18145.67</td><td style="padding:10px; border:1px solid #dee2e6;">196.02</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">InceptionV3</td><td style="padding:10px; border:1px solid #dee2e6;">16376.09</td><td style="padding:10px; border:1px solid #dee2e6;">170.14</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Inception-ResNetV2</td><td style="padding:10px; border:1px solid #dee2e6;">17727.26</td><td style="padding:10px; border:1px solid #dee2e6;">310.63</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 4.</strong> Comparative computational time for the CNN-RNN models.
+</p>
+
+<h4 style="color:#3252b3; margin-top:1rem;">Main Quantitative Performance (Table 5: COVID-19 row shown)</h4>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Classifier</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Patient status</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">AUC (%)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Accuracy (%)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Precision (%)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Recall (%)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">F1-score (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">VGG19-RNN</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.99</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.86</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.78</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.78</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.78</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">DenseNet121-RNN</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.99</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.78</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.57</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">100.0</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.78</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">InceptionV3-RNN</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.95</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">98.56</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.35</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">96.44</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">97.87</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Inception-ResNetV2-RNN</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">COVID-19</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.99</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.50</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">98.49</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">100.0</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">99.24</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 5.</strong> Performance of the combined CNN-RNN architectures (COVID-19 row shown; the paper includes all classes).
+</p>
+
+<h2 class="section-title">🩻 Interpretability with Grad-CAM (Fig. 9)</h2>
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig9_gradcam_grid.png"
+    alt="Grad-CAM visualization (Fig. 9)"
+    style="width:100%; max-width:650px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 9.</strong> Grad-CAM visualizations for VGG19-RNN to highlight class-relevant regions in chest X-rays.
+  </p>
+</div>
+
+<h2 class="section-title">⚠️ Limitations &amp; Future Directions (as stated)</h2>
+<ul>
+  <li><strong>Dataset growth:</strong> The paper notes that larger COVID-19 collections would strengthen validation.</li>
+  <li><strong>View generalization:</strong> Experiments focus on PA chest X-rays and may not generalize to other views.</li>
+  <li><strong>Clinical comparison:</strong> Future work includes comparing model performance against radiologists.</li>
+</ul>
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>CNN-RNN paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{islam2022diagnosis,
+  title={Diagnosis of COVID-19 from X-rays using combined CNN-RNN architecture with transfer learning},
+  author={Islam, Md Milon and Islam, Md Zabirul and Asraf, Amanullah and Al-Rakhami, Mabrook S and Ding, Weiping and Sodhro, Ali Hassan},
+  journal={BenchCouncil Transactions on Benchmarks, Standards and Evaluations},
+  volume={2},
+  number={4},
+  pages={100088},
+  year={2022},
+  publisher={Elsevier}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://www.sciencedirect.com/science/article/pii/S2772485923000054" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        BenchCouncil Transactions on Benchmarks, Standards and Evaluations (2022)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+<!-- #----------- 3rd Paper--------------------->
+
+<!-- #----------- Heading--------------------->
+
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Deep Learning Applications to Combat Novel Coronavirus (COVID-19) Pandemic</h1>
+    
+    <div class="authors">
+      Amanullah Asraf, <strong>Md Zabirul Islam,</strong> Md Rezwanul Haque, Md Milon Islam
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://link.springer.com/article/10.1007/s42979-020-00383-w" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+  </div>
+
+
+
+
+<!-- ===================================================== -->
+<!-- Review Article Project Page                            -->
+<!-- SN Computer Science (2020) 1:363                        -->
+<!-- "Deep Learning Applications to Combat Novel Coronavirus -->
+<!--  (COVID-19) Pandemic"                                   -->
+<!-- Figures/Tables below match the paper numbering exactly  -->
+<!-- Source PDF: :contentReference[oaicite:0]{index=0}                      -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    During the COVID-19 pandemic, deep learning has been explored across the full response pipeline, not only for
+    <strong>diagnosis from medical images</strong>, but also for <strong>disease tracking</strong>,
+    <strong>protein structure prediction</strong>, <strong>drug discovery</strong>, and understanding
+    <strong>virus severity and infectivity</strong>.
+    This review summarizes representative studies in each area, discusses current constraints (including data limitations and
+    interpretability gaps), and outlines directions for future work.
+  </p>
+
+  <p><strong>Key Takeaways (as stated in the paper):</strong></p>
+  <ul>
+    <li><strong>🩻 Diagnosis via imaging:</strong> Deep learning on X-ray and CT has been widely studied for COVID-19 screening and differentiation from other lung diseases.</li>
+    <li><strong>🗺️ Disease tracking:</strong> Deep learning applied to real-time signals and time series helps forecast trends and estimate risk.</li>
+    <li><strong>🧬 Protein structure:</strong> Deep models (e.g., AlphaFold-style approaches) support structure prediction that may inform downstream drug/vaccine research.</li>
+    <li><strong>💊 Drug discovery:</strong> Generative models and reinforcement learning are explored to generate or repurpose candidate compounds.</li>
+    <li><strong>🦠 Severity &amp; infectivity:</strong> Sequence-based deep learning is used for virus-host prediction and infectivity assessment.</li>
+    <li><strong>⚠️ Challenges:</strong> Limited COVID-19 data, varying reporting quality, and insufficient interpretability/transparency are recurring issues.</li>
+  </ul>
+</div>
+
+<!-- ===================================================== -->
+<!-- Overall Paper Scope -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧭 Scope of the Review</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The review organizes deep learning contributions into five main application directions:
+  (1) medical imaging for diagnosis, (2) disease tracking, (3) protein structure prediction,
+  (4) drug discovery, and (5) virus severity and infectivity.
+  It also summarizes constraints and future directions for real-world deployment.
+</p>
+
+<!-- ===================================================== -->
+<!-- Figure 1 -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏗️ Deep Learning Applications for COVID-19 (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <!-- Replace src with your local extracted figure path -->
+  <img
+    src="./project_page/fig1_deep_learning_applications.png"
+    alt="Deep learning applications for COVID-19 pandemic (Fig. 1)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1. Deep learning applications for COVID-19 pandemic.</strong>
+    The paper highlights five major dimensions where deep learning has been used: medical imaging, disease tracking,
+    protein structure prediction, drug discovery, and virus severity/infectivity.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Section: Medical Imaging -->
+<!-- ===================================================== -->
+<h2 class="section-title">🩻 Medical Imaging for Diagnosis</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper notes that RT-PCR is a key diagnostic indicator but is time-consuming and can have a high false-negative rate.
+  As a complementary approach, deep learning has been applied to <strong>chest X-ray</strong> and <strong>CT</strong> for
+  COVID-19 detection and for differentiating COVID-19 pneumonia from other conditions.
+</p>
+
+<p style="margin-bottom:0.75rem;">
+  Examples discussed include COVID-Net on X-rays, modified Inception-style transfer learning on CT, 3D deep learning with
+  location-attention mechanisms, and architectures combining CNNs with attention modules. The paper also includes a study
+  using a combined <strong>CNN-LSTM</strong> approach on X-rays.
+</p>
+
+<!-- Table 1 (from the paper) -->
+<h3 class="section-title" style="font-size:1.25rem;">📊 Summary of Imaging-Based Diagnosis Works (Table 1)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Authors</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Sample size</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Methods</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Khan et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">1300 chest X-rays including 290 COVID-19 cases</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">CoroNet: Xception architecture</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 89.6%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Wu et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">495 CT images consisting of 368 COVID-19 cases</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Multi-view fusion model using deep learning techniques</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 70.0%; AUC = 73.2%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Wang and Wong</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">13,975 X-ray images from 13,870 patients</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">COVID-Net: deep CNN architecture</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 92.4%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Wang et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">325 CT scans of COVID-19 and 740 of pneumonia</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Deep transfer learning using modified Inception</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 79.3%; Specificity = 83.0%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Butt et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">618 CT images including 219 COVID-19 cases</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">3D deep learning with location-attention mechanism</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 86.7%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Jin et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">970 CT images from 496 patients</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Deep neural network</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 94.98%; Specificity = 95.47%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Song et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">275 CT scans comprising of 88 COVID-19 cases</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">DeepPneumonia: ResNet architecture</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">AUC = 99.0%; Sensitivity = 93.0%</td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Islam et&nbsp;al.</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">421 X-ray images including 141 COVID-19 cases</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Combined deep CNN-LSTM architecture</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Accuracy = 97%; Specificity = 91%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 1.</strong> Summarization of deep learning applications for medical imaging-based COVID-19 diagnosis.
+</p>
+
+<!-- ===================================================== -->
+<!-- Section: Disease Tracking -->
+<!-- ===================================================== -->
+<h2 class="section-title">🗺️ Disease Tracking</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The review discusses deep learning for tracking outbreak dynamics using multiple signal sources.
+  Examples include using deep models to analyze respiratory patterns (e.g., tachypnea screening from depth camera signals),
+  smartphone sensor–based symptom detection, community-level risk assessment using real-time data, and time series forecasting
+  using recurrent architectures such as LSTM/GRU.
+</p>
+
+<!-- ===================================================== -->
+<!-- Section: Protein Structure Prediction -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧬 Protein Structure Prediction</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper describes protein structure prediction as an important step in understanding viral mechanisms and supporting
+  drug/vaccine development. It contrasts template modeling and template-free modeling, and highlights deep neural
+  approaches (including ResNet-style models used in AlphaFold-like systems) for predicting 3D protein structures.
+  The review notes such predictions still require experimental verification.
+</p>
+
+<!-- ===================================================== -->
+<!-- Section: Drug Discovery -->
+<!-- ===================================================== -->
+<h2 class="section-title">💊 Drug Discovery</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The review summarizes deep learning approaches to identify candidate drugs for COVID-19, including:
+  (i) generative modeling pipelines (e.g., generative auto-encoders and GANs) to propose inhibitors,
+  (ii) reinforcement learning (e.g., deep Q-learning) for fragment-based drug design, and
+  (iii) drug–target interaction models for repurposing existing antivirals.
+  The paper also cautions that limited data can introduce training errors.
+</p>
+
+<!-- ===================================================== -->
+<!-- Section: Virus Severity and Infectivity -->
+<!-- ===================================================== -->
+<h2 class="section-title">🦠 Virus Severity and Infectivity</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper highlights deep learning for viral host prediction and infectivity assessment using genomic sequence data.
+  It notes CNN/LSTM-based models can outperform traditional machine learning baselines in some settings, and that
+  interpretability tools (e.g., visualization of sequence patterns) can help analyze model behavior.
+</p>
+
+<!-- ===================================================== -->
+<!-- Table 2 (from the paper) -->
+<!-- ===================================================== -->
+<h2 class="section-title">📌 Overall Summary of Deep Learning Applications (Table 2)</h2>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Sl. no.</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Applications</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Descriptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">1</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Diagnosis using medical imaging</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">
+        Deep learning is used to extract complex features from radiological images for diagnosis. Examples include CNN-based
+        screening from increasing samples, Xception-based CoroNet on X-rays, COVID-Net on X-rays, and ResNet-based approaches
+        (e.g., DeepPneumonia) on CT scans.
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">2</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Disease tracking</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">
+        Models such as bidirectional GRU with attention for respiratory pattern analysis; neural networks for geographic spread;
+        deep learning on real-time data for community-level risk; and outbreak forecasting with recurrent networks (e.g., LSTM).
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">3</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Protein structure prediction</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">
+        Deep neural methods for predicting protein structure and characteristics, including CNN-style dense prediction and deeper
+        ResNet-style networks to ease training for recognition tasks; supports understanding and vaccine-related research.
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">4</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Drug discovery</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">
+        Generative models (GANs/GAs) to generate candidate compounds; reinforcement learning to discover inhibitors; and deep models
+        to generate new molecules and evaluate protein–ligand interactions.
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">5</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Virus severity and infectivity</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">
+        Sequence-based CNN/LSTM models for predicting virus infectivity in humans; virus-host prediction with deep learning to support
+        early analysis and prevention.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table 2.</strong> Summarization of deep learning applications to combat COVID-19 pandemic.
+</p>
+
+<!-- ===================================================== -->
+<!-- Discussion: Challenges & Gaps -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧩 Discussion: Constraints, Challenges, and What’s Missing</h2>
+
+<ul>
+  <li>
+    <strong>Limited and uneven data:</strong> The paper emphasizes that COVID-19 data was limited, and that case reporting can vary across countries,
+    which can affect disease tracking and modeling.
+  </li>
+  <li>
+    <strong>Interpretability gap in imaging:</strong> The review notes that some imaging-based deep learning systems lack transparency, making it unclear
+    which imaging features drive predictions. It argues that explaining feature evidence could help clinicians gain insight.
+  </li>
+  <li>
+    <strong>Drug discovery complexity:</strong> The paper notes needs such as longer peptides in virtual screening and improved scoring functions
+    for antibody redesign, and highlights that limited training data can introduce errors.
+  </li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Conclusion -->
+<!-- ===================================================== -->
+<h2 class="section-title">✅ Conclusion</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper concludes that deep learning can contribute at multiple levels (medical imaging, molecular biology, epidemiology)
+  for early identification, outbreak monitoring, and accelerating drug/vaccine-related research. At the same time, it stresses
+  that real-world impact is constrained by data availability and the need for stronger transparency and validation.
+</p>
+
+
+
+
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>this paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{asraf2020deep,
+  title={Deep learning applications to combat novel coronavirus (COVID-19) pandemic},
+  author={Asraf, Amanullah and Islam, Md Zabirul and Haque, Md Rezwanul and Islam, Md Milon},
+  journal={SN Computer Science},
+  volume={1},
+  number={6},
+  pages={363},
+  year={2020},
+  publisher={Springer}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://link.springer.com/article/10.1007/s42979-020-00383-w" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        SN Computer Science
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+<!-- #----------- 4th Paper--------------------->
+
+<!-- #----------- Heading--------------------->
+
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Analyzing the Dynamics of COVID-19 Lockdown Success: Insights from Regional Data and Public Health Measures
+</h1>
+    
+    <div class="authors">
+       Md Motaleb Hossen Manik, Md Ahsan Habib, <strong>Md Zabirul Islam,</strong> Tanim Ahmed, Fabliha Haque
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">arXiv preprint</span>
+    <a href="https://arxiv.org/abs/2402.18594" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+  </div>
+
+
+
+<!-- ===================================================== -->
+<!-- IEEE-Style Research Project Page                       -->
+<!-- "Analyzing the Dynamics of COVID-19 Lockdown Success:   -->
+<!--  Insights from Regional Data and Public Health Measures" -->
+<!-- Uploaded PDF: :contentReference[oaicite:0]{index=0}                   -->
+<!-- Figures/Tables below match the paper numbering exactly  -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    This paper analyzes why <strong>COVID-19 lockdowns succeeded in some regions and failed in others</strong> by building a
+    <strong>10,000-entry regional dataset</strong> (up to <strong>December 2022</strong>) across <strong>100 countries</strong>.
+    The study examines relationships among <strong>population density</strong>, <strong>infected</strong>, <strong>deaths</strong>,
+    <strong>recovered</strong>, and a binary <strong>lockdown success/failure</strong> indicator.
+    It uses three correlation approaches (<strong>Pearson</strong>, <strong>Spearman</strong>, <strong>Kendall</strong>)
+    to quantify which variable pairs move together most strongly and suggests practical directions for managing future pandemics.
+  </p>
+
+  <p><strong>Key Contributions (as stated in the paper):</strong></p>
+  <ul>
+    <li><strong>🧾 Comprehensive dataset:</strong> Built a multi-attribute COVID-19 dataset (regional area, population, infected, deaths, recovered, success/failure) with <strong>10,000 entries</strong> from <strong>100 countries</strong>.</li>
+    <li><strong>📌 Added derived attribute:</strong> Computed <strong>population density</strong> from population and area and included it as an additional feature.</li>
+    <li><strong>📐 Correlation analysis:</strong> Used <strong>Pearson’s r</strong>, <strong>Spearman’s rho</strong>, and <strong>Kendall’s tau</strong> to analyze inter-factor relationships.</li>
+    <li><strong>🔎 Lockdown success insight:</strong> Visual analysis suggests lockdown success occurs more often in <strong>lower-density regions</strong>, with exceptions where strict measures were enforced.</li>
+    <li><strong>🧭 Future directions:</strong> Proposes practical prevention strategies (e.g., social distancing, remote work, decentralized living) to reduce transmission risk.</li>
+  </ul>
+</div>
+
+<!-- ===================================================== -->
+<!-- Overall System Pipeline (Fig. 1) -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏗️ Overall System Pipeline (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <!-- Replace src with your extracted/placed figure path -->
+  <img
+    src="./project_page/fig1_overall_architecture.png"
+    alt="Overall architecture of the proposed framework (Fig. 1)"
+    style="width:100%; max-width:800px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1. Overall architecture of the proposed framework.</strong>
+    The workflow collects regional COVID-19 data, adds derived attributes (notably density),
+    forms multiple attribute pairs, performs correlation analysis, and generates results about factor relationships and lockdown success.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Dataset & Features (Tables I–II) -->
+<!-- ===================================================== -->
+<h2 class="section-title" id="dataset">📊 Dataset, Features &amp; Preprocessing (Tables I–II)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The dataset is manually constructed with <strong>10,000 records</strong> from <strong>100 countries</strong> (up to <strong>December 2022</strong>).
+  The original dataset contains <strong>7 attributes</strong>: region name, infected, deaths, recovered, area, population, and lockdown success/failure.
+  The authors then derive <strong>density = population / area</strong>, and encode success as <strong>1</strong> and failure as <strong>0</strong>.
+  To reduce bias, the dataset is balanced with <strong>5,000 successes</strong> and <strong>5,000 failures</strong>. Numeric attributes are normalized with
+  <strong>min-max normalization</strong> to the range <strong>[0, 1]</strong>.
+</p>
+
+<!-- Table I -->
+<h3 class="section-title" style="font-size:1.15rem;">Table I. Sample Dataset</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Region Name</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Infected</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Deaths</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Recovered</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Area</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Population</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Success/Failure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Alaska</td><td style="padding:10px; border:1px solid #dee2e6;">761</td><td style="padding:10px; border:1px solid #dee2e6;">12</td><td style="padding:10px; border:1px solid #dee2e6;">491</td><td style="padding:10px; border:1px solid #dee2e6;">665384</td><td style="padding:10px; border:1px solid #dee2e6;">731545</td><td style="padding:10px; border:1px solid #dee2e6;">success</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Iowa</td><td style="padding:10px; border:1px solid #dee2e6;">28819</td><td style="padding:10px; border:1px solid #dee2e6;">709</td><td style="padding:10px; border:1px solid #dee2e6;">22870</td><td style="padding:10px; border:1px solid #dee2e6;">56272</td><td style="padding:10px; border:1px solid #dee2e6;">3155070</td><td style="padding:10px; border:1px solid #dee2e6;">failure</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">New York</td><td style="padding:10px; border:1px solid #dee2e6;">393454</td><td style="padding:10px; border:1px solid #dee2e6;">24855</td><td style="padding:10px; border:1px solid #dee2e6;">70590</td><td style="padding:10px; border:1px solid #dee2e6;">54554</td><td style="padding:10px; border:1px solid #dee2e6;">19453561</td><td style="padding:10px; border:1px solid #dee2e6;">failure</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Maharashtra</td><td style="padding:10px; border:1px solid #dee2e6;">284281</td><td style="padding:10px; border:1px solid #dee2e6;">11194</td><td style="padding:10px; border:1px solid #dee2e6;">158140</td><td style="padding:10px; border:1px solid #dee2e6;">307713</td><td style="padding:10px; border:1px solid #dee2e6;">112374333</td><td style="padding:10px; border:1px solid #dee2e6;">success</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">North Dakota</td><td style="padding:10px; border:1px solid #dee2e6;">3313</td><td style="padding:10px; border:1px solid #dee2e6;">77</td><td style="padding:10px; border:1px solid #dee2e6;">2952</td><td style="padding:10px; border:1px solid #dee2e6;">70698</td><td style="padding:10px; border:1px solid #dee2e6;">762062</td><td style="padding:10px; border:1px solid #dee2e6;">success</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;"><strong>Table I.</strong> Sample dataset (7 features) as shown in the paper.</p>
+
+<!-- Table II -->
+<h3 class="section-title" style="font-size:1.15rem;">Table II. Derived Dataset (with Density and Binary Success)</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Region Name</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Infected</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Death</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Recovered</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Area</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Population</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Success/Failure</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Alaska</td><td style="padding:10px; border:1px solid #dee2e6;">761</td><td style="padding:10px; border:1px solid #dee2e6;">12</td><td style="padding:10px; border:1px solid #dee2e6;">491</td><td style="padding:10px; border:1px solid #dee2e6;">665384</td><td style="padding:10px; border:1px solid #dee2e6;">731545</td><td style="padding:10px; border:1px solid #dee2e6;">1</td><td style="padding:10px; border:1px solid #dee2e6;">1.0994</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Iowa</td><td style="padding:10px; border:1px solid #dee2e6;">28819</td><td style="padding:10px; border:1px solid #dee2e6;">709</td><td style="padding:10px; border:1px solid #dee2e6;">22870</td><td style="padding:10px; border:1px solid #dee2e6;">56272</td><td style="padding:10px; border:1px solid #dee2e6;">3155070</td><td style="padding:10px; border:1px solid #dee2e6;">0</td><td style="padding:10px; border:1px solid #dee2e6;">56.0682</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">New York</td><td style="padding:10px; border:1px solid #dee2e6;">393454</td><td style="padding:10px; border:1px solid #dee2e6;">24855</td><td style="padding:10px; border:1px solid #dee2e6;">70590</td><td style="padding:10px; border:1px solid #dee2e6;">54554</td><td style="padding:10px; border:1px solid #dee2e6;">19453561</td><td style="padding:10px; border:1px solid #dee2e6;">0</td><td style="padding:10px; border:1px solid #dee2e6;">356.5927</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Maharashtra</td><td style="padding:10px; border:1px solid #dee2e6;">284281</td><td style="padding:10px; border:1px solid #dee2e6;">11194</td><td style="padding:10px; border:1px solid #dee2e6;">158140</td><td style="padding:10px; border:1px solid #dee2e6;">307713</td><td style="padding:10px; border:1px solid #dee2e6;">112374333</td><td style="padding:10px; border:1px solid #dee2e6;">1</td><td style="padding:10px; border:1px solid #dee2e6;">356.1920</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">North Dakota</td><td style="padding:10px; border:1px solid #dee2e6;">3313</td><td style="padding:10px; border:1px solid #dee2e6;">77</td><td style="padding:10px; border:1px solid #dee2e6;">2952</td><td style="padding:10px; border:1px solid #dee2e6;">70698</td><td style="padding:10px; border:1px solid #dee2e6;">762062</td><td style="padding:10px; border:1px solid #dee2e6;">1</td><td style="padding:10px; border:1px solid #dee2e6;">10.7791</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;"><strong>Table II.</strong> Derived dataset (adds Density and binary Success/Failure) as shown in the paper.</p>
+
+<!-- ===================================================== -->
+<!-- Correlation Methods (Eq. 1–3 + Fig. 2) -->
+<!-- ===================================================== -->
+<h2 class="section-title">📐 Correlation Methods Used (Pearson, Spearman, Kendall) + Fig. 2</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper uses three correlation coefficients to capture different relationship types:
+  <strong>Pearson’s r</strong> (linear association), <strong>Spearman’s rho</strong> (rank-based monotonic association),
+  and <strong>Kendall’s tau</strong> (rank-based dependence via concordant/discordant pairs).
+</p>
+
+<div style="text-align:center; margin:2.0rem 0;">
+  <img
+    src="./project_page/fig2_types_of_correlation.png"
+    alt="Types of correlation (Fig. 2)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 2. Types of correlation.</strong>
+    The paper illustrates positive vs. negative correlation using example scatter plots and fitted trend lines.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Experimental Setup -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧪 Experimental Setup</h2>
+<ul>
+  <li><strong>Platform:</strong> Kaggle online environment</li>
+  <li><strong>Language:</strong> Python</li>
+  <li><strong>Machine:</strong> Windows 11 desktop, Intel Core i5 @ 3.10 GHz, 12 GB RAM</li>
+  <li><strong>Parallel processing:</strong> Not used</li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Experimental Measurements -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧾 Experimental Measurements (6 Attribute Pairs)</h2>
+<p style="margin-bottom:0.75rem;">
+  From the dataset attributes, the experiments focus on six pairwise combinations:
+</p>
+<ul>
+  <li><strong>(Density, Infected)</strong></li>
+  <li><strong>(Density, Death)</strong></li>
+  <li><strong>(Density, Recovered)</strong></li>
+  <li><strong>(Death, Recovered)</strong></li>
+  <li><strong>(Infected, Death)</strong></li>
+  <li><strong>(Infected, Recovered)</strong></li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Scatter Plots (Fig. 3) -->
+<!-- ===================================================== -->
+<h2 class="section-title">📉 Scatter Plots of the 6 Pairs (Fig. 3)</h2>
+
+<div style="text-align:center; margin:2.0rem 0;">
+  <img
+    src="./project_page/fig3_scatter_plots.png"
+    alt="Scatter plots for the six combinations (Fig. 3)"
+    style="width:100%; max-width:750px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 3. Scatter plot of</strong>
+    (a) Density vs Infected, (b) Density vs Death, (c) Density vs Recovered,
+    (d) Death vs Recovered, (e) Infected vs Death, and (f) Infected vs Recovered.
+    The paper notes positive trends visually, then quantifies strength using correlation coefficients.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Correlation Results (Tables III–V) -->
+<!-- ===================================================== -->
+<h2 class="section-title">📊 Correlation Results (Tables III–V)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper reports correlation strength for the six attribute pairs using Pearson’s r, Spearman’s rho, and Kendall’s tau.
+</p>
+
+<!-- Table III: Pearson -->
+<h3 class="section-title" style="font-size:1.15rem;">Table III. Pearson’s Correlation Coefficient</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Combination</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Value of r</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Strength (as labeled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Infected</td><td style="padding:10px; border:1px solid #dee2e6;">0.384</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.284</td><td style="padding:10px; border:1px solid #dee2e6;">Weak</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.277</td><td style="padding:10px; border:1px solid #dee2e6;">Weak</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Death vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.412</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.649</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.755</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;"><strong>Table III.</strong> Pearson correlation results for the six attribute pairs.</p>
+
+<!-- Table IV: Spearman -->
+<h3 class="section-title" style="font-size:1.15rem;">Table IV. Spearman’s Correlation Coefficient</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Combination</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Value of r</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Strength (as labeled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Infected</td><td style="padding:10px; border:1px solid #dee2e6;">0.54</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.44</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.42</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Death vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.724</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.864</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.877</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;"><strong>Table IV.</strong> Spearman correlation results for the six attribute pairs.</p>
+
+<!-- Table V: Kendall -->
+<h3 class="section-title" style="font-size:1.15rem;">Table V. Kendall’s Correlation Coefficient</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Combination</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Value of r</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Strength (as labeled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Infected</td><td style="padding:10px; border:1px solid #dee2e6;">0.413</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.347</td><td style="padding:10px; border:1px solid #dee2e6;">Weak</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Density vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.318</td><td style="padding:10px; border:1px solid #dee2e6;">Weak</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Death vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.582</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Death</td><td style="padding:10px; border:1px solid #dee2e6;">0.744</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Infected vs Recovered</td><td style="padding:10px; border:1px solid #dee2e6;">0.737</td><td style="padding:10px; border:1px solid #dee2e6;">Strong</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;"><strong>Table V.</strong> Kendall correlation results for the six attribute pairs.</p>
+
+<!-- ===================================================== -->
+<!-- Lockdown Success vs Density (Fig. 4) -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏘️ Effect of Density on Lockdown Success (Fig. 4)</h2>
+
+<div style="text-align:center; margin:2.0rem 0;">
+  <img
+    src="./project_page/fig4_density_vs_lockdown_success.png"
+    alt="Effect of density on success of lockdown (Fig. 4)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 4. Effect of density on success of lockdown.</strong>
+    The paper states that success is mostly observed in regions with lower population density,
+    while some high-density regions still succeed when strict precautionary measures are implemented
+    (e.g., daily goods and medicine supply, rule enforcement, and reduced social engagement).
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Findings & Practical Directions -->
+<!-- ===================================================== -->
+<h2 class="section-title">✅ Key Findings &amp; Practical Directions</h2>
+
+<div style="background:#f8f9fa; padding:1.5rem; border-radius:12px; border-left:5px solid #2E8B57; margin:1.5rem 0;">
+  <h3 style="margin-top:0; color:#1b4332;">What the correlations imply (in plain English)</h3>
+  <ul style="margin-bottom:0;">
+    <li><strong>Infected vs Death</strong> and <strong>Infected vs Recovered</strong> show the strongest positive correlations (especially under Spearman and Kendall), meaning as infections rise, deaths and recoveries rise too.</li>
+    <li>Pairs involving <strong>density</strong> tend to be weaker or moderate, which the paper interprets as density having a smaller direct association with infected/death/recovered compared to the infection–outcome relationships.</li>
+    <li>Separately, the <strong>lockdown success</strong> visualization suggests density relates to whether lockdowns succeed, but it is not the only factor: strict public health and supply measures can still produce success in dense regions.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="font-size:1.15rem;">Proposed directions for future pandemics (as discussed)</h3>
+<ul>
+  <li><strong>Reduce transmission opportunities:</strong> strengthen social distancing and reduce close-contact mixing.</li>
+  <li><strong>Reduce effective density during outbreaks:</strong> promote remote work and decentralized living arrangements when feasible.</li>
+  <li><strong>Support compliance:</strong> ensure supplies of daily necessities and medicines so restrictions remain practical.</li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Conclusion -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏁 Conclusion (Section V)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper concludes that using a multi-region dataset and multiple correlation measures can reveal
+  meaningful relationships among COVID-19 factors. It reports strong positive correlations between infections and both deaths and recoveries,
+  and highlights that lockdown success is often associated with lower density (with important real-world exceptions).
+  The authors note limitations in data availability/quality and suggest expanding the dataset and experimental measurements in future work.
+</p>
+
+
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>this paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@article{manik2024analyzing,
+  title={Analyzing the dynamics of covid-19 lockdown success: Insights from regional data and public health measures},
+  author={Manik, Md Motaleb Hossen and Habib, Md Ahsan and Islam, Md Zabirul and Ahmed, Tanim and Haque, Fabliha},
+  journal={arXiv preprint arXiv:2402.18594},
+  year={2024}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://arxiv.org/pdf/2402.18594" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        arXiv preprint
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+<footer class="footer">
+  <p><i class="fa-brands fa-creative-commons"></i> 2026 Md Zabirul Islam</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+

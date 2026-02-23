@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="BanglaNLP: Sentiment Analysis, Emotion Recognition & Secure Data Architectures">
+
+<title>BanglaNLP | Md Zabirul Islam</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.project-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.authors {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.affiliations {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0 2rem 0;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  background: transparent;
+  color: #495057;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-link:hover {
+  border-color: #750505;
+  color: #750505;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.journal-badge {
+  background: #8b0808;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 0.5rem;
+  cursor: default;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #011627;
+  border-bottom: 3px solid #011627;
+  padding-bottom: 0.5rem;
+}
+
+.abstract-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  border-left: 5px solid #750505;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  text-align: center;
+  background: #f8f9fa;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .project-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .authors {
+    font-size: 1rem;
+  }
+  
+  .affiliations {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .abstract-section {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-section {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+  
+  main {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  main {
+    padding: 0 0.75rem !important;
+  }
+  
+  .abstract-section {
+    padding: 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3THLGK2G1N"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
+</script>
+</head>
+
+<body>
+
+
+<!-- #----------- Heading-------------------
+ -->
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Unifying Sentiment Analysis and Emotion Recognition for Bangla Text: A Hybrid Approach</h1>
+    
+    <div class="authors">
+      Md Motaleb Hossen Manik, Anite Halim Sagor, Fahim Ahmed Mondal, Md Mossadek Touhid, <strong>Md Zabirul Islam</strong>
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://ieeexplore.ieee.org/abstract/document/11013126" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+<!--     <a href="https://github.com/zabir110/COVID19-CNN-LSTM" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a> -->
+  </div>
+
+
+<!-- ===================================================== -->
+<!-- IEEE ECCE 2025 Project Page                            -->
+<!-- "Unifying Sentiment Analysis and Emotion Recognition    -->
+<!--  for Bangla Text: A Hybrid Approach"                    -->
+<!-- Uploaded PDF: :contentReference[oaicite:0]{index=0}                    -->
+<!-- Figures/Tables below match the paper numbering exactly  -->
+<!-- ===================================================== -->
+
+<!-- Highlights -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    Bangla text analysis is often studied in two separate tracks: <strong>Sentiment Analysis (SA)</strong> and
+    <strong>Emotion Recognition (ER)</strong>. This paper proposes a single framework that performs
+    <strong>both SA and ER</strong> using a <strong>hybrid approach</strong>. Instead of relying on one model,
+    it first runs <strong>five machine learning algorithms</strong> (SVM, Logistic Regression, Decision Tree,
+    Random Forest, KNN) and then combines their predictions using a <strong>weighted hybridization strategy</strong>
+    based on each model’s accuracy.
+  </p>
+
+  <p><strong>Key Achievements (reported in the paper):</strong></p>
+  <ul>
+    <li><strong>🧩 Unified task scope:</strong> One framework covers both <strong>SA (3-class)</strong> and <strong>ER (6-class)</strong> for Bangla text.</li>
+    <li><strong>📚 Two new labeled datasets:</strong> SA dataset = <strong>8,000</strong> samples; ER dataset = <strong>6,500</strong> samples.</li>
+    <li><strong>⚙️ Hybrid ML ensemble (no deep learning required):</strong> Uses TF-IDF + {SVM, LR, DT, RF, KNN} and then hybridizes outputs.</li>
+    <li><strong>📈 Strong final metrics:</strong> Proposed framework reports <strong>Accuracy 96.57%</strong>, <strong>Precision 95.96%</strong>, <strong>Recall 95.85%</strong>, <strong>F1 95.90%</strong>.</li>
+    <li><strong>✅ Improvements over individual ML models:</strong> Table III shows consistent gains over each baseline ML algorithm.</li>
+    <li><strong>🧪 Lightweight compute:</strong> Implemented in Python on CPU (no GPU used) in the reported setup.</li>
+  </ul>
+</div>
+
+<!-- ===================================================== -->
+<!-- Overall System Pipeline (Fig. 1) -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏗️ Overall Workflow (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <!-- Replace with your extracted figure path -->
+  <img
+    src="./project_page/fig1_workflow.png"
+    alt="Workflow diagram of the proposed framework (Fig. 1)"
+    style="width:100%; max-width:900px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1. Workflow diagram of the proposed framework.</strong>
+    Data are collected from online sources, then annotated and preprocessed. Next, five ML models generate intermediary
+    predictions, which are combined by a weighted hybridization step to produce final SA/ER outputs and evaluation results.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Dataset Section (Tables I–II + Fig. 2) -->
+<!-- ===================================================== -->
+<h2 class="section-title" id="datasets">📊 Datasets, Labels &amp; Distribution (Tables I–II, Fig. 2)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The paper develops two separate datasets:
+  <strong>Sentiment Analysis (SA)</strong> and <strong>Emotion Recognition (ER)</strong>.
+  Data were collected from social platforms and online sources (e.g., Facebook, YouTube, blogs, Twitter/X),
+  and then <strong>manually annotated</strong> by the authors and linguistic experts.
+</p>
+
+<p style="margin-bottom:0.75rem;">
+  <strong>Dataset sizes and class counts (reported):</strong><br>
+  • SA dataset: <strong>8,000</strong> samples labeled into <strong>Positive (3,500)</strong>, <strong>Negative (2,500)</strong>, <strong>Neutral (2,000)</strong><br>
+  • ER dataset: <strong>6,500</strong> samples labeled into <strong>Happy (1,300)</strong>, <strong>Excited (1,200)</strong>, <strong>Tender (1,200)</strong>,
+  <strong>Sad (1,150)</strong>, <strong>Scared (950)</strong>, <strong>Angry (700)</strong>
+</p>
+
+<!-- Table I (SA sample) -->
+<h3 class="section-title" style="font-size:1.2rem;">Table I. Sample Dataset for SA</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Sentiment</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Positive</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{এই রেস্টুরেন্টের পরিবেশ অনেক ভালো}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Negative</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{তাদের ব্যবহার একদমই ভালো না}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Neutral</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{আমি এখন খবরের কাগজ পড়ছি}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Positive</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{এই খাবার জায়গাটার পরিবেশ দারুণ চমৎকার}</td>
+    </tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table I.</strong> Sample entries of the SA dataset (as shown in the paper).
+</p>
+
+<!-- Table II (ER sample) -->
+<h3 class="section-title" style="font-size:1.2rem;">Table II. Sample Dataset for ER</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Emotion</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Happy</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{আমি ভাল আছি}, {এই খবরটা পেয়ে সে খুশি}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Excited</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{ভালো ফলাফল করতে পেরে অনেক ভালো লাগছে}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Tender</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{সে একজন ভালো মনের মানুষ}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Sad</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{আজকে আমার ভালো লাগছে না}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Scared</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{আমি বাবাকে অনেক বেশি ভয় পাই}</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;">Angry</td>
+      <td style="padding:10px; border:1px solid #dee2e6;">{তার সাথে কথা বলার কোনো মানেই হয় না}</td>
+    </tr>
+  </tbody>
+</table>
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table II.</strong> Sample entries of the ER dataset (as shown in the paper).
+</p>
+
+<!-- Fig. 2 distribution -->
+<h3 class="section-title" style="font-size:1.2rem;">🧮 Class Distribution (Fig. 2)</h3>
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig2_distribution.png"
+    alt="Distribution of data in distinct datasets (Fig. 2)"
+    style="width:100%; max-width:500px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 2. Distribution of data in distinct datasets.</strong>
+    The figure summarizes how samples are distributed across SA (positive/negative/neutral) and ER (six emotion categories).
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Preprocessing -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧹 Text Preprocessing (as described)</h2>
+
+<ul>
+  <li><strong>Unnecessary character removal:</strong> remove symbols like <code>*</code>, <code>$</code>, <code>@</code> that do not help SA/ER.</li>
+  <li><strong>Punctuation removal:</strong> punctuation is removed to reduce noise for classification.</li>
+  <li><strong>Stopword removal:</strong> a stopword list is prepared and applied to reduce processing time and remove non-informative tokens.</li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Model / Hybrid Method -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧠 Hybrid Method: “Intermediary + Weighted Hybridization”</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The method has two stages:
+</p>
+<ol>
+  <li>
+    <strong>Intermediary results:</strong> represent each text using <strong>TF-IDF</strong>, then train and evaluate
+    <strong>SVM</strong>, <strong>Logistic Regression</strong>, <strong>Decision Tree</strong>, <strong>Random Forest</strong>, and <strong>KNN</strong>.
+  </li>
+  <li>
+    <strong>Hybridizing results:</strong> compute each model’s accuracy, convert them into <strong>weights</strong>,
+    then combine predicted labels by summing weights per candidate label and choosing the label with the highest total weight
+    (Algorithm 1 in the paper).
+  </li>
+</ol>
+
+<!-- ===================================================== -->
+<!-- Experimental Setup -->
+<!-- ===================================================== -->
+<h2 class="section-title">🧪 Experimental Setup</h2>
+<ul>
+  <li><strong>Split:</strong> 80% training / 20% testing (for both SA and ER)</li>
+  <li><strong>Feature engineering:</strong> TF-IDF vectorizer</li>
+  <li><strong>Hardware (reported):</strong> Intel Core i5-10500 @ 3.10GHz, 12 GB RAM, 64-bit PC</li>
+  <li><strong>GPU:</strong> Not used (paper states computation was not heavy)</li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- Results: ML vs Hybrid (Figs. 3–4) -->
+<!-- ===================================================== -->
+<h2 class="section-title">📈 Results &amp; Analysis (Figs. 3–4)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig3_ml_metrics.png"
+    alt="Evaluation metrics of ML algorithms (Fig. 3)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 3. Evaluation metrics of ML algorithms.</strong>
+    The paper reports that SVM provides the strongest baseline performance among the five ML models.
+  </p>
+</div>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig4_hybrid_metrics.png"
+    alt="Evaluation metrics value of proposed framework (Fig. 4)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 4. Evaluation metrics value of proposed framework.</strong>
+    Reported overall performance: <strong>Accuracy 96.57%</strong>, <strong>Precision 95.96%</strong>,
+    <strong>Recall 95.85%</strong>, <strong>F1-score 95.90%</strong>.
+  </p>
+</div>
+
+<!-- ===================================================== -->
+<!-- Table III: Improvements -->
+<!-- ===================================================== -->
+<h2 class="section-title">📊 Improvement over Individual ML Models (Table III)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  Table III reports the proposed framework’s metric values and how much they improve over each individual ML baseline.
+</p>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Metric (Proposed %)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Baseline Algorithm</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Baseline Value (%)</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Improvement (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Accuracy -->
+    <tr><td style="padding:10px; border:1px solid #dee2e6;" rowspan="5"><strong>Accuracy (96.57)</strong></td><td style="padding:10px; border:1px solid #dee2e6;">SVM</td><td style="padding:10px; border:1px solid #dee2e6;">93.48</td><td style="padding:10px; border:1px solid #dee2e6;">3.30</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">LR</td><td style="padding:10px; border:1px solid #dee2e6;">90.25</td><td style="padding:10px; border:1px solid #dee2e6;">7.00</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">DT</td><td style="padding:10px; border:1px solid #dee2e6;">87.54</td><td style="padding:10px; border:1px solid #dee2e6;">10.31</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">RF</td><td style="padding:10px; border:1px solid #dee2e6;">88.68</td><td style="padding:10px; border:1px solid #dee2e6;">8.89</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">KNN</td><td style="padding:10px; border:1px solid #dee2e6;">84.68</td><td style="padding:10px; border:1px solid #dee2e6;">14.04</td></tr>
+
+    <!-- Precision -->
+    <tr><td style="padding:10px; border:1px solid #dee2e6;" rowspan="5"><strong>Precision (95.96)</strong></td><td style="padding:10px; border:1px solid #dee2e6;">SVM</td><td style="padding:10px; border:1px solid #dee2e6;">92.96</td><td style="padding:10px; border:1px solid #dee2e6;">3.22</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">LR</td><td style="padding:10px; border:1px solid #dee2e6;">90.00</td><td style="padding:10px; border:1px solid #dee2e6;">6.62</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">DT</td><td style="padding:10px; border:1px solid #dee2e6;">87.12</td><td style="padding:10px; border:1px solid #dee2e6;">10.14</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">RF</td><td style="padding:10px; border:1px solid #dee2e6;">87.21</td><td style="padding:10px; border:1px solid #dee2e6;">10.03</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">KNN</td><td style="padding:10px; border:1px solid #dee2e6;">84.58</td><td style="padding:10px; border:1px solid #dee2e6;">13.45</td></tr>
+
+    <!-- Recall -->
+    <tr><td style="padding:10px; border:1px solid #dee2e6;" rowspan="5"><strong>Recall (95.85)</strong></td><td style="padding:10px; border:1px solid #dee2e6;">SVM</td><td style="padding:10px; border:1px solid #dee2e6;">92.85</td><td style="padding:10px; border:1px solid #dee2e6;">3.23</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">LR</td><td style="padding:10px; border:1px solid #dee2e6;">90.13</td><td style="padding:10px; border:1px solid #dee2e6;">6.34</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">DT</td><td style="padding:10px; border:1px solid #dee2e6;">86.48</td><td style="padding:10px; border:1px solid #dee2e6;">10.83</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">RF</td><td style="padding:10px; border:1px solid #dee2e6;">88.14</td><td style="padding:10px; border:1px solid #dee2e6;">8.74</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">KNN</td><td style="padding:10px; border:1px solid #dee2e6;">83.17</td><td style="padding:10px; border:1px solid #dee2e6;">15.24</td></tr>
+
+    <!-- F1 -->
+    <tr><td style="padding:10px; border:1px solid #dee2e6;" rowspan="5"><strong>F1-score (95.90)</strong></td><td style="padding:10px; border:1px solid #dee2e6;">SVM</td><td style="padding:10px; border:1px solid #dee2e6;">92.90</td><td style="padding:10px; border:1px solid #dee2e6;">3.22</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">LR</td><td style="padding:10px; border:1px solid #dee2e6;">90.06</td><td style="padding:10px; border:1px solid #dee2e6;">6.48</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">DT</td><td style="padding:10px; border:1px solid #dee2e6;">86.79</td><td style="padding:10px; border:1px solid #dee2e6;">10.49</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">RF</td><td style="padding:10px; border:1px solid #dee2e6;">87.67</td><td style="padding:10px; border:1px solid #dee2e6;">9.38</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">KNN</td><td style="padding:10px; border:1px solid #dee2e6;">83.86</td><td style="padding:10px; border:1px solid #dee2e6;">14.35</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table III.</strong> Improvement in results while using the proposed framework (values copied from the paper).
+</p>
+
+<!-- ===================================================== -->
+<!-- Comparisons with Existing Works (Fig. 5 + Table IV) -->
+<!-- ===================================================== -->
+<h2 class="section-title">🏁 Comparison with Existing Works (Fig. 5, Table IV)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig5_comparison_metrics.png"
+    alt="Evaluation metrics comparison between existing works and proposed framework (Fig. 5)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 5. Evaluation metrics comparison between existing works and proposed framework.</strong>
+    The paper reports higher overall metric values for the proposed unified SA+ER hybrid framework compared with the selected prior works.
+  </p>
+</div>
+
+<p style="margin-bottom:0.75rem;">
+  Table IV in the paper compares multiple aspects (task scope, dataset type, feature engineering, data imbalance handling, etc.).
+  Below is a clean HTML version of the same comparison (keeping the same aspect list and the “Proposed” column content).
+</p>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Aspect</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">What the paper claims for the Proposed framework</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Both SA and ER</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Yes (unified)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Hybrid approach</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Yes (weighted hybridization of multiple ML outputs)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Datasets</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Developed (new SA and ER datasets)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Performance</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">High (reported metrics ~96% range)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Efficiency</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">High (CPU-only setup; lightweight ML pipeline)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Domain</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Multiple (data collected from multiple online sources)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Handling data imbalance</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">Yes (paper notes ensuring balanced training distribution)</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Feature engineering</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">TF-IDF + Hybridizing</td>
+    </tr>
+    <tr>
+      <td style="padding:10px; border:1px solid #dee2e6;"><strong>Granularity</strong></td>
+      <td style="padding:10px; border:1px solid #dee2e6;">9 total classes (3 sentiment + 6 emotion)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table IV (cleaned view).</strong> Summary of the “Proposed” column from the paper’s comparison table (Table IV).
+</p>
+
+<!-- ===================================================== -->
+<!-- Key Contributions & Practical Impact -->
+<!-- ===================================================== -->
+<h2 class="section-title">🚀 Key Contributions &amp; Practical Impact</h2>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">Technical Contributions</h4>
+    <ul>
+      <li><strong>Unified Bangla text analysis:</strong> simultaneously supports SA and ER in one pipeline.</li>
+      <li><strong>Hybrid decision rule:</strong> uses accuracy-derived weights to combine model predictions per sample.</li>
+      <li><strong>Reproducible ML baseline stack:</strong> TF-IDF + 5 classic ML classifiers.</li>
+    </ul>
+  </div>
+
+  <div class="col-lg-6 col-md-12 mb-4">
+    <h4 style="color:#3252b3;">Deployment / Future Directions (as stated)</h4>
+    <ul>
+      <li><strong>Data expansion:</strong> increase dataset size to improve generalizability.</li>
+      <li><strong>Advanced models:</strong> explore transformer-based deep learning for harder linguistic patterns.</li>
+      <li><strong>Applications:</strong> real-time systems for social media monitoring and sentiment-driven decision-making.</li>
+    </ul>
+  </div>
+</div>
+
+<div style="background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%); padding:2rem; border-radius:15px; margin:2rem 0; border-left:5px solid #2E8B57;">
+  <h4 style="color:#011627; margin-bottom:1rem;">🔬 Research Significance</h4>
+  <p style="font-size:1.05rem; line-height:1.7; margin-bottom:0;">
+    The core value of this paper is practical: it shows that a lightweight, CPU-friendly hybridization strategy can unify
+    sentiment and emotion understanding for Bangla text and achieve strong reported metrics without relying on large neural models.
+    This can be especially useful when compute is limited but consistent SA+ER outputs are needed.
+  </p>
+</div>
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>Sentimen Analysis paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@inproceedings{manik2025unifying,
+  title={Unifying Sentiment Analysis and Emotion Recognition for Bangla Text: A Hybrid Approach},
+  author={Manik, Md Motaleb Hossen and Sagor, Anite Halim and Mondal, Fahim Ahmed and Touhid, Md Mossadek and Islam, Md Zabirul},
+  booktitle={2025 International Conference on Electrical, Computer and Communication Engineering (ECCE)},
+  pages={1--6},
+  year={2025},
+  organization={IEEE}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://www.sciencedirect.com/science/article/pii/S2352914820305621" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+2025 International Conference on Electrical, Computer and Communication Engineering (ECCE)      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- #----------- 2nd Paper--------------------->
+
+<!-- #----------- Heading--------------------->
+
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">A Hybrid Framework for Sentiment Analysis from Bangla Texts</h1>
+    
+    <div class="authors">
+       Md Motaleb Hossen Manik, Fabliha Haque, MMA Hashem, Md Ahsan Habib, <strong>Md Zabirul Islam,</strong>  Tanim Ahmed
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://ieeexplore.ieee.org/abstract/document/10054952" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+<!--     <a href="https://github.com/zabir110/COVID19-CNN-RNN" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a> -->
+  </div>
+
+
+
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- ICCIT 2022 Project Page                               -->
+<!-- 25th International Conference on Computer and         -->
+<!-- Information Technology (ICCIT), IEEE 2022             -->
+<!-- "A Hybrid Framework for Sentiment Analysis            -->
+<!--  from Bangla Texts"                                   -->
+<!-- Source: :contentReference[oaicite:0]{index=0}                         -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- ===================== Highlights ===================== -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    This paper proposes a <strong>hybrid framework</strong> for performing
+    <strong>Sentiment Analysis (SA)</strong> on <strong>Bangla and phonetic Bangla texts</strong>.
+    Instead of relying solely on machine learning or solely on rule-based logic,
+    the framework combines <strong>four machine learning algorithms</strong>
+    with a <strong>newly designed rule-based approach</strong>, and merges their outputs
+    using a <strong>weighted aggregation strategy</strong>.
+  </p>
+
+  <p><strong>Key Achievements (as reported in the paper):</strong></p>
+  <ul>
+    <li><strong>📚 New manually built dataset:</strong> <strong>1,600 reviews</strong> (400 Excellent, 400 Good, 400 Neutral, 400 Bad), including Bangla and phonetic Bangla.</li>
+    <li><strong>🧠 Hybrid design:</strong> SVM, Logistic Regression, Decision Tree, Random Forest + 53-rule linguistic system.</li>
+    <li><strong>🔍 Quantification of Polarity:</strong> Supports <strong>five sentiment levels</strong> (Strongly Positive, Positive, Neutral, Negative, Strongly Negative).</li>
+    <li><strong>↩ Negation handling:</strong> Polarity inversion mechanism included (e.g., “না”, “নয়”).</li>
+    <li><strong>📈 Final accuracy:</strong> <strong>95.54%</strong>, outperforming prior Bangla SA works.</li>
+    <li><strong>⚙️ Lightweight setup:</strong> Implemented in Python 3.8.8 on CPU (Intel i5, 12GB RAM), no GPU used.</li>
+  </ul>
+</div>
+
+<!-- ===================== Overall Framework ===================== -->
+<h2 class="section-title">🏗️ Overall Hybrid Framework (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig1_overall_framework.png"
+    alt="Overall structure of the proposed framework (Fig. 1)"
+    style="width:100%; max-width:700px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px;
+            margin:auto; text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1 (page 3).</strong>
+    The workflow begins with data collection from social platforms,
+    followed by preprocessing and feature engineering.
+    The dataset is split into training/validation/testing sets.
+    In parallel, tokenization feeds a rule-based engine.
+    Finally, outputs from ML models and rule-based approach are combined
+    through weighted aggregation to produce the final sentiment.
+  </p>
+</div>
+
+<!-- ===================== Dataset ===================== -->
+<h2 class="section-title">📊 Dataset Construction (Section III)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  Due to limited Bangla sentiment datasets, the authors manually constructed a new dataset.
+  Reviews were collected from <strong>YouTube, Facebook, Instagram, Twitter</strong>,
+  and manually annotated into four categories:
+  <strong>Excellent, Good, Neutral, Bad</strong>.
+</p>
+
+<p style="margin-bottom:0.75rem;">
+  The dataset contains:
+  <ul>
+    <li><strong>Total:</strong> 1,600 reviews</li>
+    <li>400 Excellent</li>
+    <li>400 Good</li>
+    <li>400 Neutral</li>
+    <li>400 Bad</li>
+  </ul>
+</p>
+
+<h3 class="section-title" style="font-size:1.2rem;">Table II. Sample Dataset</h3>
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Actual Review</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Original Form</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">তাদের ব্যবহার অনেক ভালো</td><td style="padding:8px; border:1px solid #dee2e6;">তাদের ব্যবহার অদেক ভাদ া</td><td style="padding:8px; border:1px solid #dee2e6;">Excellent</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Tmr kotha ar kaj a mil nai</td><td style="padding:8px; border:1px solid #dee2e6;">তোমার কথা আর কাজে মিল নাই</td><td style="padding:8px; border:1px solid #dee2e6;">Bad</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table II (page 2).</strong> Sample Bangla and phonetic Bangla reviews.
+</p>
+
+<!-- ===================== Methodology ===================== -->
+<h2 class="section-title">🧠 Methodology</h2>
+
+<h3 style="color:#3252b3;">1️⃣ Machine Learning Component</h3>
+<ul>
+  <li>Feature selection: Unigram + Bigram</li>
+  <li>Vectorization: <strong>TF-IDF</strong></li>
+  <li>Algorithms: <strong>SVM, Logistic Regression, Decision Tree, Random Forest</strong></li>
+  <li>Data split: 80% training, 10% validation, 10% testing</li>
+</ul>
+
+<h3 style="color:#3252b3;">2️⃣ Rule-Based Component (53 Rules)</h3>
+<ul>
+  <li>27 trigram rules</li>
+  <li>18 bigram rules</li>
+  <li>8 unigram rules</li>
+  <li>POS-based rule design</li>
+  <li>Polarity checking via positive/negative lexicons</li>
+  <li><strong>Quantification of polarity</strong> (strongly positive/negative)</li>
+  <li><strong>Polarity inversion handling</strong> (e.g., “না”)</li>
+</ul>
+
+<!-- ===================== Accuracy Comparison ===================== -->
+<h2 class="section-title">📈 Accuracy Comparison (Fig. 2)</h2>
+
+<div style="text-align:center; margin:2rem 0;">
+  <img
+    src="./project_page/fig2_accuracy_comparison.png"
+    alt="Accuracy comparison among approaches (Fig. 2)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px;
+            margin:auto; text-align:left; color:#495057;">
+    <strong>Figure 2 (page 5).</strong>
+    SVM achieves 86.85%, rule-based approach achieves 92.32%,
+    and the final hybrid framework achieves <strong>95.54%</strong>.
+  </p>
+</div>
+
+<!-- ===================== Rule Combination Analysis ===================== -->
+<h2 class="section-title">🔎 Rule Category Impact (Fig. 3)</h2>
+
+<div style="text-align:center; margin:2rem 0;">
+  <img
+    src="./project_page/fig3_rule_comparison.png"
+    alt="Accuracy for different rule combinations (Fig. 3)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:900px;
+            margin:auto; text-align:left; color:#495057;">
+    <strong>Figure 3 (page 5).</strong>
+    Accuracy improves as rule complexity increases:
+    unigram &lt; unigram+bigram &lt; unigram+bigram+trigram.
+  </p>
+</div>
+
+<!-- ===================== Weighted Aggregation ===================== -->
+<h2 class="section-title">⚖️ Weighted Aggregation Strategy</h2>
+
+<p>
+  Each approach receives a weight proportional to its accuracy:
+</p>
+
+<p style="text-align:center;">
+  <strong>Wi = Accuracy(Ai) / Σ Accuracy(Ai)</strong>
+</p>
+
+<p>
+  Reported weights:
+  <ul>
+    <li>DT: 0.186</li>
+    <li>LR: 0.188</li>
+    <li>RF: 0.191</li>
+    <li>SVM: 0.211</li>
+    <li>Rule-based: 0.224</li>
+  </ul>
+</p>
+
+<p>
+  Final prediction:
+  <strong>On = Σ (Ci × Wi)</strong>
+</p>
+
+<!-- ===================== Comparison Table ===================== -->
+<h2 class="section-title">📊 Comparison with Prior Work (Table V)</h2>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:8px; border:1px solid #dee2e6;">Aspect</th>
+      <th style="padding:8px; border:1px solid #dee2e6;">Proposed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Hybrid Approach</td><td style="padding:8px; border:1px solid #dee2e6;">✔</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Ranked Algorithms</td><td style="padding:8px; border:1px solid #dee2e6;">✔</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Quantified Polarity</td><td style="padding:8px; border:1px solid #dee2e6;">✔</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Phonetic Bangla</td><td style="padding:8px; border:1px solid #dee2e6;">✔</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Negation Handling</td><td style="padding:8px; border:1px solid #dee2e6;">✔</td></tr>
+    <tr><td style="padding:8px; border:1px solid #dee2e6;">Final Accuracy</td><td style="padding:8px; border:1px solid #dee2e6;"><strong>95.54%</strong></td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table V (page 6).</strong> Proposed framework outperforms prior Bangla SA models.
+</p>
+
+<!-- ===================== Limitations ===================== -->
+<h2 class="section-title">⚠️ Limitations & Future Work</h2>
+
+<ul>
+  <li>Relatively small dataset (1,600 reviews)</li>
+  <li>TF-IDF feature extraction (no deep embeddings)</li>
+  <li>Limited number of rules (53 total)</li>
+</ul>
+
+<p>
+  Future improvements include larger datasets, improved feature selection,
+  and expanding rule coverage for broader domains.
+</p>
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>this paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@inproceedings{manik2022hybrid,
+  title={A Hybrid Framework for Sentiment Analysis from Bangla Texts},
+  author={Manik, Md Motaleb Hossen and Haque, Fabliha and Hashem, MMA and Habib, Md Ahsan and Islam, Md Zabirul and Ahmed, Tanim},
+  booktitle={2022 25th International Conference on Computer and Information Technology (ICCIT)},
+  pages={517--522},
+  year={2022},
+  organization={IEEE}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10054952" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        2022 25th International Conference on Computer and Information Technology (ICCIT)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+<!-- #----------- 3rd Paper--------------------->
+
+<!-- #----------- Heading--------------------->
+
+<div class="project-header">
+  <div class="container">
+    <h1 class="project-title">Public sector corruption analysis with modified K-means algorithm using perception data</h1>
+    
+    <div class="authors">
+       Anik Pramanik, Amlan Sarker, <strong>Md Zabirul Islam,</strong>  MMA Hashem
+    </div>
+    
+    <div class="affiliations">
+Khulna University of Engineering & Technology, Khulna, 9203, Bangladesh    </div>
+  </div>
+</div>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+  <div class="links-section">
+    <span class="journal-badge">Paper</span>
+    <a href="https://ieeexplore.ieee.org/abstract/document/9393110" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Paper
+    </a>
+  </div>
+
+
+
+<!-- ===================================================== -->
+<!-- ICECE 2020 Project Page                               -->
+<!-- 2020 11th International Conference on Electrical       -->
+<!-- and Computer Engineering (ICECE), IEEE 2020            -->
+<!-- "Public Sector Corruption Analysis with Modified       -->
+<!--  K-means Algorithm Using Perception Data"              -->
+<!-- Source PDF: :contentReference[oaicite:0]{index=0}                     -->
+<!-- Figures/Tables below match the paper numbering exactly -->
+<!-- ===================================================== -->
+
+<!-- ===================== Highlights ===================== -->
+<div class="abstract-section">
+  <h2 class="section-title">Highlights</h2>
+
+  <p style="margin-bottom: 0.75rem;">
+    Corruption in public-sector services can be difficult to measure early using only official reports.
+    This paper proposes a <strong>modified, attribute-weighted K-means clustering model</strong> that uses
+    <strong>perception (survey) data</strong> to segment public organizations by corruption level.
+    The study applies the model to <strong>Bangladesh</strong>, evaluates it against a reference corruption report,
+    and also presents a <strong>cloud-based web application architecture</strong> for real-time data collection and analysis.
+  </p>
+
+  <p><strong>Key Achievements (as reported in the paper):</strong></p>
+  <ul>
+    <li><strong>🧩 Survey-driven dataset:</strong> <strong>70</strong> survey participants; <strong>20</strong> public-sector organizations; <strong>7</strong> attributes scored in <strong>[1–5]</strong>.</li>
+    <li><strong>⚖️ Attribute weighting:</strong> Weights derived from corruption-type frequency statistics (e.g., bribery, negligence) instead of treating all attributes equally.</li>
+    <li><strong>🔎 Meaningful segmentation:</strong> Clusters labeled as <strong>Least</strong>, <strong>Moderately</strong>, and <strong>Highly</strong> corrupted.</li>
+    <li><strong>✅ Reference-based evaluation:</strong> Compared with an official corruption report; achieved <strong>accuracy = 0.875 (87.5%)</strong>.</li>
+    <li><strong>☁️ Deployment concept:</strong> Cloud-based <strong>Flask</strong> web app architecture for survey intake, database storage, clustering, and visualization.</li>
+  </ul>
+</div>
+
+<!-- ===================== Overall System Pipeline ===================== -->
+<h2 class="section-title">🏗️ Overall Corruption Analysis Pipeline (Fig. 1)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <!-- Replace with your extracted figure path -->
+  <img
+    src="./project_page/fig1_block_diagram_model.png"
+    alt="Block diagram of the proposed corruption analysis model (Fig. 1)"
+    style="width:100%; max-width:650px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto;
+            text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 1 (page 2).</strong>
+    The paper’s pipeline starts from <strong>survey/perception data</strong> and <strong>data processing</strong> to build a dataset of organizations.
+    In parallel, <strong>corruption frequency statistics</strong> are used to build a <strong>weight vector</strong>.
+    The core step is <strong>weighted-attribute K-means</strong>, producing <strong>meaningful clusters</strong>,
+    followed by <strong>cluster analysis &amp; labeling</strong>.
+  </p>
+</div>
+
+<!-- ===================== Data Collection & Attributes ===================== -->
+<h2 class="section-title">📊 Data Collection &amp; Organization Attributes (Section III)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  Each public-sector organization is represented using <strong>7 attributes</strong>:
+  <strong>Integrity</strong>, <strong>Accountability</strong>, <strong>Independence</strong>, <strong>Resource</strong>,
+  <strong>Transparency</strong>, <strong>Co-operation</strong>, and <strong>Awareness</strong>.
+  A multidimensional survey is used to score each attribute using question-level ratings of
+  <strong>1 (minimum)</strong>, <strong>3 (mid-point)</strong>, or <strong>5 (maximum)</strong>.
+  For each organization and attribute, the final value is the <strong>average across surveyed users</strong>.
+</p>
+
+<!-- Table I -->
+<h3 class="section-title" style="font-size:1.25rem;">🧾 Sample Survey Assessment (Table I)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Field</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Example (from the paper)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Organization</td><td style="padding:10px; border:1px solid #dee2e6;">Passport Office</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Attribute</td><td style="padding:10px; border:1px solid #dee2e6;">Transparency</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Question examples</td>
+        <td style="padding:10px; border:1px solid #dee2e6;">
+          Record availability, procurement info accessibility, disclosure of assets/interests,
+          and public advertising of vacancies/openings.
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table I (page 2).</strong> Example questionnaire block used to compute an attribute score (Transparency) for an organization.
+</p>
+
+<p style="margin-bottom:0.75rem;">
+  <strong>Dataset size (as reported):</strong> data collected from <strong>70</strong> survey participants;
+  dataset includes <strong>20</strong> public-sector organizations; each described by <strong>7</strong> attributes with values in <strong>[1, 5]</strong>.
+</p>
+
+<!-- ===================== Corruption Frequency & Weight Vector ===================== -->
+<h2 class="section-title">📌 Why Attribute Weighting Matters (Fig. 2, Table II)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  Standard K-means uses Euclidean distance and effectively treats all attributes as equally important.
+  The paper argues this is misleading for corruption analysis because some corruption types occur much more frequently
+  (for example, bribery and negligence). Therefore, the model builds a <strong>weight vector</strong> using corruption-type
+  frequency statistics and applies <strong>weighted distance</strong> in clustering.
+</p>
+
+<!-- Fig. 2 -->
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig2_corruption_frequency.png"
+    alt="Percentages of household victims of different corruption-types (Fig. 2)"
+    style="width:100%; max-width:600px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto;
+            text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 2 (page 2).</strong>
+    The paper reports household victim percentages by corruption type, including
+    <strong>Bribe (49.8)</strong> and <strong>Negligence (39.9)</strong> as the most frequent categories, followed by smaller-frequency types.
+    These frequencies motivate higher weights for attributes linked to high-frequency corruption types.
+  </p>
+</div>
+
+<!-- Table II -->
+<h3 class="section-title" style="font-size:1.25rem;">⚖️ Weight Vector of Attributes (Table II)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Attribute</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Weight</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Indicator of</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Integrity</td><td style="padding:10px; border:1px solid #dee2e6;">0.46</td><td style="padding:10px; border:1px solid #dee2e6;">Bribery, unauthorized money</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Accountability</td><td style="padding:10px; border:1px solid #dee2e6;">0.37</td><td style="padding:10px; border:1px solid #dee2e6;">Negligence of duties</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Co-operation</td><td style="padding:10px; border:1px solid #dee2e6;">0.06</td><td style="padding:10px; border:1px solid #dee2e6;">Harassment, misbehavior</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Transparency</td><td style="padding:10px; border:1px solid #dee2e6;">0.03</td><td style="padding:10px; border:1px solid #dee2e6;">Fraudulence</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Awareness</td><td style="padding:10px; border:1px solid #dee2e6;">0.03</td><td style="padding:10px; border:1px solid #dee2e6;">Fraudulence</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Resource</td><td style="padding:10px; border:1px solid #dee2e6;">0.02</td><td style="padding:10px; border:1px solid #dee2e6;">Embezzlement, fraudulence</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Independence</td><td style="padding:10px; border:1px solid #dee2e6;">0.02</td><td style="padding:10px; border:1px solid #dee2e6;">Nepotism, influential interference</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table II (page 2).</strong> Normalized attribute weights used by the proposed model.
+</p>
+
+<!-- ===================== Core Model: Weighted K-means ===================== -->
+<h2 class="section-title">🧠 Core Model: Attribute-Weighted K-means (Section IV)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  The clustering uses a <strong>weighted distance</strong> (instead of standard Euclidean distance).
+  Each attribute belongs to a weight partition, and the distance between organizations is computed by multiplying
+  each squared attribute difference by its attribute weight.
+</p>
+
+<p style="margin-bottom:0.75rem;">
+  The algorithm initializes <strong>K = 3</strong> cluster centers using uniform attribute values from the set <strong>{1, 3, 5}</strong>,
+  assigns organizations to the nearest weighted-distance centroid, and iteratively updates cluster centers until the
+  stress function falls below a threshold.
+</p>
+
+<!-- ===================== Results: Cluster Centers ===================== -->
+<h2 class="section-title">📈 Results: Cluster Centers &amp; Separation (Table III, Fig. 3)</h2>
+
+<!-- Table III -->
+<h3 class="section-title" style="font-size:1.25rem;">📐 Resultant Cluster Centers (Table III)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Attribute</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Centroid 1</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Centroid 2</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Centroid 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Integrity</td><td style="padding:10px; border:1px solid #dee2e6;">4.13</td><td style="padding:10px; border:1px solid #dee2e6;">3.05</td><td style="padding:10px; border:1px solid #dee2e6;">1.68</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Accountability</td><td style="padding:10px; border:1px solid #dee2e6;">3.89</td><td style="padding:10px; border:1px solid #dee2e6;">2.90</td><td style="padding:10px; border:1px solid #dee2e6;">2.25</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Co-operation</td><td style="padding:10px; border:1px solid #dee2e6;">3.37</td><td style="padding:10px; border:1px solid #dee2e6;">3.15</td><td style="padding:10px; border:1px solid #dee2e6;">3.04</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Transparency</td><td style="padding:10px; border:1px solid #dee2e6;">3.33</td><td style="padding:10px; border:1px solid #dee2e6;">3.21</td><td style="padding:10px; border:1px solid #dee2e6;">3.14</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Awareness</td><td style="padding:10px; border:1px solid #dee2e6;">3.11</td><td style="padding:10px; border:1px solid #dee2e6;">2.60</td><td style="padding:10px; border:1px solid #dee2e6;">2.98</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Resource</td><td style="padding:10px; border:1px solid #dee2e6;">3.20</td><td style="padding:10px; border:1px solid #dee2e6;">2.80</td><td style="padding:10px; border:1px solid #dee2e6;">3.01</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Independence</td><td style="padding:10px; border:1px solid #dee2e6;">3.41</td><td style="padding:10px; border:1px solid #dee2e6;">3.34</td><td style="padding:10px; border:1px solid #dee2e6;">3.11</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table III (page 3).</strong> Cluster centers found by the proposed weighted K-means.
+</p>
+
+<!-- Fig. 3 -->
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig3_scatter_integrity_accountability.png"
+    alt="Scatter plot for Integrity vs Accountability (Fig. 3)"
+    style="width:100%; max-width:550px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto;
+            text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 3 (page 3).</strong>
+    Scatter plot of organizations using the two most heavily weighted attributes:
+    <strong>Integrity</strong> and <strong>Accountability</strong>, showing cluster separation.
+  </p>
+</div>
+
+<!-- Table IV -->
+<h3 class="section-title" style="font-size:1.25rem;">🏷️ Cluster Labels (Table IV)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Cluster ID</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Weighted Sum of Attributes</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Classification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 1</td><td style="padding:10px; border:1px solid #dee2e6;">169.24</td><td style="padding:10px; border:1px solid #dee2e6;">Least corrupted</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 2</td><td style="padding:10px; border:1px solid #dee2e6;">123.83</td><td style="padding:10px; border:1px solid #dee2e6;">Moderately corrupted</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 3</td><td style="padding:10px; border:1px solid #dee2e6;">92.50</td><td style="padding:10px; border:1px solid #dee2e6;">Highly corrupted</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table IV (page 3).</strong> Cluster labeling derived from weighted sums of cluster-center attributes.
+</p>
+
+<!-- ===================== Evaluation ===================== -->
+<h2 class="section-title">✅ Evaluation vs Reference Corruption Report (Tables V–VI)</h2>
+
+<p style="margin-bottom:0.75rem;">
+  To validate reliability, the paper compares the model’s cluster labels against a reference corruption report
+  (TIB National Household Survey 2017). Performance is summarized using precision, recall, and F1-score per cluster,
+  along with macro and weighted averages.
+</p>
+
+<!-- Table V -->
+<h3 class="section-title" style="font-size:1.25rem;">📊 Performance Analysis (Table V)</h3>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Class</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Precision</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Recall</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">F1-score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 1 (Least Corrupted)</td><td style="padding:10px; border:1px solid #dee2e6;">1.000</td><td style="padding:10px; border:1px solid #dee2e6;">0.750</td><td style="padding:10px; border:1px solid #dee2e6;">0.857</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 2 (Moderately Corrupted)</td><td style="padding:10px; border:1px solid #dee2e6;">0.875</td><td style="padding:10px; border:1px solid #dee2e6;">0.875</td><td style="padding:10px; border:1px solid #dee2e6;">0.875</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Cluster 3 (Highly Corrupted)</td><td style="padding:10px; border:1px solid #dee2e6;">0.800</td><td style="padding:10px; border:1px solid #dee2e6;">1.000</td><td style="padding:10px; border:1px solid #dee2e6;">0.889</td></tr>
+
+    <tr style="background:#fafafa;"><td style="padding:10px; border:1px solid #dee2e6;"><strong>Accuracy</strong></td><td colspan="3" style="padding:10px; border:1px solid #dee2e6;"><strong>0.875</strong></td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Macro Average</td><td style="padding:10px; border:1px solid #dee2e6;">0.892</td><td style="padding:10px; border:1px solid #dee2e6;">0.875</td><td style="padding:10px; border:1px solid #dee2e6;">0.874</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Weighted Average</td><td style="padding:10px; border:1px solid #dee2e6;">0.887</td><td style="padding:10px; border:1px solid #dee2e6;">0.875</td><td style="padding:10px; border:1px solid #dee2e6;">0.874</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table V (page 4).</strong> Precision/recall/F1 by cluster, plus macro and weighted averages.
+</p>
+
+<!-- Table VI -->
+<h3 class="section-title" style="font-size:1.25rem;">🧾 Sector-by-Sector Comparison (Table VI)</h3>
+
+<p style="margin-bottom:0.75rem; color:#495057;">
+  The paper lists sector corruption percentages from the reference report and compares them against the model’s predicted class.
+  (Below is the paper’s table rendered into HTML.)
+</p>
+
+<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+  <thead>
+    <tr style="background:#f1f3f5;">
+      <th style="padding:10px; border:1px solid #dee2e6;">Organizations</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">% Affected</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Classification by %</th>
+      <th style="padding:10px; border:1px solid #dee2e6;">Model Classification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Law Agency</td><td style="padding:10px; border:1px solid #dee2e6;">72.5</td><td style="padding:10px; border:1px solid #dee2e6;">High</td><td style="padding:10px; border:1px solid #dee2e6;">High</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Passport</td><td style="padding:10px; border:1px solid #dee2e6;">67.3</td><td style="padding:10px; border:1px solid #dee2e6;">High</td><td style="padding:10px; border:1px solid #dee2e6;">High</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">BRTA</td><td style="padding:10px; border:1px solid #dee2e6;">65.4</td><td style="padding:10px; border:1px solid #dee2e6;">High</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Judiciary</td><td style="padding:10px; border:1px solid #dee2e6;">60.5</td><td style="padding:10px; border:1px solid #dee2e6;">High</td><td style="padding:10px; border:1px solid #dee2e6;">High</td></tr>
+
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Land Services</td><td style="padding:10px; border:1px solid #dee2e6;">44.9</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Education</td><td style="padding:10px; border:1px solid #dee2e6;">42.9</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Health</td><td style="padding:10px; border:1px solid #dee2e6;">42.5</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Agriculture</td><td style="padding:10px; border:1px solid #dee2e6;">41.6</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Electricity</td><td style="padding:10px; border:1px solid #dee2e6;">38.9</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Gas</td><td style="padding:10px; border:1px solid #dee2e6;">38.3</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Local Gov. Institute</td><td style="padding:10px; border:1px solid #dee2e6;">26.7</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Insurance</td><td style="padding:10px; border:1px solid #dee2e6;">12.3</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Tax and Customs</td><td style="padding:10px; border:1px solid #dee2e6;">11.1</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td><td style="padding:10px; border:1px solid #dee2e6;">Moderate</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">Banking</td><td style="padding:10px; border:1px solid #dee2e6;">5.7</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td></tr>
+    <tr><td style="padding:10px; border:1px solid #dee2e6;">NGO</td><td style="padding:10px; border:1px solid #dee2e6;">5.4</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td><td style="padding:10px; border:1px solid #dee2e6;">Least</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:0.75rem; color:#495057;">
+  <strong>Table VI (page 4).</strong> Side-by-side comparison between reference sector classification and the model’s predicted class.
+</p>
+
+<!-- ===================== Web Application ===================== -->
+<h2 class="section-title">☁️ Real-Time Cloud Web Application Architecture (Fig. 4)</h2>
+
+<div style="text-align:center; margin:2.5rem 0;">
+  <img
+    src="./project_page/fig4_webapp_architecture.png"
+    alt="Architecture of real-time cloud-based web application (Fig. 4)"
+    style="width:100%; max-width:500px; height:auto; border-radius:12px;
+           box-shadow:0 6px 20px rgba(0,0,0,0.15); display:block; margin:0 auto;"
+  />
+
+  <p style="margin-top:1rem; font-size:1rem; max-width:950px; margin:auto;
+            text-align:left; color:#495057; line-height:1.6;">
+    <strong>Figure 4 (page 4).</strong>
+    The paper’s deployment design uses a <strong>Flask</strong>-based web UI where a user selects an organization,
+    answers questionnaires, and submits scores. The backend processes scores, stores the dataset in a database,
+    runs the proposed clustering on a cloud server, and returns results with visualizations (charts/tables/plots).
+  </p>
+</div>
+
+<!-- ===================== Practical Impact ===================== -->
+<h2 class="section-title">🚀 Practical Impact (as described)</h2>
+
+<ul>
+  <li><strong>Early segmentation:</strong> Uses perception data to group sectors as least/moderate/high corruption, supporting prioritization of audits and interventions.</li>
+  <li><strong>Adaptable weighting:</strong> Attribute weights reflect corruption-type frequency, so the model emphasizes dominant corruption channels.</li>
+  <li><strong>Scalable collection:</strong> Web-based design supports larger-scale data collection and repeated re-analysis over time.</li>
+</ul>
+
+<h2 class="section-title">⚠️ Limitations &amp; Future Directions (as stated)</h2>
+<ul>
+  <li>Collect more data across <strong>countries</strong>, <strong>more organizations</strong>, and <strong>more diverse populations</strong> to improve generalization.</li>
+  <li>Expand survey coverage to better represent the full spectrum of public-sector experiences.</li>
+</ul>
+
+
+<!-- #----------- Citation--------------------->
+
+ <h2 class="section-title">📝 Citation</h2>
+<div class="abstract-section">
+
+  <p style="margin-bottom: 1rem; font-size: 1.05rem; color: #495057;">
+    If you find <strong>this paper</strong> useful in your research, please consider citing:
+  </p>
+
+  <pre><code>@inproceedings{pramanik2020public,
+  title={Public sector corruption analysis with modified K-means algorithm using perception data},
+  author={Pramanik, Anik and Sarker, Amlan and Islam, Zabirul and Hashem, MMA},
+  booktitle={2020 11th International Conference on Electrical and Computer Engineering (ICECE)},
+  pages={198--201},
+  year={2020},
+  organization={IEEE}
+}</code></pre>
+
+  <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #3252b3;">
+    <p style="margin: 0; font-size: 0.95rem; color: #3252b3;">
+      <strong>📖 Paper:</strong>
+      <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9393110" target="_blank"
+         style="color: #3252b3; text-decoration: none; font-weight: 600;">
+        2020 11th International Conference on Electrical and Computer Engineering (ICECE)
+      </a><br>
+    </p>
+  </div>
+
+</div>
+
+
+
+
+<footer class="footer">
+  <p><i class="fa-brands fa-creative-commons"></i> 2026 Md Zabirul Islam</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
