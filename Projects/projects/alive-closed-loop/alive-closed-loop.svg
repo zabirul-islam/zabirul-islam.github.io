@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="800" height="520" fill="#f8f9fa"/>
+  <text x="400" y="52" text-anchor="middle" font-size="28" font-weight="700" fill="#011627">Instructor-Governed Closed Loop</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#011627"/></marker></defs>
+  <g fill="none" stroke="#011627" stroke-width="3" marker-end="url(#a)">
+    <path d="M400 150 A170 150 0 0 1 560 230"/>
+    <path d="M565 320 A170 150 0 0 1 470 420"/>
+    <path d="M330 420 A170 150 0 0 1 235 320"/>
+    <path d="M240 230 A170 150 0 0 1 395 150"/>
+  </g>
+  <g font-size="19" font-weight="600" text-anchor="middle">
+    <rect x="300" y="95" width="200" height="56" rx="12" fill="#eef2ff" stroke="#3252b3" stroke-width="2.5"/>
+    <text x="400" y="129" fill="#011627">AI Lecture</text>
+    <rect x="520" y="238" width="220" height="76" rx="12" fill="#eef2ff" stroke="#3252b3" stroke-width="2.5"/>
+    <text x="630" y="270" fill="#011627">Formative Q&amp;A</text>
+    <text x="630" y="296" fill="#011627" font-size="15" font-weight="400">spoken / free-text</text>
+    <rect x="300" y="400" width="200" height="76" rx="12" fill="#eef2ff" stroke="#3252b3" stroke-width="2.5"/>
+    <text x="400" y="432" fill="#011627">1:1 Tutor</text>
+    <text x="400" y="458" fill="#011627" font-size="15" font-weight="400">weakness transfer</text>
+    <rect x="60" y="238" width="220" height="76" rx="12" fill="#eef2ff" stroke="#3252b3" stroke-width="2.5"/>
+    <text x="170" y="270" fill="#011627">Misconceptions</text>
+    <text x="170" y="296" fill="#011627" font-size="15" font-weight="400">course revision</text>
+    <circle cx="400" cy="278" r="62" fill="#750505"/>
+    <text x="400" y="272" fill="#fff" font-size="17">Instructor</text>
+    <text x="400" y="294" fill="#fff" font-size="17">approval</text>
+  </g>
+</svg>

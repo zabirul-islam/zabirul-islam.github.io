@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Md Zabirul Islam<">
-<meta name="description" content="IMAGINER: Intelligent Multimodal Medical Architecture for Generating Integrated, Navigable, and Explainable Radiology Reports">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="ALIVE: Instructor-Governed AI for Closed-Loop Education">
 
-<title>IMAGINER | Md Zabirul Islam</title>
+<title>ALIVE | Md Zabirul Islam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -289,6 +289,20 @@ ul.task-list li input[type="checkbox"] {
     font-size: 1rem !important;
   }
 }
+
+.results-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.results-table th, .results-table td { border: 1px solid #dee2e6; padding: 0.5rem 0.75rem; text-align: center; }
+.results-table th { background: #011627; color: #fff; }
+.results-table tr.highlight td { background: #fff8e1; font-weight: bold; }
+.table-wrap { overflow-x: auto; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.stat-card { background: #f8f9fa; border-radius: 10px; padding: 1rem; text-align: center; border-top: 4px solid #750505; }
+.stat-card .num { font-size: 1.6rem; font-weight: bold; color: #011627; }
+.stat-card .lbl { font-size: 0.85rem; color: #555; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center; margin: 1.5rem 0; }
+.flow .step { background: #eef2ff; border: 2px solid #3252b3; border-radius: 10px; padding: 0.6rem 0.9rem; font-weight: 600; font-size: 0.9rem; text-align: center; max-width: 190px; }
+.flow .arrow { font-size: 1.3rem; color: #011627; }
+.note { font-size: 0.9rem; color: #555; font-style: italic; }
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -371,14 +385,13 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <div class="project-header">
 <div class="container">
   <h2 class="project-title">
-    Development and Validation of a Dynamic-Template-Constrained Large Language Model for Generating Fully-Structured Radiology Reports
+    ALIVE: Closing the Instructional Feedback Loop with Instructor-Governed AI
   </h2>
-  
+
   <div class="authors">
-      <strong>Md Zabirul Islam, Chuang Niu, Md Sayed Tanveer,</strong>, 
-    Parisa Kaviani, Qing Lyu, Mannudeep K. Kalra, Christopher T. Whitlow, Ge Wang.
+    <strong>Md Zabirul Islam</strong>, Ge Wang
   </div>
-  
+
   <div class="affiliations">
     Rensselaer Polytechnic Institute, Troy, NY 12180, United States
   </div>
@@ -389,255 +402,92 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <main class="content column-page-left container-fluid" id="quarto-document-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: left;">
 
   <div class="links-section" style="text-align: center;">
-    <span class="journal-badge">arXiv Preprint 2025</span>
-    <a href="https://arxiv.org/abs/2409.18319" class="project-link" target="_blank">
-      <i class="fas fa-file-pdf"></i> Paper
-    </a>
-    <a href="https://github.com/niuchuangnn/vllm_structure" class="project-link" target="_blank">
-      <i class="fab fa-github"></i> Code (vLLM-Structure)
-    </a>
+    <span class="journal-badge">Manuscript in preparation &middot; Nature Communications</span>
   </div>
 
   <div class="abstract-section">
     <h2 class="section-title">Overview</h2>
-
     <p>
-      This work presents a <strong>dynamic template-constrained large language model (LLM)</strong> 
-      framework for converting free-text lung cancer screening (LCS) radiology reports 
-      into <strong>fully-structured reports (FSR)</strong> with zero formatting errors and zero hallucinations.
+      Most AI tools for education answer questions, while instructors rarely see what students actually misunderstand.
+      <strong>ALIVE</strong> closes the loop. An <strong>instructor-governed AI</strong> delivers lectures, asks formative questions, and evaluates
+      spoken or free-text answers. It gives feedback, hands demonstrated weaknesses to a one-to-one tutor, and tracks recurring misconceptions so the
+      instructor can revise the course.
     </p>
-
     <p>
-      Unlike prompt-based approaches, this method constrains every generated token 
-      using a predefined clinical template with standardized candidate values.
-      The system was validated across <strong>two institutions</strong> using 
-      <strong>7,442 LDCT reports</strong>, achieving state-of-the-art performance.
+      Consequential course changes stay under human control. The instructor approves content, can override the system, and decides whether
+      student data may be used.
     </p>
-  </div>
-
-  <h2 class="section-title">Clinical Motivation</h2>
-
-  <p>
-    Radiology reporting traditionally uses loosely-structured or free-text formats (LSR), 
-    which limit large-scale statistical analysis and reliable retrieval. 
-    Fully-structured reporting (FSR) enables:
-  </p>
-
-  <ul>
-    <li>Standardized discrete feature extraction</li>
-    <li>Automated statistical mining</li>
-    <li>Nodule-level semantic retrieval</li>
-    <li>Cross-institutional consistency</li>
-    <li>Downstream AI model training</li>
-  </ul>
-
-  <p>
-    However, conventional LLM prompting fails in clinical settings due to:
-  </p>
-
-  <ul>
-    <li>JSON formatting errors</li>
-    <li>Content hallucinations</li>
-    <li>Privacy risks (cloud-based proprietary models)</li>
-    <li>Long inference time and high token cost</li>
-  </ul>
-
-  <h2 class="section-title">📐 Structured Template Design</h2>
-
-  <p>
-    Two radiologists created a standardized lung nodule template 
-    containing <strong>28 features</strong>:
-  </p>
-
-  <ul>
-    <li>24 nodule-level features (e.g., lobe, segment, attenuation, margin, shape, size)</li>
-    <li>3 report-level management features</li>
-    <li>1 auxiliary feature (number of nodules)</li>
-  </ul>
-
-  <p>
-    Each feature has a predefined candidate set (e.g., attenuation ∈ {solid, part-solid, ground-glass, ...}).
-    This predefined schema is the foundation of the constrained decoding.
-  </p>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig1_dataset.jpeg" class="img-fluid" style="max-width: 750px;">
-    <p><strong>Figure 1:</strong> Cross-institutional dataset construction (Institution-1 & Institution-2).</p>
-  </div>
-
-  <h2 class="section-title">🏗 Dynamic Template-Constrained Decoding</h2>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig2_framework.jpeg" class="img-fluid" style="max-width: 800px;">
-    <p>
-      <strong>Figure 2:</strong> The LLM receives system instruction + free-text report, 
-      while decoding is strictly constrained by a structured template.
+    <p class="note">
+      This is a new system and should not be confused with the earlier ALIVE Avatar-Lecture Interactive Video Engine preprint, which is listed
+      under the <a href="../mentor/mentor.html">MENTOR</a> project.
     </p>
   </div>
 
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig3_architecture.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 3:</strong> Modified inference architecture integrated into vLLM.
-      Special template tokens restrict candidate outputs during decoding.
-    </p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">2</div><div class="lbl">biomedical imaging courses</div></div>
+    <div class="stat-card"><div class="num">48</div><div class="lbl">lectures deployed</div></div>
+    <div class="stat-card"><div class="num">2,067</div><div class="lbl">slides</div></div>
+    <div class="stat-card"><div class="num">31B</div><div class="lbl">course-adapted multimodal model</div></div>
+    <div class="stat-card"><div class="num">37,236</div><div class="lbl">gated course-derived training pairs</div></div>
   </div>
 
-  <p>
-    During decoding:
-  </p>
-
-  <ul>
-    <li>Template format tokens are fixed → ensures valid JSON</li>
-    <li>Special template tokens select only predefined candidates</li>
-    <li>Dynamic adjustment handles variable number of nodules</li>
-    <li>Maximum-probability candidate is deterministically selected</li>
-  </ul>
-
-  <p>
-    This guarantees:
-  </p>
-
-  <ul>
-    <li>🚫 Zero formatting errors</li>
-    <li>🚫 Zero hallucinations</li>
-    <li>🔒 Local deployment (no privacy leakage)</li>
-  </ul>
-
-  <h2 class="section-title">📊 Cross-Institutional Validation</h2>
-
-<p>
-  Evaluation was initially performed on 500 manually labeled reports 
-  (250 per institution) to assess generalizability across clinical settings.
-</p>
-
-<ul>
-  <li><strong>Institution-1:</strong> F1 = 97.60% (95% CI: 96.5–98.6%)</li>
-  <li><strong>Institution-2:</strong> F1 = 96.92% (95% CI: 95.8–98.0%)</li>
-</ul>
-
-<p><strong>Performance Improvements over Baselines:</strong></p>
-
-<ul>
-  <li>LLaMA-3.1-405B: +10.42%</li>
-  <li>GPT-4o: +17.18%</li>
-  <li>Consistent gains across all 27 nodule features (p &lt; 0.01)</li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig6_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 6:</strong> Institution-1 performance comparison.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig7_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 7:</strong> Institution-2 performance comparison.</p>
-</div>
-
-
-<h3 style="margin-top:3rem;">📈 Extended Large-Scale Evaluation (Unpublished Update)</h3>
-
-<p>
-  Beyond the cross-institutional validation reported in the manuscript, 
-  we further evaluated updated model variants on a <strong>5,000-report dataset</strong> 
-  derived from our newly curated structured radiology corpus.
-</p>
-
-<ul>
-  <li><strong>LLaMA-3.1–8B (Template-Constrained):</strong> <strong>98.05% F1</strong> on 5k evaluation set</li>
-  <li><strong>LLaMA-3.2–1B (Fine-Tuned & Constrained):</strong> <strong>94.27% F1</strong> on 5k evaluation set</li>
-</ul>
-
-<p>
-  These results demonstrate that:
-</p>
-
-<ul>
-  <li>The constrained decoding framework scales effectively to larger evaluation sets</li>
-  <li>An 8B model achieves near-clinical-grade performance (>98% F1)</li>
-  <li>Even a lightweight 1B model maintains strong structural fidelity (>94% F1)</li>
-  <li>Model size-performance trade-offs enable deployment flexibility</li>
-</ul>
-
-<p style="font-size:0.95rem; color:#6c757d;">
-  <em>Note: These extended results are not included in the current arXiv manuscript version but reflect subsequent internal evaluation.</em>
-</p>
-
-
-
-  <h2 class="section-title">🔎 Large-Scale Statistical Mining</h2>
-
-  <p>
-    5,192 consecutive LDCT reports (3 years) were automatically converted to FSR.
-  </p>
-
-  <p>
-    Automatically derived statistics matched prior clinical literature:
-  </p>
-
-  <ul>
-    <li>Upper lobes had significantly more nodules (p < 0.01)</li>
-    <li>Right lung > left lung (p < 0.01)</li>
-    <li>Ground-glass nodules more common in females (p < 0.01)</li>
-    <li>Lung-RADS distribution consistent with prior studies</li>
-  </ul>
-
-  <h2 class="section-title">🔍 Nodule-Level Retrieval System</h2>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig8_retrieval.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 8:</strong> Complex semantic query:
-      solid AND (increase OR new) → 272 nodules retrieved.
-    </p>
+  <h2 class="section-title">🔁 The Closed Instructional Loop</h2>
+  <div class="flow">
+    <div class="step">AI lecture delivery</div><span class="arrow">&rarr;</span>
+    <div class="step">Formative questions (6 types)</div><span class="arrow">&rarr;</span>
+    <div class="step">Evaluate spoken / free-text answers</div><span class="arrow">&rarr;</span>
+    <div class="step">Feedback + one-to-one tutor</div><span class="arrow">&rarr;</span>
+    <div class="step">Misconception tracking</div><span class="arrow">&rarr;</span>
+    <div class="step">Instructor-approved course revision</div>
   </div>
 
-  <p>
-    Unlike keyword matching, semantic reasoning detects growth 
-    even when "increase" is not explicitly mentioned.
-  </p>
+  <h2 class="section-title">🏗️ System</h2>
+  <ul>
+    <li><strong>Shared model and services:</strong> the classroom and the tutor share a course-adapted <strong>31B multimodal model</strong>,
+    cloned-voice text-to-speech, and a retrieval service. All of it runs on <strong>institution-operated hardware</strong>, so student data stays on site.</li>
+    <li><strong>Graph-structured retrieval</strong> over a <strong>102-document course corpus</strong>.</li>
+    <li><strong>LoRA adaptation</strong> on <strong>37,236 gated course-derived pairs</strong>.</li>
+    <li><strong>Per-student mastery state</strong>, six question types, and deterministic misconception tracking.</li>
+  </ul>
 
-<h2 class="section-title">⚙️ Synthetic Fine-Tuning & Efficient Model Scaling</h2>
+  <h2 class="section-title">📊 Results</h2>
+  <div class="table-wrap">
+  <table class="results-table">
+    <thead><tr><th>Component</th><th>Comparison</th><th>Gain</th></tr></thead>
+    <tbody>
+      <tr><td>Graph-structured retrieval</td><td>Relevant vs. instruction-matched irrelevant context</td><td><strong>+0.241</strong> gold-token recall</td></tr>
+      <tr><td>LoRA course adaptation</td><td>Held-out evaluation set 1</td><td><strong>+0.056</strong> recall</td></tr>
+      <tr><td>LoRA course adaptation</td><td>Held-out evaluation set 2</td><td><strong>+0.102</strong> recall</td></tr>
+    </tbody>
+  </table>
+  </div>
 
-<p>
-  To reduce computational cost and enable local deployment, a LLaMA-3.1–8B model 
-  was fine-tuned using a large-scale synthetic radiology dataset generated through 
-  template-driven structured sampling and free-text synthesis.
-</p>
-
-<ul>
-  <li>Training samples: <strong>189,950</strong></li>
-  <li>Testing samples: <strong>49,965</strong></li>
-  <li>Mean IoU: <strong>0.183 → 0.840</strong></li>
-  <li>Mean F1: <strong>0.349 → 0.899</strong></li>
-  <li>Inference time (5,000 reports): <strong>9h → 2.5h</strong></li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig9_iou.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figure 9:</strong> Structural IoU & feature-wise F1 improvement after fine-tuning.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig10_features.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figures 10:</strong> Lung/Pleura feature-level F1 improvements across anatomical systems.</p>
-</div>
-
+  <h2 class="section-title">🛡️ Governance by Design</h2>
+  <ul>
+    <li><strong>Approval gates</strong> before generated content reaches students.</li>
+    <li><strong>Audit trails</strong> for system decisions and content changes.</li>
+    <li><strong>Instructor overrides</strong> at every stage.</li>
+    <li>An explicit <strong>data-use switch</strong> that controls whether student interactions may inform course revision.</li>
+  </ul>
 
   <h2 class="section-title">🚀 Key Contributions</h2>
-
   <ul>
-    <li>Dynamic template-constrained decoding eliminating hallucinations</li>
-    <li>Cross-institutional validation (n=7,442)</li>
-    <li>Zero formatting errors</li>
-    <li>Open-source vLLM-Structure framework</li>
-    <li>Efficient fine-tuned 8B model for scalable deployment</li>
-    <li>Automatic statistical mining & semantic retrieval</li>
+    <li>A deployed <strong>closed-loop</strong> AI education system connecting lecture delivery, assessment, tutoring, and course revision.</li>
+    <li>Real deployment across two courses, 48 lectures, and 2,067 slides on institution-operated infrastructure.</li>
+    <li>Measured gains from graph-structured retrieval and course-specific LoRA adaptation.</li>
+    <li>Human governance built into the architecture: consequential course changes stay under instructor control.</li>
   </ul>
+
+  <h2 class="section-title">📝 Citation</h2>
+  <pre style="background:#f8f9fa; padding:1rem; border-radius:8px;">@unpublished{islam2026closing,
+  title  = {Closing the Instructional Feedback Loop with Instructor-Governed AI},
+  author = {Islam, Md Zabirul and Wang, Ge},
+  note   = {Manuscript in preparation},
+  year   = {2026}
+}</pre>
 
 </main>
 </div>
-
 
 <footer class="footer">
   <div class="nav-footer">

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Md Zabirul Islam<">
-<meta name="description" content="IMAGINER: Intelligent Multimodal Medical Architecture for Generating Integrated, Navigable, and Explainable Radiology Reports">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="Structural Safety of AI for Patient Onboarding in Clinical Trials Using a Grounded Pipeline">
 
-<title>IMAGINER | Md Zabirul Islam</title>
+<title>Clinical Trial Onboarding | Md Zabirul Islam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -289,6 +289,20 @@ ul.task-list li input[type="checkbox"] {
     font-size: 1rem !important;
   }
 }
+
+.results-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.results-table th, .results-table td { border: 1px solid #dee2e6; padding: 0.5rem 0.75rem; text-align: center; }
+.results-table th { background: #011627; color: #fff; }
+.results-table tr.highlight td { background: #fff8e1; font-weight: bold; }
+.table-wrap { overflow-x: auto; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.stat-card { background: #f8f9fa; border-radius: 10px; padding: 1rem; text-align: center; border-top: 4px solid #750505; }
+.stat-card .num { font-size: 1.6rem; font-weight: bold; color: #011627; }
+.stat-card .lbl { font-size: 0.85rem; color: #555; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center; margin: 1.5rem 0; }
+.flow .step { background: #eef2ff; border: 2px solid #3252b3; border-radius: 10px; padding: 0.6rem 0.9rem; font-weight: 600; font-size: 0.9rem; text-align: center; max-width: 190px; }
+.flow .arrow { font-size: 1.3rem; color: #011627; }
+.note { font-size: 0.9rem; color: #555; font-style: italic; }
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -371,16 +385,15 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <div class="project-header">
 <div class="container">
   <h2 class="project-title">
-    Development and Validation of a Dynamic-Template-Constrained Large Language Model for Generating Fully-Structured Radiology Reports
+    Structural Safety of AI for Patient Onboarding in Clinical Trials Using a Grounded Pipeline
   </h2>
-  
+
   <div class="authors">
-      <strong>Md Zabirul Islam, Chuang Niu, Md Sayed Tanveer,</strong>, 
-    Parisa Kaviani, Qing Lyu, Mannudeep K. Kalra, Christopher T. Whitlow, Ge Wang.
+    <strong>Md Zabirul Islam</strong>, Darko Pucar, Christopher Whitlow, Chi Liu, Ge Wang
   </div>
-  
+
   <div class="affiliations">
-    Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    Rensselaer Polytechnic Institute &middot; Yale School of Medicine &middot; Wake Forest University School of Medicine
   </div>
 </div>
 
@@ -389,255 +402,108 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <main class="content column-page-left container-fluid" id="quarto-document-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: left;">
 
   <div class="links-section" style="text-align: center;">
-    <span class="journal-badge">arXiv Preprint 2025</span>
-    <a href="https://arxiv.org/abs/2409.18319" class="project-link" target="_blank">
-      <i class="fas fa-file-pdf"></i> Paper
-    </a>
-    <a href="https://github.com/niuchuangnn/vllm_structure" class="project-link" target="_blank">
-      <i class="fab fa-github"></i> Code (vLLM-Structure)
+    <span class="journal-badge">Manuscript in preparation &middot; npj Digital Medicine</span>
+    <a href="https://github.com/zabirul-islam/clinical-trial-onboarding" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
     </a>
   </div>
 
   <div class="abstract-section">
     <h2 class="section-title">Overview</h2>
-
     <p>
-      This work presents a <strong>dynamic template-constrained large language model (LLM)</strong> 
-      framework for converting free-text lung cancer screening (LCS) radiology reports 
-      into <strong>fully-structured reports (FSR)</strong> with zero formatting errors and zero hallucinations.
+      Patient-facing AI for clinical-trial onboarding has a specific failure mode: when several trials are in context, a model can blend
+      eligibility criteria, procedures, or risks from one trial into its explanation of another. Such <strong>cross-trial contamination</strong>
+      is fluent and hard to spot, and in a consent-style conversation it is a safety problem.
     </p>
-
     <p>
-      Unlike prompt-based approaches, this method constrains every generated token 
-      using a predefined clinical template with standardized candidate values.
-      The system was validated across <strong>two institutions</strong> using 
-      <strong>7,442 LDCT reports</strong>, achieving state-of-the-art performance.
+      This project builds an auditable <strong>trial-first single-context pipeline</strong>. It selects one dominant clinical trial <em>before</em>
+      generation or abstains. It then restricts eligibility triage, consent-style explanation, and teach-back to evidence from that trial only.
+      The system is positioned for <strong>coordinator-supervised preclinical onboarding</strong>, not autonomous eligibility decisions.
     </p>
   </div>
 
-  <h2 class="section-title">Clinical Motivation</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">114</div><div class="lbl">onboarding cases</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="lbl">model families</div></div>
+    <div class="stat-card"><div class="num">0 / 684</div><div class="lbl">lexical cross-trial leaks</div></div>
+    <div class="stat-card"><div class="num">1.3&ndash;1.8%</div><div class="lbl">semantic leakage (structural)</div></div>
+    <div class="stat-card"><div class="num">50.9&ndash;59.0%</div><div class="lbl">semantic leakage (RAG baselines)</div></div>
+  </div>
 
-  <p>
-    Radiology reporting traditionally uses loosely-structured or free-text formats (LSR), 
-    which limit large-scale statistical analysis and reliable retrieval. 
-    Fully-structured reporting (FSR) enables:
-  </p>
-
-  <ul>
-    <li>Standardized discrete feature extraction</li>
-    <li>Automated statistical mining</li>
-    <li>Nodule-level semantic retrieval</li>
-    <li>Cross-institutional consistency</li>
-    <li>Downstream AI model training</li>
-  </ul>
-
-  <p>
-    However, conventional LLM prompting fails in clinical settings due to:
-  </p>
-
-  <ul>
-    <li>JSON formatting errors</li>
-    <li>Content hallucinations</li>
-    <li>Privacy risks (cloud-based proprietary models)</li>
-    <li>Long inference time and high token cost</li>
-  </ul>
-
-  <h2 class="section-title">📐 Structured Template Design</h2>
-
-  <p>
-    Two radiologists created a standardized lung nodule template 
-    containing <strong>28 features</strong>:
-  </p>
-
-  <ul>
-    <li>24 nodule-level features (e.g., lobe, segment, attenuation, margin, shape, size)</li>
-    <li>3 report-level management features</li>
-    <li>1 auxiliary feature (number of nodules)</li>
-  </ul>
-
-  <p>
-    Each feature has a predefined candidate set (e.g., attenuation ∈ {solid, part-solid, ground-glass, ...}).
-    This predefined schema is the foundation of the constrained decoding.
-  </p>
-
+  <h2 class="section-title">🏗️ Pipeline Architecture</h2>
   <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig1_dataset.jpeg" class="img-fluid" style="max-width: 750px;">
-    <p><strong>Figure 1:</strong> Cross-institutional dataset construction (Institution-1 & Institution-2).</p>
+    <img src="fig1_pipeline.png" class="img-fluid" style="max-width: 800px;" alt="Trial-first single-context pipeline">
+    <p><strong>Figure 1:</strong> Retrieval, a five-gate trial-first selector that accepts exactly one trial or abstains, single-trial generation
+    of the three onboarding outputs, and a per-query audit bundle.</p>
   </div>
-
-  <h2 class="section-title">🏗 Dynamic Template-Constrained Decoding</h2>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig2_framework.jpeg" class="img-fluid" style="max-width: 800px;">
-    <p>
-      <strong>Figure 2:</strong> The LLM receives system instruction + free-text report, 
-      while decoding is strictly constrained by a structured template.
-    </p>
-  </div>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig3_architecture.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 3:</strong> Modified inference architecture integrated into vLLM.
-      Special template tokens restrict candidate outputs during decoding.
-    </p>
-  </div>
-
-  <p>
-    During decoding:
-  </p>
-
   <ul>
-    <li>Template format tokens are fixed → ensures valid JSON</li>
-    <li>Special template tokens select only predefined candidates</li>
-    <li>Dynamic adjustment handles variable number of nodules</li>
-    <li>Maximum-probability candidate is deterministically selected</li>
+    <li><strong>Retrieval:</strong> BM25 full-text search followed by cross-encoder reranking over the trial corpus.</li>
+    <li><strong>Trial-first selector:</strong> a five-gate ensemble (dominance ratio, trial-score share, raw cross-encoder maximum, best-passage rank,
+    generic-question flag). It accepts exactly one trial or abstains.</li>
+    <li><strong>Grounded generation:</strong> guarded eligibility triage, strict consent-style explanation, and uncertainty-aware teach-back, all restricted
+    to the accepted trial's evidence. A strict postprocessor rewrites uncited fields, and a JSON schema collapses non-parsing outputs to
+    <em>cannot-determine</em>.</li>
+    <li><strong>Audit bundle:</strong> evidence and scores, selector signals and decision, raw and postprocessed generations, and judge scores are persisted per query.</li>
   </ul>
 
-  <p>
-    This guarantees:
-  </p>
+  <h2 class="section-title">🔎 Leak Audit</h2>
+  <p>Three pre-specified detectors instrument the cross-trial leak channel across 684 generations (114 cases &times; 6 model families):</p>
+  <div class="table-wrap">
+  <table class="results-table">
+    <thead><tr><th>Detector</th><th>Flagged</th></tr></thead>
+    <tbody>
+      <tr><td>Lexical &mdash; narrow NCT-ID match</td><td>0 / 684</td></tr>
+      <tr><td>Lexical &mdash; wide entity-resolved match</td><td>0 / 684</td></tr>
+      <tr class="highlight"><td>Semantic &mdash; dual-LLM consensus</td><td>12 / 684 (1.75%)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Manual review of the 12 consensus-flagged cases found <strong>eight genuine paraphrased cross-trial errors</strong>. The remainder were
+  mixed-attribution errors or judge over-flags.</p>
 
-  <ul>
-    <li>🚫 Zero formatting errors</li>
-    <li>🚫 Zero hallucinations</li>
-    <li>🔒 Local deployment (no privacy leakage)</li>
-  </ul>
-
-  <h2 class="section-title">📊 Cross-Institutional Validation</h2>
-
-<p>
-  Evaluation was initially performed on 500 manually labeled reports 
-  (250 per institution) to assess generalizability across clinical settings.
-</p>
-
-<ul>
-  <li><strong>Institution-1:</strong> F1 = 97.60% (95% CI: 96.5–98.6%)</li>
-  <li><strong>Institution-2:</strong> F1 = 96.92% (95% CI: 95.8–98.0%)</li>
-</ul>
-
-<p><strong>Performance Improvements over Baselines:</strong></p>
-
-<ul>
-  <li>LLaMA-3.1-405B: +10.42%</li>
-  <li>GPT-4o: +17.18%</li>
-  <li>Consistent gains across all 27 nodule features (p &lt; 0.01)</li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig6_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 6:</strong> Institution-1 performance comparison.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig7_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 7:</strong> Institution-2 performance comparison.</p>
-</div>
-
-
-<h3 style="margin-top:3rem;">📈 Extended Large-Scale Evaluation (Unpublished Update)</h3>
-
-<p>
-  Beyond the cross-institutional validation reported in the manuscript, 
-  we further evaluated updated model variants on a <strong>5,000-report dataset</strong> 
-  derived from our newly curated structured radiology corpus.
-</p>
-
-<ul>
-  <li><strong>LLaMA-3.1–8B (Template-Constrained):</strong> <strong>98.05% F1</strong> on 5k evaluation set</li>
-  <li><strong>LLaMA-3.2–1B (Fine-Tuned & Constrained):</strong> <strong>94.27% F1</strong> on 5k evaluation set</li>
-</ul>
-
-<p>
-  These results demonstrate that:
-</p>
-
-<ul>
-  <li>The constrained decoding framework scales effectively to larger evaluation sets</li>
-  <li>An 8B model achieves near-clinical-grade performance (>98% F1)</li>
-  <li>Even a lightweight 1B model maintains strong structural fidelity (>94% F1)</li>
-  <li>Model size-performance trade-offs enable deployment flexibility</li>
-</ul>
-
-<p style="font-size:0.95rem; color:#6c757d;">
-  <em>Note: These extended results are not included in the current arXiv manuscript version but reflect subsequent internal evaluation.</em>
-</p>
-
-
-
-  <h2 class="section-title">🔎 Large-Scale Statistical Mining</h2>
-
-  <p>
-    5,192 consecutive LDCT reports (3 years) were automatically converted to FSR.
-  </p>
-
-  <p>
-    Automatically derived statistics matched prior clinical literature:
-  </p>
-
-  <ul>
-    <li>Upper lobes had significantly more nodules (p < 0.01)</li>
-    <li>Right lung > left lung (p < 0.01)</li>
-    <li>Ground-glass nodules more common in females (p < 0.01)</li>
-    <li>Lung-RADS distribution consistent with prior studies</li>
-  </ul>
-
-  <h2 class="section-title">🔍 Nodule-Level Retrieval System</h2>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig8_retrieval.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 8:</strong> Complex semantic query:
-      solid AND (increase OR new) → 272 nodules retrieved.
-    </p>
+  <h2 class="section-title">📊 Why Structure Matters: Baselines</h2>
+  <p>Standard mitigation strategies were compared against structural single-trial control:</p>
+  <div class="results-grid">
+    <div class="result-item">
+      <img src="fig2_baseline_leak.png" class="result-image" alt="Cross-trial leakage by system">
+      <p><strong>Figure 2:</strong> Multi-trial RAG, prompt-only guarding, and citation enforcement leak at 50.9&ndash;59.0% (semantic consensus).
+      Structural single-trial systems stay at 1.3&ndash;1.8%.</p>
+    </div>
+    <div class="result-item">
+      <img src="fig3_taxonomy.png" class="result-image" alt="Failure taxonomy by system">
+      <p><strong>Figure 3:</strong> Failure taxonomy. Structural control removes cross-trial contamination (T1). The residual errors are
+      unsupported completion (T2) and ordinary hallucination (T3).</p>
+    </div>
   </div>
 
+  <h2 class="section-title">🛡️ Claim-Level NLI Verification</h2>
   <p>
-    Unlike keyword matching, semantic reasoning detects growth 
-    even when "increase" is not explicitly mentioned.
+    A claim-level <strong>DeBERTa NLI verifier</strong> redacts a claim when a non-selected trial entails it better than the selected trial.
+    It removed <strong>all eight manually confirmed semantic leaks</strong> at a <strong>15.1% per-claim utility cost</strong>.
   </p>
-
-<h2 class="section-title">⚙️ Synthetic Fine-Tuning & Efficient Model Scaling</h2>
-
-<p>
-  To reduce computational cost and enable local deployment, a LLaMA-3.1–8B model 
-  was fine-tuned using a large-scale synthetic radiology dataset generated through 
-  template-driven structured sampling and free-text synthesis.
-</p>
-
-<ul>
-  <li>Training samples: <strong>189,950</strong></li>
-  <li>Testing samples: <strong>49,965</strong></li>
-  <li>Mean IoU: <strong>0.183 → 0.840</strong></li>
-  <li>Mean F1: <strong>0.349 → 0.899</strong></li>
-  <li>Inference time (5,000 reports): <strong>9h → 2.5h</strong></li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig9_iou.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figure 9:</strong> Structural IoU & feature-wise F1 improvement after fine-tuning.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig10_features.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figures 10:</strong> Lung/Pleura feature-level F1 improvements across anatomical systems.</p>
-</div>
-
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="fig4_frontier.png" class="img-fluid" style="max-width: 650px;" alt="Safety-utility frontier">
+    <p><strong>Figure 4:</strong> Safety&ndash;utility trade-off. Single-trial control reaches low leakage without sacrificing rubric-judged utility.</p>
+  </div>
 
   <h2 class="section-title">🚀 Key Contributions</h2>
-
   <ul>
-    <li>Dynamic template-constrained decoding eliminating hallucinations</li>
-    <li>Cross-institutional validation (n=7,442)</li>
-    <li>Zero formatting errors</li>
-    <li>Open-source vLLM-Structure framework</li>
-    <li>Efficient fine-tuned 8B model for scalable deployment</li>
-    <li>Automatic statistical mining & semantic retrieval</li>
+    <li>A <strong>trial-first, single-context</strong> design that makes cross-trial contamination a structural impossibility at the retrieval layer, with explicit abstention.</li>
+    <li>A multi-detector audit (lexical and dual-LLM semantic consensus) with manual adjudication across six model families.</li>
+    <li>Evidence that prompt-based and citation-based mitigations do not close the leak channel, while structural control does.</li>
+    <li>A claim-level NLI verifier that removes the remaining genuine leaks at a quantified utility cost.</li>
   </ul>
+
+  <h2 class="section-title">📝 Citation</h2>
+  <pre style="background:#f8f9fa; padding:1rem; border-radius:8px;">@unpublished{islam2026structural,
+  title  = {Structural Safety of AI for Patient Onboarding in Clinical Trials Using a Grounded Pipeline},
+  author = {Islam, Md Zabirul and Pucar, Darko and Whitlow, Christopher and Liu, Chi and Wang, Ge},
+  note   = {Manuscript in preparation},
+  year   = {2026}
+}</pre>
 
 </main>
 </div>
-
 
 <footer class="footer">
   <div class="nav-footer">
