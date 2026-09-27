@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="ALIVE: An Avatar-Lecture Interactive Video Engine with Content-Aware Retrieval for Real-Time Interaction">
+
+<title>ALIVE Video Engine | Md Zabirul Islam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em;
+  vertical-align: middle;
+}
+.project-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  
+}
+.project-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+.authors {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.affiliations {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.links-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.project-link {
+  background: transparent;
+  color: #495057;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-link:hover {
+  border-color: #750505;
+  color: #750505;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.journal-badge {
+  background: #000000;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 0.5rem;
+  cursor: default;
+}
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #011627;
+  border-bottom: 3px solid #011627;
+  padding-bottom: 0.5rem;
+}
+.architecture-image {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.result-item {
+  text-align: center;
+}
+.result-image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+.abstract-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  border-left: 5px solid #750505;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Fix navbar centering on mobile - use flexbox approach */
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar-brand-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 !important;
+  }
+  
+  .navbar-toggler {
+    order: 3;
+    flex-shrink: 0;
+  }
+  
+  /* Add invisible spacer to balance the toggler */
+  .navbar-container::before {
+    content: '';
+    width: 48px; /* Same width as navbar-toggler */
+    height: 1px;
+    order: 1;
+    flex-shrink: 0;
+  }
+  
+  .project-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .authors {
+    font-size: 1rem;
+  }
+  
+  .affiliations {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .abstract-section {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .links-section {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  /* Fix main content padding on mobile */
+  main.content {
+    padding: 0 1rem !important;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Adjust image sizes for mobile */
+  img[style*="max-width: 800px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 700px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 650px"] {
+    max-width: 95% !important;
+  }
+  
+  img[style*="max-width: 600px"] {
+    max-width: 95% !important;
+  }
+  
+  /* Better spacing for mobile */
+  div[style*="margin: 3rem 0"] {
+    margin: 2rem 0 !important;
+  }
+  
+  div[style*="margin: 2rem 0"] {
+    margin: 1.5rem 0 !important;
+  }
+  
+  /* Responsive text containers */
+  p[style*="max-width: 900px"],
+  p[style*="max-width: 1000px"],
+  p[style*="max-width: 800px"] {
+    max-width: 100% !important;
+    padding: 0 0.5rem;
+  }
+  
+  /* Code blocks responsive */
+  pre {
+    font-size: 0.8rem;
+    overflow-x: auto;
+  }
+  
+  /* Button styling for mobile */
+  a[style*="background: #750505"] {
+    display: block !important;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  main.content {
+    padding: 0 0.75rem !important;
+  }
+  
+  .abstract-section {
+    padding: 1rem;
+  }
+  
+  .project-link, .journal-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  h3[style*="color: #2E8B57"] {
+    font-size: 1.1rem !important;
+  }
+  
+  h4[style*="color: #2E8B57"] {
+    font-size: 1rem !important;
+  }
+}
+
+.results-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.results-table th, .results-table td { border: 1px solid #dee2e6; padding: 0.5rem 0.75rem; text-align: center; }
+.results-table th { background: #011627; color: #fff; }
+.results-table tr.highlight td { background: #fff8e1; font-weight: bold; }
+.table-wrap { overflow-x: auto; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.stat-card { background: #f8f9fa; border-radius: 10px; padding: 1rem; text-align: center; border-top: 4px solid #750505; }
+.stat-card .num { font-size: 1.6rem; font-weight: bold; color: #011627; }
+.stat-card .lbl { font-size: 0.85rem; color: #555; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center; margin: 1.5rem 0; }
+.flow .step { background: #eef2ff; border: 2px solid #3252b3; border-radius: 10px; padding: 0.6rem 0.9rem; font-weight: 600; font-size: 0.9rem; text-align: center; max-width: 190px; }
+.flow .arrow { font-size: 1.3rem; color: #011627; }
+.note { font-size: 0.9rem; color: #555; font-style: italic; }
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon-512.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3THLGK2G1N"></script>
+<script type="text/javascript">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+  <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <!-- <div class="navbar-container container-fluid"> -->
+    <div class="navbar-brand-container mx-auto">
+      <a class="navbar-brand" href="../../../index.html">
+      <span class="navbar-title"><strong>Md Zabirul</strong> Islam</span>
+      </a>
+    </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+<span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+</li>  
+<li class="nav-item">
+  <a class="nav-link" href="../../../Research/research/research.html"> 
+<span class="menu-text">Publications</span></a>
+</li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Zabirul_Islam_CV.pdf" target="_blank"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+<!--   <li class="nav-item">
+    <a class="nav-link" href="../../service/index.html"> 
+<span class="menu-text">Service</span></a>
+  </li>  --> 
+</ul>
+          </div>
+      </div>
+    </nav>
+</header>
+
+
+<div class="project-header">
+<div class="container">
+  <h2 class="project-title">
+    ALIVE: An Avatar-Lecture Interactive Video Engine with Content-Aware Retrieval for Real-Time Interaction
+  </h2>
+
+  <div class="authors">
+    <strong>Md Zabirul Islam</strong>, Md Motaleb Hossen Manik, Oge Marques, Hisham Mohamed, Ge Wang
+  </div>
+
+  <div class="affiliations">
+    Rensselaer Polytechnic Institute &middot; NVIDIA
+  </div>
+</div>
+
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+
+<main class="content column-page-left container-fluid" id="quarto-document-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: left;">
+
+  <div class="links-section" style="text-align: center;">
+    <span class="journal-badge">Submitted to IEEE Transactions on Learning Technologies</span>
+    <a href="https://github.com/zabirul-islam/alive-system" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+    <a href="https://arxiv.org/abs/2512.20858" class="project-link" target="_blank">
+      <i class="fas fa-file-pdf"></i> Preprint (earlier version)
+    </a>
+  </div>
+
+  <p class="note" style="text-align:center;">
+    Not to be confused with <a href="../alive-closed-loop/alive-closed-loop.html">ALIVE (Closed-Loop): Instructor-Governed AI for Education</a>,
+    which is a separate project.
+  </p>
+
+  <div class="abstract-section">
+    <h2 class="section-title">Overview</h2>
+    <p>
+      Recorded lectures are flexible but passive: when a student gets confused, the only options are to rewind or leave the lecture and search
+      elsewhere, where the explanation may use different terms and ignore what was just on the slide.
+    </p>
+    <p>
+      <strong>ALIVE</strong> keeps the question inside the lecture. A student pauses, asks by text or voice, and gets a short answer grounded in the
+      slide they are looking at and the surrounding lecture material. The answer can optionally be delivered by an instructor-style talking-head avatar.
+      Everything on the real-time path runs on institution-controlled hardware (two NVIDIA H100 GPUs).
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">23</div><div class="lbl">medical imaging lectures</div></div>
+    <div class="stat-card"><div class="num">1,117</div><div class="lbl">slide-aligned retrieval chunks</div></div>
+    <div class="stat-card"><div class="num">5,207</div><div class="lbl">lecture-derived QA pairs</div></div>
+    <div class="stat-card"><div class="num">n = 31</div><div class="lbl">semester-long classroom study</div></div>
+    <div class="stat-card"><div class="num">1.85 s</div><div class="lbl">mean avatar synthesis latency</div></div>
+  </div>
+
+  <h2 class="section-title">🏗️ System Overview</h2>
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="al_fig1_overview.png" class="img-fluid" style="max-width: 700px;" alt="ALIVE system overview">
+    <p><strong>Figure 1:</strong> Lecture preparation, timestamp-aware retrieval over slide-aligned content, domain-adapted LLM inference, and on-demand talking-head generation.</p>
+  </div>
+  <ul>
+    <li><strong>Timestamp-aware retrieval:</strong> a FAISS index over slide-aligned segments plus textbook passages. A temporal term (&lambda; = 0.4) favors evidence near the pause point.</li>
+    <li><strong>Domain-adapted model:</strong> Llama-3.1-8B-Instruct fine-tuned with LoRA (rank 32) on 5,207 lecture-derived QA pairs, in about 40 minutes on one H100.</li>
+    <li><strong>Multi-turn clarification:</strong> session-scoped dialogue history resolves follow-ups like "why?" or "explain that again", and is cleared when the lecture resumes.</li>
+    <li><strong>Avatar delivery:</strong> a persistent MuseTalk server with 1,348 preloaded reference frames. It runs asynchronously, so the text answer is never delayed.</li>
+  </ul>
+
+  <div class="results-grid">
+    <div class="result-item">
+      <img src="al_fig3_workflow.png" class="result-image" alt="Pause-triggered QA workflow">
+      <p><strong>Figure 2:</strong> Pause-triggered question-answering workflow.</p>
+    </div>
+    <div class="result-item">
+      <img src="al_fig4_interface.png" class="result-image" alt="ALIVE interface">
+      <p><strong>Figure 3:</strong> The interface on pause: empty state, question entry, grounded text answer, and optional avatar response.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">📊 Answer Quality</h2>
+  <p>508-question open-book held-out test set, same slide context given to every model.</p>
+  <div class="table-wrap">
+  <table class="results-table">
+    <thead><tr><th>Metric</th><th>Base</th><th>Base + RAG</th><th>ALIVE</th></tr></thead>
+    <tbody>
+      <tr><td>BERTScore F1</td><td>0.737</td><td>0.744</td><td><strong>0.769</strong></td></tr>
+      <tr><td>ROUGE-L</td><td>0.422</td><td>0.433</td><td><strong>0.476</strong></td></tr>
+      <tr><td>Slide-grounded factual errors</td><td>1 / 508</td><td>2 / 508</td><td><strong>0 / 508</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>
+    Because the QA data were generated by the same model family that was fine-tuned, two external judges from other families were added.
+    <strong>GPT-4o and Claude Sonnet 4.5 both rate ALIVE above the base model on all four axes</strong> (factuality, pedagogical clarity,
+    conciseness, agreement with reference). The largest gains are in clarity and conciseness.
+  </p>
+
+  <h2 class="section-title">🔎 Retrieval Accuracy</h2>
+  <div class="table-wrap">
+  <table class="results-table">
+    <thead><tr><th>Method</th><th>NDCG@1</th><th>NDCG@3</th><th>NDCG@5</th><th>Hit@5</th></tr></thead>
+    <tbody>
+      <tr><td>Semantic only</td><td>0.300</td><td>0.419</td><td>0.469</td><td>0.640</td></tr>
+      <tr class="highlight"><td>Timestamp-aware</td><td>0.640</td><td>0.673</td><td>0.678</td><td>0.740</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">50 pause-time student questions, single-annotator ground truth; &Delta;NDCG@1 = +0.34, p = 1.1&times;10<sup>&minus;3</sup>.</p>
+
+  <h2 class="section-title">🎓 Classroom Study</h2>
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="al_fig6_survey.png" class="img-fluid" style="max-width: 650px;" alt="Composite survey scores by domain">
+    <p><strong>Figure 4:</strong> Composite survey scores by domain (n = 31, IRB exempt). The dashed line is the neutral midpoint.</p>
+  </div>
+  <ul>
+    <li>Students rated ALIVE above the neutral midpoint in all six domains. The full 23-item battery had Cronbach's &alpha; = 0.75.</li>
+    <li><strong>90.3%</strong> reported no reduction in lecture attendance, office hours, or peer study, so students used it as a supplement rather than a substitute.</li>
+    <li><strong>71.0%</strong> reported increased awareness of AI limitations.</li>
+  </ul>
+
+  <h2 class="section-title">⚠️ Limitations</h2>
+  <ul>
+    <li>Reasoning is text-only. Slide figures, equations, and medical images are not yet used.</li>
+    <li>Retrieval labels come from one annotator.</li>
+    <li>Avatar quality was checked internally, not in a perceptual study with multiple raters.</li>
+    <li>No closed-book comparison yet to separate parametric knowledge from evidence use.</li>
+  </ul>
+
+  <h2 class="section-title">📝 Citation</h2>
+  <pre style="background:#f8f9fa; padding:1rem; border-radius:8px;">@unpublished{islam2026alive,
+  title  = {ALIVE: An Avatar-Lecture Interactive Video Engine with Content-Aware Retrieval for Real-Time Interaction},
+  author = {Islam, Md Zabirul and Manik, Md Motaleb Hossen and Marques, Oge and Mohamed, Hisham and Wang, Ge},
+  note   = {Submitted to IEEE Transactions on Learning Technologies},
+  year   = {2026}
+}</pre>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 Md Zabirul Islam</span></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+</body></html>
