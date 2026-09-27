@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Md Zabirul Islam<">
-<meta name="description" content="IMAGINER: Intelligent Multimodal Medical Architecture for Generating Integrated, Navigable, and Explainable Radiology Reports">
+<meta name="author" content="Md Zabirul Islam">
+<meta name="description" content="Development and Validation of a Large Language Model for Generating Fully-Structured Lung Nodule Reports">
 
-<title>IMAGINER | Md Zabirul Islam</title>
+<title>Lung Nodule Reporting | Md Zabirul Islam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -289,6 +289,20 @@ ul.task-list li input[type="checkbox"] {
     font-size: 1rem !important;
   }
 }
+
+.results-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.results-table th, .results-table td { border: 1px solid #dee2e6; padding: 0.5rem 0.75rem; text-align: center; }
+.results-table th { background: #011627; color: #fff; }
+.results-table tr.highlight td { background: #fff8e1; font-weight: bold; }
+.table-wrap { overflow-x: auto; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.stat-card { background: #f8f9fa; border-radius: 10px; padding: 1rem; text-align: center; border-top: 4px solid #750505; }
+.stat-card .num { font-size: 1.6rem; font-weight: bold; color: #011627; }
+.stat-card .lbl { font-size: 0.85rem; color: #555; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center; margin: 1.5rem 0; }
+.flow .step { background: #eef2ff; border: 2px solid #3252b3; border-radius: 10px; padding: 0.6rem 0.9rem; font-weight: 600; font-size: 0.9rem; text-align: center; max-width: 190px; }
+.flow .arrow { font-size: 1.3rem; color: #011627; }
+.note { font-size: 0.9rem; color: #555; font-style: italic; }
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -371,16 +385,17 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <div class="project-header">
 <div class="container">
   <h2 class="project-title">
-    Development and Validation of a Dynamic-Template-Constrained Large Language Model for Generating Fully-Structured Radiology Reports
+    Development and Validation of a Large Language Model for Generating Fully-Structured Lung Nodule Reports
   </h2>
-  
+
   <div class="authors">
-      <strong>Md Zabirul Islam, Chuang Niu, Md Sayed Tanveer,</strong>, 
-    Parisa Kaviani, Qing Lyu, Mannudeep K. Kalra, Christopher T. Whitlow, Ge Wang.
+    Md Sayed Tanveer<sup>&dagger;</sup>, <strong>Md Zabirul Islam<sup>&dagger;</sup></strong>, Chuang Niu, Parisa Kaviani, Qing Lyu,
+    Mannudeep K. Kalra, Christopher T. Whitlow, Ge Wang
+    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.25rem;"><sup>&dagger;</sup> Equal contribution</div>
   </div>
-  
+
   <div class="affiliations">
-    Rensselaer Polytechnic Institute, Troy, NY 12180, United States
+    Rensselaer Polytechnic Institute &middot; Massachusetts General Hospital, Harvard Medical School &middot; Wake Forest University School of Medicine
   </div>
 </div>
 
@@ -389,255 +404,136 @@ gtag('config', 'G-3THLGK2G1N', { 'anonymize_ip': true});
 <main class="content column-page-left container-fluid" id="quarto-document-content" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: left;">
 
   <div class="links-section" style="text-align: center;">
-    <span class="journal-badge">arXiv Preprint 2025</span>
+    <span class="journal-badge">Submitted to JAMIA</span>
     <a href="https://arxiv.org/abs/2409.18319" class="project-link" target="_blank">
-      <i class="fas fa-file-pdf"></i> Paper
-    </a>
-    <a href="https://github.com/niuchuangnn/vllm_structure" class="project-link" target="_blank">
-      <i class="fab fa-github"></i> Code (vLLM-Structure)
+      <i class="fas fa-file-pdf"></i> Earlier preprint
     </a>
   </div>
 
   <div class="abstract-section">
     <h2 class="section-title">Overview</h2>
-
     <p>
-      This work presents a <strong>dynamic template-constrained large language model (LLM)</strong> 
-      framework for converting free-text lung cancer screening (LCS) radiology reports 
-      into <strong>fully-structured reports (FSR)</strong> with zero formatting errors and zero hallucinations.
+      Most radiology reports are dictated as free text. That keeps radiologists fast, but it locks the findings inside prose: a nodule's size,
+      location, attenuation, and stability cannot be searched, tracked, or counted without someone reading every report.
     </p>
-
     <p>
-      Unlike prompt-based approaches, this method constrains every generated token 
-      using a predefined clinical template with standardized candidate values.
-      The system was validated across <strong>two institutions</strong> using 
-      <strong>7,442 LDCT reports</strong>, achieving state-of-the-art performance.
+      This work converts free-text lung cancer screening CT reports into <strong>fully structured lung-nodule reports</strong> without changing
+      how radiologists dictate. A <strong>dynamic template-constrained decoder</strong> lets a locally hosted open-weight LLM write only values a
+      radiologist-designed template allows, so every output is valid by construction. It was validated across two institutions and then extended with
+      synthetic fine-tuning so compact models can do the job at a fraction of the token cost. The study covers 7,442 reports (2021&ndash;2023) under
+      IRB approval at both institutions.
     </p>
   </div>
 
-  <h2 class="section-title">Clinical Motivation</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">0.976 / 0.969</div><div class="lbl">F1 on two institutions</div></div>
+    <div class="stat-card"><div class="num">5,442</div><div class="lbl">LDCT screening reports</div></div>
+    <div class="stat-card"><div class="num">30,000</div><div class="lbl">synthetic training reports</div></div>
+    <div class="stat-card"><div class="num">84&ndash;87%</div><div class="lbl">fewer tokens after fine-tuning</div></div>
+    <div class="stat-card"><div class="num">97.7% &rarr; 100%</div><div class="lbl">JSON-schema validity with grammar</div></div>
+  </div>
 
-  <p>
-    Radiology reporting traditionally uses loosely-structured or free-text formats (LSR), 
-    which limit large-scale statistical analysis and reliable retrieval. 
-    Fully-structured reporting (FSR) enables:
-  </p>
-
-  <ul>
-    <li>Standardized discrete feature extraction</li>
-    <li>Automated statistical mining</li>
-    <li>Nodule-level semantic retrieval</li>
-    <li>Cross-institutional consistency</li>
-    <li>Downstream AI model training</li>
-  </ul>
-
-  <p>
-    However, conventional LLM prompting fails in clinical settings due to:
-  </p>
-
-  <ul>
-    <li>JSON formatting errors</li>
-    <li>Content hallucinations</li>
-    <li>Privacy risks (cloud-based proprietary models)</li>
-    <li>Long inference time and high token cost</li>
-  </ul>
-
-  <h2 class="section-title">📐 Structured Template Design</h2>
-
-  <p>
-    Two radiologists created a standardized lung nodule template 
-    containing <strong>28 features</strong>:
-  </p>
-
-  <ul>
-    <li>24 nodule-level features (e.g., lobe, segment, attenuation, margin, shape, size)</li>
-    <li>3 report-level management features</li>
-    <li>1 auxiliary feature (number of nodules)</li>
-  </ul>
-
-  <p>
-    Each feature has a predefined candidate set (e.g., attenuation ∈ {solid, part-solid, ground-glass, ...}).
-    This predefined schema is the foundation of the constrained decoding.
-  </p>
-
+  <h2 class="section-title">🗂️ Study Design</h2>
   <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig1_dataset.jpeg" class="img-fluid" style="max-width: 750px;">
-    <p><strong>Figure 1:</strong> Cross-institutional dataset construction (Institution-1 & Institution-2).</p>
+    <img src="rad_fig1.jpg" class="architecture-image" alt="Two-stage study design">
+    <p><strong>Figure 1:</strong> Stage 1 validates dynamic template-constrained decoding on two manually structured 250-report cohorts from separate
+    institutions. Stage 2 is a separate controlled experiment on synthetic fine-tuning, using diagnostic chest CT reports that share no report with Stage 1.</p>
   </div>
 
-  <h2 class="section-title">🏗 Dynamic Template-Constrained Decoding</h2>
-
+  <h2 class="section-title">🏗️ Framework and Template</h2>
   <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig2_framework.jpeg" class="img-fluid" style="max-width: 800px;">
-    <p>
-      <strong>Figure 2:</strong> The LLM receives system instruction + free-text report, 
-      while decoding is strictly constrained by a structured template.
-    </p>
+    <img src="rad_fig2.jpg" class="architecture-image" alt="Framework of the dynamic-template-constrained LLM">
+    <p><strong>Figure 2:</strong> A free-text report, a system instruction, and a standardized template go in; a structured report with nodule-level
+    and report-level fields comes out. The system extracts what the radiologist documented and does not reinterpret images.</p>
   </div>
-
-  <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig3_architecture.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 3:</strong> Modified inference architecture integrated into vLLM.
-      Special template tokens restrict candidate outputs during decoding.
-    </p>
-  </div>
-
   <p>
-    During decoding:
+    Two radiologists built a fixed <strong>30-feature template</strong>: 25 nodule-level features (lobe, segment, type, margin, size, stability,
+    Lung-RADS, and more), 4 report-level management features, and the nodule count. The decoder first predicts how many nodules the report
+    describes, creates that many nodule entries, and then restricts every field to its allowed values (including null).
   </p>
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="rad_fig3.jpg" class="architecture-image" alt="Dynamic template-constrained decoding">
+    <p><strong>Figure 3:</strong> Standard LLM decoding vs. dynamic template-constrained decoding. The template's special slots (pink) are filled only from
+    their candidate sets (green).</p>
+  </div>
 
+  <h2 class="section-title">📊 Stage 1: Cross-Institutional Validation</h2>
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="rad_fig5.jpg" class="img-fluid" style="max-width: 650px;" alt="Performance on the two labeled datasets">
+    <p><strong>Figure 4:</strong> Mean and feature-wise F1 with 95% CIs on both institutions, with and without constrained decoding.</p>
+  </div>
   <ul>
-    <li>Template format tokens are fixed → ensures valid JSON</li>
-    <li>Special template tokens select only predefined candidates</li>
-    <li>Dynamic adjustment handles variable number of nodules</li>
-    <li>Maximum-probability candidate is deterministically selected</li>
+    <li>Best configuration (Llama-3.1-405B, constrained): <strong>F1 0.976</strong> (95% CI 0.965&ndash;0.986) and <strong>0.969</strong> (0.958&ndash;0.980),
+    with <strong>no formatting or out-of-template errors</strong>.</li>
+    <li>Constrained decoding improved every open-weight model tested (Llama-3.1 8B/70B/405B, Qwen-2-72B, Mistral-Large-123B), by 4.5 to 18.4
+    percentage points on Institution 1 and 3.9 to 15.3 on Institution 2.</li>
+    <li>Constrained Llama-3.1-405B beat GPT-4o by 17.2 points overall and on 26 of 27 features.</li>
   </ul>
 
+  <h2 class="section-title">🔎 Large-Scale Statistics Without Manual Labeling</h2>
   <p>
-    This guarantees:
+    Structuring 5,192 consecutive screening reports made population-level analysis automatic. Nodules were more frequent in the upper lobes and the
+    right lung, and women had more ground-glass nodules than men (all P &lt; .01). Lung-RADS 2 accounted for 66.0% of reports and Lung-RADS 1 for 22.4%.
+    57.9% of nodules averaged under 6 mm, and 85.8% were stable relative to prior exams. These patterns match previously reported distributions.
   </p>
 
-  <ul>
-    <li>🚫 Zero formatting errors</li>
-    <li>🚫 Zero hallucinations</li>
-    <li>🔒 Local deployment (no privacy leakage)</li>
-  </ul>
-
-  <h2 class="section-title">📊 Cross-Institutional Validation</h2>
-
-<p>
-  Evaluation was initially performed on 500 manually labeled reports 
-  (250 per institution) to assess generalizability across clinical settings.
-</p>
-
-<ul>
-  <li><strong>Institution-1:</strong> F1 = 97.60% (95% CI: 96.5–98.6%)</li>
-  <li><strong>Institution-2:</strong> F1 = 96.92% (95% CI: 95.8–98.0%)</li>
-</ul>
-
-<p><strong>Performance Improvements over Baselines:</strong></p>
-
-<ul>
-  <li>LLaMA-3.1-405B: +10.42%</li>
-  <li>GPT-4o: +17.18%</li>
-  <li>Consistent gains across all 27 nodule features (p &lt; 0.01)</li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig6_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 6:</strong> Institution-1 performance comparison.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig7_performance.jpeg" class="img-fluid" style="max-width: 750px;">
-  <p><strong>Figure 7:</strong> Institution-2 performance comparison.</p>
-</div>
-
-
-<h3 style="margin-top:3rem;">📈 Extended Large-Scale Evaluation (Unpublished Update)</h3>
-
-<p>
-  Beyond the cross-institutional validation reported in the manuscript, 
-  we further evaluated updated model variants on a <strong>5,000-report dataset</strong> 
-  derived from our newly curated structured radiology corpus.
-</p>
-
-<ul>
-  <li><strong>LLaMA-3.1–8B (Template-Constrained):</strong> <strong>98.05% F1</strong> on 5k evaluation set</li>
-  <li><strong>LLaMA-3.2–1B (Fine-Tuned & Constrained):</strong> <strong>94.27% F1</strong> on 5k evaluation set</li>
-</ul>
-
-<p>
-  These results demonstrate that:
-</p>
-
-<ul>
-  <li>The constrained decoding framework scales effectively to larger evaluation sets</li>
-  <li>An 8B model achieves near-clinical-grade performance (>98% F1)</li>
-  <li>Even a lightweight 1B model maintains strong structural fidelity (>94% F1)</li>
-  <li>Model size-performance trade-offs enable deployment flexibility</li>
-</ul>
-
-<p style="font-size:0.95rem; color:#6c757d;">
-  <em>Note: These extended results are not included in the current arXiv manuscript version but reflect subsequent internal evaluation.</em>
-</p>
-
-
-
-  <h2 class="section-title">🔎 Large-Scale Statistical Mining</h2>
-
-  <p>
-    5,192 consecutive LDCT reports (3 years) were automatically converted to FSR.
-  </p>
-
-  <p>
-    Automatically derived statistics matched prior clinical literature:
-  </p>
-
-  <ul>
-    <li>Upper lobes had significantly more nodules (p < 0.01)</li>
-    <li>Right lung > left lung (p < 0.01)</li>
-    <li>Ground-glass nodules more common in females (p < 0.01)</li>
-    <li>Lung-RADS distribution consistent with prior studies</li>
-  </ul>
-
-  <h2 class="section-title">🔍 Nodule-Level Retrieval System</h2>
-
+  <h2 class="section-title">⚙️ Stage 2: Synthetic Fine-Tuning for Compact Models</h2>
   <div style="text-align: center; margin: 2rem 0;">
-    <img src="fig8_retrieval.jpeg" class="img-fluid" style="max-width: 850px;">
-    <p>
-      <strong>Figure 8:</strong> Complex semantic query:
-      solid AND (increase OR new) → 272 nodules retrieved.
-    </p>
+    <img src="rad_fig4.jpg" class="img-fluid" style="max-width: 700px;" alt="Construction of the synthetic fine-tuning corpus">
+    <p><strong>Figure 5:</strong> Real lungs/pleura sentences are recombined into new reports, and a 405B teacher produces sparse structured targets:
+    30,000 synthetic training reports in total.</p>
   </div>
+  <div class="table-wrap">
+  <table class="results-table">
+    <thead><tr><th>Model</th><th>Unadapted F1</th><th>Fine-tuned F1</th><th>Tokens / report</th></tr></thead>
+    <tbody>
+      <tr><td>Llama-3.2-1B</td><td>0.124</td><td>0.713</td><td>4,983 &rarr; 730</td></tr>
+      <tr><td>Gemma-3-4B</td><td>0.205</td><td>0.746</td><td>5,467 &rarr; 701</td></tr>
+      <tr><td>Mistral-7B</td><td>0.404</td><td>0.780</td><td>5,570 &rarr; 843</td></tr>
+      <tr class="highlight"><td>Qwen2.5-7B</td><td>0.488</td><td>0.784</td><td>4,685 &rarr; 739</td></tr>
+      <tr><td>Llama-3.1-8B</td><td>0.567</td><td>0.764</td><td>4,681 &rarr; 727</td></tr>
+      <tr><td>Llama-3.1-70B (QLoRA)</td><td>0.839</td><td>0.757</td><td>4,655 &rarr; 721</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">250-report test cohort; reference-support-weighted exact-match F1 with 10,000 report-level bootstrap resamples.</p>
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="rad_fig6.jpg" class="img-fluid" style="max-width: 700px;" alt="Stage 2 performance, efficiency, and schema validity">
+    <p><strong>Figure 6:</strong> (a) Effect of the dynamic template on unadapted models; (b) unadapted vs. fine-tuned F1; (c) token use; (d) raw schema validity.</p>
+  </div>
+  <ul>
+    <li>Fine-tuning improved five of six models and narrowed F1 from 0.124&ndash;0.839 to 0.713&ndash;0.784, while cutting tokens per report by 84.2&ndash;87.2%.</li>
+    <li>After fine-tuning, a lightweight sparse grammar changed F1 by less than one point but raised schema-valid outputs from 1,466 to 1,500 of 1,500.
+    Once the model has learned the format, the constraint mainly guarantees valid structure.</li>
+  </ul>
 
-  <p>
-    Unlike keyword matching, semantic reasoning detects growth 
-    even when "increase" is not explicitly mentioned.
-  </p>
-
-<h2 class="section-title">⚙️ Synthetic Fine-Tuning & Efficient Model Scaling</h2>
-
-<p>
-  To reduce computational cost and enable local deployment, a LLaMA-3.1–8B model 
-  was fine-tuned using a large-scale synthetic radiology dataset generated through 
-  template-driven structured sampling and free-text synthesis.
-</p>
-
-<ul>
-  <li>Training samples: <strong>189,950</strong></li>
-  <li>Testing samples: <strong>49,965</strong></li>
-  <li>Mean IoU: <strong>0.183 → 0.840</strong></li>
-  <li>Mean F1: <strong>0.349 → 0.899</strong></li>
-  <li>Inference time (5,000 reports): <strong>9h → 2.5h</strong></li>
-</ul>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig9_iou.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figure 9:</strong> Structural IoU & feature-wise F1 improvement after fine-tuning.</p>
-</div>
-
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="fig10_features.jpeg" class="img-fluid" style="max-width: 800px;">
-  <p><strong>Figures 10:</strong> Lung/Pleura feature-level F1 improvements across anatomical systems.</p>
-</div>
-
+  <h2 class="section-title">⚠️ Limitations</h2>
+  <ul>
+    <li>The unadapted Llama-3.1-70B is still numerically best. The benefit of fine-tuning is lower cost at comparable accuracy, not higher accuracy.</li>
+    <li>Llama-3.1-70B was adapted with QLoRA while the smaller models were fully fine-tuned, so model size and adaptation method are confounded for that family.</li>
+    <li>Retrospective study against report-derived references; effects on clinical workflow and patient outcomes were not assessed.</li>
+    <li>The system structures what the radiologist wrote. It does not interpret images, revise Lung-RADS categories, or judge clinical correctness.</li>
+  </ul>
 
   <h2 class="section-title">🚀 Key Contributions</h2>
-
   <ul>
-    <li>Dynamic template-constrained decoding eliminating hallucinations</li>
-    <li>Cross-institutional validation (n=7,442)</li>
-    <li>Zero formatting errors</li>
-    <li>Open-source vLLM-Structure framework</li>
-    <li>Efficient fine-tuned 8B model for scalable deployment</li>
-    <li>Automatic statistical mining & semantic retrieval</li>
+    <li>Dynamic template-constrained decoding for <strong>variable numbers of linked nodule objects</strong>, with zero formatting errors.</li>
+    <li>Cross-institutional validation on 500 manually structured reports from two health systems.</li>
+    <li>Automatic population-level nodule statistics from 5,192 consecutive screening reports.</li>
+    <li>Synthetic fine-tuning that lets 1&ndash;8B models approach the strongest unadapted model at 84&ndash;87% lower token cost, running locally.</li>
   </ul>
+
+  <h2 class="section-title">📝 Citation</h2>
+  <pre style="background:#f8f9fa; padding:1rem; border-radius:8px;">@unpublished{tanveer2026lungnodule,
+  title  = {Development and Validation of a Large Language Model for Generating Fully-Structured Lung Nodule Reports},
+  author = {Tanveer, Md Sayed and Islam, Md Zabirul and Niu, Chuang and Kaviani, Parisa and Lyu, Qing and
+            Kalra, Mannudeep K. and Whitlow, Christopher T. and Wang, Ge},
+  note   = {Submitted to JAMIA. Equal contribution: M. S. Tanveer and M. Z. Islam},
+  year   = {2026}
+}</pre>
 
 </main>
 </div>
-
 
 <footer class="footer">
   <div class="nav-footer">
